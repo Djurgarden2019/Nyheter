@@ -98,7 +98,8 @@
   <button data-tab="krig">Krig &amp; utrikespolitik</button>
   <button data-tab="sverige">Sverige &amp; politik</button>
   <button data-tab="ekonomi">Ekonomi, AI &amp; marknad</button>
-  <button data-tab="sport">Sport</button>
+  <button data-tab="fotboll">Fotboll</button>
+  <button data-tab="sport">Sport i övrigt</button>
   <button data-tab="kultur">Kultur &amp; medier</button>
   <button data-tab="analys">Djupanalyser</button>
 </nav>
@@ -115,6 +116,7 @@
     <div class="changelog">
       <h2>Uppdateringslogg</h2>
       <ul>
+        <li><span class="cdate">29 juli 2026 (natt):</span> Ny egen flik "Fotboll" (Djurgården, Allsvenskan, Arsenal, transfers, internationell fotboll och VM 2026) - sportfliken heter nu "Sport i övrigt" och innehåller bara golf/tennis. La till fem nya källor: Omni, Fokus, The Guardian, The Epoch Times och ETC, med färska uppgifter om jordbävningen i Japan, USA/Saudiarabiens attacker mot Iran-stödda miliser i Irak, ett mordbrandsförsök mot en S-lokal i Sölvesborg med mera. Städade även bort ett par nyheter som inte passade under sina rubriker (bl.a. flyttades en affärsnyhet om Johnson &amp; Johnson från Krig-fliken till Ekonomi-fliken).</li>
         <li><span class="cdate">29 juli 2026 (sen kväll):</span> Byggde om hela sidan till flikar - en förstasida med de viktigaste nyheterna, och separata flikar för Krig &amp; utrikespolitik, Sverige &amp; politik, Ekonomi/AI/marknad, Sport, Kultur &amp; medier samt Djupanalyser.</li>
         <li><span class="cdate">29 juli 2026 (kväll):</span> La till källor på fler avsnitt, ny sektion "Sportnyheter i övrigt" (tennis m.m.), ny sektion "TV-tips", fördjupad analys av svenska valet, ny djupanalys om USA:s mellanårsval 2026.</li>
         <li><span class="cdate">29 juli 2026 (morgon):</span> Delade upp sidan i ämnesgrupper, ny sektion "Aktuell politisk debatt" (Sverige/USA/EU) och "Nyheter från världens regioner". Rättade ett faktafel om Zubimendi-värvningen (var redan klar 6 juli, inte ny). Roterade "Dagens skiva" till klassisk rock.</li>
@@ -125,13 +127,13 @@
     <h2 class="panel-heading">Dagens viktigaste nyheter</h2>
     <ul class="highlight-list">
       <li>
-        <span class="htag">Världen</span>
-        <p style="margin: 6px 0;"><strong>Skogsbränderna växer - nu även vid Madrid.</strong> Branden vid Bordeaux har bränt över 420 kvm på fyra dagar; Madridregionen upplever sina värsta bränder någonsin, 300 000+ evakuerade.</p>
+        <span class="htag">Japan</span>
+        <p style="margin: 6px 0;"><strong>Jordbävning på 7,1 i södra Japan - minst 13 döda.</strong> Räddningstjänsten kämpar mot klockan för att hitta överlevande i ett rasat köpcentrum; hundratals soldater deltar i insatsen.</p>
         <a class="jump" data-tab="krig" data-anchor="top10">Läs mer under Krig &amp; utrikespolitik &rarr;</a>
       </li>
       <li>
-        <span class="htag">USA / Iran</span>
-        <p style="margin: 6px 0;"><strong>Trump: "mycket vänskapliga förhandlingar" med Iran.</strong> Qatar och Pakistan medlar om en ny vapenvila; Iran förhandlar med Oman om Hormuzsundet.</p>
+        <span class="htag">Iran / Irak</span>
+        <p style="margin: 6px 0;"><strong>USA och Saudiarabien slår mot Iran-stödda miliser i Irak</strong>, sedan iranska robotar avvärjts och tankfartyg i Hormuzsundet uppges attackerade. Oljepriset stiger.</p>
         <a class="jump" data-tab="krig" data-anchor="trump">Läs mer under Krig &amp; utrikespolitik &rarr;</a>
       </li>
       <li>
@@ -141,7 +143,7 @@
       </li>
       <li>
         <span class="htag">Sverige</span>
-        <p style="margin: 6px 0;"><strong>Nytt PFAS-förbud föreslås</strong>, samtidigt som hög skogsbrandsrisk råder i stora delar av landet under värmeböljan.</p>
+        <p style="margin: 6px 0;"><strong>Försök till mordbrand mot S-lokal i Sölvesborg</strong> - man gripen efter att nazistiska slagord ropats. Samtidigt hög skogsbrandsrisk i stora delar av landet under värmeböljan.</p>
         <a class="jump" data-tab="sverige" data-anchor="sverige5">Läs mer under Sverige &amp; politik &rarr;</a>
       </li>
       <li>
@@ -156,8 +158,8 @@
       </li>
       <li>
         <span class="htag">Fotboll</span>
-        <p style="margin: 6px 0;"><strong>Djurgården vann 1-0 mot Degerfors</strong> (mål av Bo Hegland) och står på 20 poäng. Arsenal har redan (sedan 6 juli) värvat Martin Zubimendi.</p>
-        <a class="jump" data-tab="sport" data-anchor="dif">Läs mer under Sport &rarr;</a>
+        <p style="margin: 6px 0;"><strong>Djurgården vann 1-0 mot Degerfors</strong> (mål av Bo Hegland) och står på 20 poäng. Infantino sätter press på klubbarna inför VM med ett ultimatum värt 380 miljoner dollar.</p>
+        <a class="jump" data-tab="fotboll" data-anchor="dif">Läs mer under Fotboll &rarr;</a>
       </li>
       <li>
         <span class="htag">Musik</span>
@@ -172,7 +174,8 @@
         <li><a class="jump" data-tab="krig">Krig &amp; utrikespolitik</a> - internationella nyheter, Trump, Ukraina/Ryssland, Iran/Israel/Hamas, världens regioner</li>
         <li><a class="jump" data-tab="sverige">Sverige &amp; politik</a> - svenska nyheter, EU-politik, ledarsidor, opinion, politisk debatt</li>
         <li><a class="jump" data-tab="ekonomi">Ekonomi, AI &amp; marknad</a> - EU-ekonomi, finanspolitik, AI, affärsnyheter, valutor</li>
-        <li><a class="jump" data-tab="sport">Sport</a> - Djurgården, Allsvenskan, Arsenal, golf, transfers</li>
+        <li><a class="jump" data-tab="fotboll">Fotboll</a> - Djurgården, Allsvenskan, Arsenal, transfers, internationell fotboll</li>
+        <li><a class="jump" data-tab="sport">Sport i övrigt</a> - golf, tennis och annan sport utanför fotbollen</li>
         <li><a class="jump" data-tab="kultur">Kultur &amp; medier</a> - kulturdebatt, recensioner, boktips, TV-tips, dagens skiva</li>
         <li><a class="jump" data-tab="analys">Djupanalyser</a> - Mellanöstern, Ukraina, USA-politik, mellanårsvalet, finanspolitik, svenska valet</li>
       </ul>
@@ -187,18 +190,18 @@
       <span class="tag">Världen</span>
       <h2 class="section-title">Internationella nyheter</h2>
       <ol class="top10">
-        <li><strong>Skogsbränderna växer - nu även vid Madrid.</strong> Branden vid Bordeaux har bränt över 420 kvadratkilometer på under fyra dagar; Madridregionen upplever sina värsta bränder någonsin. Över 300 000 evakuerade, och en ny värmebölja med temperaturer över 40°C väntas försvåra släckningsarbetet ytterligare.</li>
-        <li><strong>Iran och Ukraina-kriget kopplas ihop.</strong> En attack i Kaspiska havet mot ett fartyg har fått Iran att rasa - Teherans utrikesminister säger att det "inte kan förbli obesvarat". Ukraina avfärdar de iranska hoten, men händelsen binder samman de två krigen på ett nytt och potentiellt farligt sätt.</li>
-        <li><strong>Zelenskyj och Netanyahu i Washington samtidigt.</strong> Båda besöker staden för att delta i senator Lindsey Grahams begravning, men träffar var för sig Trump för att diskutera sina respektive krig - ett ovanligt sammanträffande som väcker frågor om samordning.</li>
-        <li><strong>Är USA på väg att få slut på robotar?</strong> BBC granskar om USA:s "arsenal of freedom" är farligt lågt efter att tusentals svårersatta robotar skjutits under Iran-kriget - en fråga som kan påverka hur länge USA kan upprätthålla sin militära linje.</li>
+        <li><strong>Kraftig jordbävning i södra Japan - minst 13 döda.</strong> En jordbävning på magnitud 7,1 drabbade Kyushu/Kumamoto-regionen; räddningstjänsten beskriver ett "kapplöpning mot klockan" för att hitta överlevande fast i ett köpcentrum och rasade byggnader.</li>
+        <li><strong>USA och Saudiarabien slår mot Iran-stödda miliser i Irak.</strong> USA:s Centcom bekräftar samordnade strejker efter att iranska ballistiska robotar avvärjts och tankfartyg i Hormuzsundet uppges ha attackerats - oljepriset stiger på nyheten.</li>
+        <li><strong>Senaten röstar igenom nya Ryssland/Iran-sanktioner.</strong> Omröstningen hölls samma dag som senator Lindsey Grahams begravning i Washington, som gav lagförslaget sitt namn.</li>
+        <li><strong>Zelenskyj och Netanyahu i Washington samtidigt.</strong> Båda besökte staden för Grahams begravning men träffade var för sig Trump för att diskutera sina respektive krig - Trump säger själv att mötena "gick bra".</li>
+        <li><strong>Skogsbränderna växer - nu även vid Madrid.</strong> Branden vid Bordeaux har tvingat fram evakuering av närmare 4 000 personer; Madridregionen upplever samtidigt sina värsta bränder någonsin och en ny värmebölja över 40°C väntas försvåra läget ytterligare.</li>
+        <li><strong>Pakistan anklagas för dödsskjutning av 30 obeväpnade demonstranter i Kashmir.</strong> En lokal människorättsgrupp hävdar att myndigheterna undanröjt bevis samtidigt som kommunikationerna stängts av.</li>
+        <li><strong>Indiens "Cockroach"-proteströrelse hotar blossa upp igen.</strong> Efter massgripanden av studenter växer trycket på Modi-regeringen inför kommande val.</li>
+        <li><strong>Är USA på väg att få slut på robotar?</strong> BBC granskar om USA:s vapenlager är farligt lågt efter att tusentals svårersatta robotar skjutits under Iran-kriget - en fråga som kan påverka hur länge USA kan upprätthålla sin militära linje.</li>
         <li><strong>Berlin Pride-förövaren hade släppts fri veckor tidigare.</strong> Nya uppgifter väcker ilska och frågor om varför mannen inte satt fängslad, vilket sätter press på tyska myndigheter.</li>
-        <li><strong>Johnson & Johnson erbjuder 5,5 miljarder dollar</strong> för att göra upp i den mångåriga rättstvisten om att bolagets talkprodukter orsakat cancer.</li>
-        <li><strong>Skottlossning vid matfestival i Seattle - nu tre misstänkta.</strong> En är gripen, en efterlyses och en tros ha dött på plats, enligt nya domstolshandlingar.</li>
-        <li><strong>Chile griper flykting dömd för mordet på sångaren Victor Jara.</strong> Nelson Haase greps efter decennier på flykt - ett sent kapitel i upprättelsen efter Pinochets militärkupp 1973.</li>
         <li><strong>Skott mot USA:s konsulat i Toronto - andra gången i år.</strong> Polisen inledde en höghastighetsjakt men den misstänkte kom undan.</li>
-        <li><strong>Biden-inspelningar väcker frågor.</strong> Ljudupptagningar med hans spökskrivare avslöjar referenser till hemligstämplat material och minnesluckor - materialet cirkulerar nu i amerikansk media.</li>
       </ol>
-      <div class="sources">Källor: BBC News World</div>
+      <div class="sources">Källor: BBC News World, The Guardian, The Epoch Times</div>
     </section>
 
     <section class="card" id="trump">
@@ -233,10 +236,10 @@
       <p>Xi Jinping styr kommunistpartiet med hård hand och har fört Kina i alltmer auktoritär riktning med omfattande övervakning - ingen inom partihierarkin vågar utmana honom inför hans fjärde mandatperiod 2027. Ekonomin har bromsat in och kämpar med deflation; risken för en utdragen stagnation liknande Japans "förlorade decennier" diskuteras alltmer öppet. Samtidigt satsar Kina stort på att bli en teknologisk stormakt inom AI, halvledare och kvantteknik.</p>
 
       <h3 class="paper">Japan</h3>
-      <p>Premiärminister Sanae Takaichis regering försöker lugna investerare genom att betona Bank of Japans oberoende, efter att marknadsoro kring stigande obligationsräntor och en svag yen blandats med hennes tillväxtinriktade finanspolitik. Takaichi går in i en politiskt kritisk vecka med fallande stöd i opinionen. En jordbävning på 7,1 drabbade Kumamoto-prefekturen den 28 juli med betydande skador som följd, och Japan har godkänt en plan på en andra huvudstad utanför Tokyo.</p>
+      <p>Jordbävningen på magnitud 7,1 som drabbade Kyushu/Kumamoto-regionen den 28 juli har krävt minst 13 liv - räddningstjänsten fortsätter söka efter överlevande i ett rasat köpcentrum och skadade byggnader, och hundratals soldater har satts in. Samtidigt försöker premiärminister Sanae Takaichis regering lugna investerare genom att betona Bank of Japans oberoende, efter att marknadsoro kring stigande obligationsräntor och en svag yen blandats med hennes tillväxtinriktade finanspolitik. Takaichi går in i en politiskt kritisk vecka med fallande stöd i opinionen, och Japan har godkänt en plan på en andra huvudstad utanför Tokyo.</p>
 
       <h3 class="paper">Indien</h3>
-      <p>Inget större politiskt drama rapporteras just nu - Modi-regeringen har främst synts genom ceremoniella uttalanden (bl.a. kring Kargil Vijay Diwas och att Sarnath i Uttar Pradesh tagits upp på UNESCO:s världsarvslista). Indiens roll som motvikt till Kina i regionen och landets balansgång mellan USA, Ryssland och Kina i handelsfrågor fortsätter dock att vara en bakgrundsfaktor i flera av de andra regionernas nyheter.</p>
+      <p>Den s.k. "Cockroach"-proteströrelsen bland studenter hotar blossa upp igen efter massgripanden, och beskrivs av Guardian som ett tecken på sprickor i Modi-regeringens ställning inför kommande val. I grannlandet Pakistan har myndigheterna anklagats för att skjuta ihjäl 30 obeväpnade demonstranter i Kashmir, en anklagelse som skärper regionens redan spända läge. Indiens roll som motvikt till Kina och landets balansgång mellan USA, Ryssland och Kina i handelsfrågor fortsätter att vara en bakgrundsfaktor i flera av de andra regionernas nyheter.</p>
 
       <h3 class="paper">Afrika</h3>
       <p>En brytning mellan Senegals president och hans tidigare bundsförvant väntas omforma landets politiska landskap efter månader av spänningar. I Kenya har ett fyllnadsval-nederlag för regeringspartiet i Mount Kenya-regionen väckt debatt om huruvida president Ruto bör behålla sin vicepresident inför valet 2027, samtidigt som en dispyt om militärt samarbete med Storbritannien pressar det decennielånga partnerskapet. Ett sjukdomsutbrott i DR Kongo sprider sig i rekordfart - över 3 000 bekräftade fall.</p>
@@ -244,7 +247,7 @@
       <h3 class="paper">Sydamerika</h3>
       <p>Flavio Bolsonaro, son till den tidigare (nu dömda) presidenten Jair Bolsonaro, har inlett sin kampanj för att utmana Lula - med utländskt stöd men svaga opinionssiffror. Argentina under Javier Milei fortsätter sin dramatiska finanspolitiska omläggning, med inflationen nedpressad från 290% till runt 39%. Regionen balanserar samtidigt mellan traditionella USA-band och växande kinesiskt inflytande (handeln med Kina överstiger nu 500 miljarder dollar), medan avskogningen i Amazonas åter ökat kraftigt.</p>
 
-      <div class="sources">Källor: Moscow Times, SVT Nyheter, Japan Times, Al Jazeera, Deccan Herald, The Africa Report</div>
+      <div class="sources">Källor: Moscow Times, SVT Nyheter, Japan Times, Al Jazeera, Deccan Herald, The Africa Report, The Guardian, The Epoch Times</div>
     </section>
   </div>
 
@@ -254,15 +257,16 @@
 
     <section class="card" id="sverige5">
       <span class="tag">Sverige</span>
-      <h2 class="section-title">De 5 största svenska nyheterna</h2>
+      <h2 class="section-title">De viktigaste svenska nyheterna</h2>
       <ol class="top10">
+        <li><strong>Försök till mordbrand mot S-lokal i Sölvesborg.</strong> En man greps misstänkt för mordbrandsförsök efter att en ruta krossats och eld anlagts vid Socialdemokraternas partilokal natten mot onsdag - vittnen uppger att nazistiska slagord ropades innan förövarna fördes bort.</li>
         <li><strong>Hög skogsbrandsrisk i stora delar av landet.</strong> SMHI varnar för mycket hög brandrisk under den pågående värmeböljan.</li>
         <li><strong>Stor brand vid avfallsanläggning i Färjegårdarna, Borlänge.</strong> Kraftig rökutveckling; räddningsledningen uppmanar allmänheten hålla sig borta.</li>
         <li><strong>Skottlossning mot lägenhet i Upplands Väsby.</strong> Förundersökning om mordförsök och grovt vapenbrott inledd, ingen gripen.</li>
         <li><strong>OSSE/ODIHR skickar inga valobservatörer till höstens riksdagsval.</strong> Ovanligt och uppmärksammat besked inför valet 13 september.</li>
         <li><strong>Förslag om nationellt PFAS-förbud.</strong> Nytt lagförslag väcker debatt om kostnader för industrin kontra miljö- och hälsorisker.</li>
       </ol>
-      <div class="sources">Källor: SVT Nyheter, SMHI, 8 Sidor</div>
+      <div class="sources">Källor: SVT Nyheter, SMHI, 8 Sidor, Omni, Fokus</div>
     </section>
 
     <section class="card" id="eupol">
@@ -315,10 +319,10 @@
     <section class="card" id="debatt">
       <span class="tag">Debatt</span>
       <h2 class="section-title">Aktuell politisk debatt</h2>
-      <p><strong>Sverige:</strong> Debatten kretsar kring Tidöpartiernas inbördes spänningar inför valet - dels om SD ska ingå formellt i en ny regering (Tidö-väljarna är splittrade; L-väljare mest skeptiska), dels om enskilda sakfrågor som slopad koldioxidskatt, avskaffad mängdrabatt för grova brott och ny kärnkraft, där notan för staten väcker frågor samtidigt som MP vinner mark på sitt motstånd. Även synen på kvinnors hälsovård och det nya PFAS-förbudet debatteras flitigt.</p>
-      <p><strong>USA:</strong> Debatten domineras av Trumps historiskt låga och djupt polariserade förtroendesiffror (36-41% beroende på institut), kopplat till missnöje med ekonomin och krigskostnaderna. En infekterad delfråga är striden om Federal Reserves oberoende - nye Fed-ordföranden Kevin Warsh har medvetet startat en intern debatt om hur centralbanken ska styras, vilket väcker frågor om politisk inblandning i penningpolitiken inför mellanårsvalet.</p>
-      <p><strong>EU:</strong> Kommissionens stålskyddsförslag har blivit en tvistefråga - kritiker menar att klimatomställningen inte bör bromsas för att skydda enskilda länders industri (bl.a. svensk stålindustri), medan förslaget om hantering av gränsöverskridande flaskhalsintäkter fått Sverige att pausa elkabelbygget till Danmark i protest. Parallellt debatteras migrationsbudgeten efter 2027, där ledamöter som Ana Catarina Mendes efterlyser mer "solidaritet" mellan medlemsländer.</p>
-      <div class="sources">Källor: Sveriges Radio, Dagen, DN, Expressen, Carnegie Endowment, V-Dem</div>
+      <p><strong>Sverige:</strong> Debatten kretsar kring Tidöpartiernas inbördes spänningar inför valet - dels om SD ska ingå formellt i en ny regering (Tidö-väljarna är splittrade; L-väljare mest skeptiska), dels om enskilda sakfrågor som slopad koldioxidskatt, avskaffad mängdrabatt för grova brott och ny kärnkraft, där notan för staten väcker frågor samtidigt som MP vinner mark på sitt motstånd. Fokus rapporterar att PISA-resultaten för första gången offentliggörs bara fem dagar före valet, vilket kan ge skolfrågan ny kraft i slutspurten, och att KD-ministern Elisabet Lann öppnar för skärpta regler efter att vårdpersonal demonstrerat i arbetskläder utanför Karolinska - en dispyt som splittrat Region Stockholm. Ebba Busch har samtidigt sågat regeringens egen reform av tillståndsplikten för kvinnojourer. Även synen på kvinnors hälsovård och det nya PFAS-förbudet debatteras flitigt.</p>
+      <p><strong>USA:</strong> Debatten domineras av Trumps historiskt låga och djupt polariserade förtroendesiffror (36-41% beroende på institut), kopplat till missnöje med ekonomin och krigskostnaderna. En infekterad delfråga är striden om Federal Reserves oberoende - nye Fed-ordföranden Kevin Warsh har medvetet startat en intern debatt om hur centralbanken ska styras, vilket väcker frågor om politisk inblandning i penningpolitiken inför mellanårsvalet. Anthony Fauci väntas grillas av republikanska senatorer om coronapandemins ursprung (The Epoch Times), medan vänstertidningen ETC ur ett kritiskt perspektiv skriver om risken för amerikansk invasion i Venezuela och pekar på att Trump "tar emot Fifas fredspris och bombar båtar" - en illustration av hur polariserad tolkningen av Trumps utrikespolitik är beroende på vilket medium man läser.</p>
+      <p><strong>EU:</strong> Kommissionens stålskyddsförslag har blivit en tvistefråga - kritiker menar att klimatomställningen inte bör bromsas för att skydda enskilda länders industri (bl.a. svensk stålindustri), medan förslaget om hantering av gränsöverskridande flaskhalsintäkter fått Sverige att pausa elkabelbygget till Danmark i protest. Parallellt debatteras migrationsbudgeten efter 2027, där ledamöter som Ana Catarina Mendes efterlyser mer "solidaritet" mellan medlemsländer. Fokus rapporterar samtidigt om svensk besvikelse över att EU-kommissionen viker sig för lättare klimatregler - Miljöpartiet kallar det "tragiskt".</p>
+      <div class="sources">Källor: Sveriges Radio, Dagen, DN, Expressen, Carnegie Endowment, V-Dem, The Epoch Times, ETC, Fokus</div>
     </section>
   </div>
 
@@ -350,8 +354,8 @@
     <section class="card" id="business">
       <span class="tag">Ekonomi</span>
       <h2 class="section-title">Internationella affärsnyheter</h2>
-      <p>Börserna stängde blandat i måndags: Dow +0,51% till 52 210, S&P 500 +0,02%, Nasdaq -0,18%. Alphabet (Google) redovisade 24% omsättnings- och vinsttillväxt och 82% ökning för Google Cloud (24,8 miljarder dollar), men det kraftiga kapitalinvesteringstrycket gav ett negativt kassaflöde på 5,9 miljarder dollar - första negativa kvartalet sedan börsintroduktionen 2004. SpaceX-aktien föll under sitt introduktionspris i en bredare teknikoro. Halvledarsektorn gick in i en björnmarknad på oro för att AI-investeringsboomen blir svårare att motivera - sämsta veckan sedan april 2025. USA:s handelsrepresentant Jamieson Greer antyder att nya tullar mot flera länder kan vara på väg. <strong>Läget idag:</strong> S&P 500 -0,2% (7 401), Dow +0,3% (52 098), Russell 2000 +0,3% (2 937) - halvledar- och minnesaktier fortsatt svaga (AMD -5%, Teradyne -4%, Micron -2%, samt i Asien Tokyo Electron -10%, Advantest -10,25%, SoftBank -6%, Kioxia -17%). Stor vecka väntar för teknikrapporter: Amazon, Apple, Meta och Microsoft redovisar kvartalssiffror.</p>
-      <div class="sources">Källor: CNBC, Bloomberg</div>
+      <p>Johnson & Johnson har erbjudit 5,5 miljarder dollar för att göra upp i den mångåriga rättstvisten om att bolagets talkprodukter orsakat cancer - en av de större rättsliga uppgörelserna i USA denna vecka (The Epoch Times). Börserna stängde blandat i måndags: Dow +0,51% till 52 210, S&P 500 +0,02%, Nasdaq -0,18%. Alphabet (Google) redovisade 24% omsättnings- och vinsttillväxt och 82% ökning för Google Cloud (24,8 miljarder dollar), men det kraftiga kapitalinvesteringstrycket gav ett negativt kassaflöde på 5,9 miljarder dollar - första negativa kvartalet sedan börsintroduktionen 2004. SpaceX-aktien föll under sitt introduktionspris i en bredare teknikoro. Halvledarsektorn gick in i en björnmarknad på oro för att AI-investeringsboomen blir svårare att motivera - sämsta veckan sedan april 2025. USA:s handelsrepresentant Jamieson Greer antyder att nya tullar mot flera länder kan vara på väg. <strong>Läget idag:</strong> S&P 500 -0,2% (7 401), Dow +0,3% (52 098), Russell 2000 +0,3% (2 937) - halvledar- och minnesaktier fortsatt svaga (AMD -5%, Teradyne -4%, Micron -2%, samt i Asien Tokyo Electron -10%, Advantest -10,25%, SoftBank -6%, Kioxia -17%). Stor vecka väntar för teknikrapporter: Amazon, Apple, Meta och Microsoft redovisar kvartalssiffror.</p>
+      <div class="sources">Källor: CNBC, Bloomberg, The Epoch Times</div>
     </section>
 
     <section class="card" id="currency">
@@ -362,27 +366,29 @@
     </section>
   </div>
 
-  <!-- ============ SPORT ============ -->
-  <div class="tab-panel" id="panel-sport" data-panel="sport">
-    <h2 class="panel-heading">Sport</h2>
+  <!-- ============ FOTBOLL ============ -->
+  <div class="tab-panel" id="panel-fotboll" data-panel="fotboll">
+    <h2 class="panel-heading">Fotboll</h2>
+    <div class="note" style="margin-bottom:16px;">Denna flik samlar all fotboll - svensk och internationell - och bygger i första hand på Fotbolldirekt, Fotbollskanalen och svenska dagstidningars sportsidor. Övrig sport (golf, tennis m.m.) finns under fliken "Sport i övrigt".</div>
 
     <section class="card" id="dif">
       <span class="tag">Fotboll · Fördjupad</span>
       <h2 class="section-title">Djurgården</h2>
       <p><strong>Senaste matchen:</strong> Djurgården vann 1-0 borta mot Degerfors på ett utsålt Stora Valla. Målet föll i 43:e minuten - ett skott från Hampus Findell hamnade perfekt framför fötterna på Bo Hegland som enkelt kunde lägga in bollen. Degerfors dominerade bollinnehavet (58,5% mot 41,5%) och tryckte på hårt för en kvittering i andra halvlek, men Djurgården var betydligt vassare där det räknades: 14 skott mot 7, och 6 avslut på mål mot noll för Degerfors. Tränare Jani Honkavaara medgav själv efteråt att "Degerfors var bättre i anfallsspelet" - en ärlig kommentar som visar att segern var mer resultatet av effektivitet än dominans.</p>
       <p><strong>Tabelläget:</strong> Före Degerfors-segern spelade Djurgården 0-0 borta mot nykomlingen Örgryte på Gamla Ullevi (20 juli) - ett tapp av två poäng mot ett formsvagt bottenlag. Efter Degerfors-vinsten står laget nu på 20 poäng, fortsatt bland medaljplatserna men med Sirius fortsatt långt före i toppen.</p>
-      <p><strong>Trupp och kommande:</strong> Klubben har förstärkt målvaktsfronten genom att hämta Lukas Jonsson från VfL Osnabrück. Nästa match väntar 3 augusti mot Västerås SK - en match som på pappret bör vara överkomlig givet Djurgårdens nuvarande form, men där bortalag historiskt kan bjuda på överraskningar mot topplag.</p>
+      <p><strong>Trupp och kommande:</strong> Klubben har förstärkt målvaktsfronten genom att hämta Lukas Jonsson från VfL Osnabrück. Enligt Fotbollskanalen förs det också samtal om en flytt av Harabi, och på damsidan är det klart att Stefansdottir ansluter till Djurgården. Nästa match väntar 3 augusti mot Västerås SK.</p>
       <p><strong>Rättelse:</strong> En tidigare version av denna sektion flaggade en obekräftad uppgift om en avbruten Djurgården-Hammarby-derby. Den är nu verifierad men gäller en historisk händelse - derbyt 21 oktober 2024, som avbröts i 76:e minuten efter att 126 pyrotekniska pjäser (18 smällare) kastats in på plan, varpå polisen drog in publikevenemangstillståndet och matchen fick avslutas dagen efter inför tomma läktare (Hammarby vann 2-0). Notisen tas bort härmed då den inte rör aktuella händelser.</p>
-      <div class="sources">Källor: Fotbollskanalen, Bollsvenskan, allsvenskanstatistik.se</div>
+      <div class="sources">Källor: Fotbollskanalen, Fotbolldirekt, Bollsvenskan, allsvenskanstatistik.se</div>
     </section>
 
     <section class="card" id="allsvenskan">
       <span class="tag">Fotboll · Fördjupad</span>
       <h2 class="section-title">Allsvenskan generellt</h2>
       <p><strong>Guldkampen:</strong> Inför säsongen pekade odds och förhandstips ut Malmö FF, Hammarby, Djurgården, BK Häcken och AIK som de stora guldfavoriterna. Verkligheten har dock blivit en annan - IK Sirius leder just nu tabellen med 38 poäng, en klar överraskning som sätter de etablerade storklubbarna på plats bakom sig. Att den regerande mästaren Mjällby AIF (som satte nytt poängrekord, 75 poäng, ifjol) inte längre toppar tabellen förstärker bilden av en ovanligt öppen säsong.</p>
-      <p><strong>Senaste resultaten:</strong> Malmö FF - en av förhandsfavoriterna - föll oväntat hemma med 1-2 mot Elfsborg, ett resultat som väcker frågor om lagets form inför hösten. GAIS och Halmstad delade på poängen efter 1-1, medan Djurgården (se separat sektion) vann borta mot Degerfors inför utsålt hus.</p>
+      <p><strong>Senaste resultaten:</strong> Malmö FF - en av förhandsfavoriterna - föll oväntat hemma med 1-2 mot Elfsborg, ett resultat som väcker frågor om lagets form inför hösten. GAIS och Halmstad delade på poängen efter 1-1, medan Djurgården (se separat sektion) vann borta mot Degerfors inför utsålt hus. AIK kryssade mot Häcken med två skadesmällar (Kouame och Ayari fick lämna), och IFK Norrköping är ny serieledare i Superettan efter vinst i Landskrona.</p>
+      <p><strong>Tränardrama:</strong> Enligt Fotbollskanalen fortsätter oron kring att en tränare (Billborn) sparkades utan lagets vetskap att skapa rubriker - Björklund har offentligt uttryckt sitt stöd. Samtidigt sörjer Allsvenskan Stefan Söderberg, som avled under veckan; flera klubbar och spelare har hyllat honom.</p>
       <p><strong>Botten av tabellen:</strong> 16 lag deltar i årets serie (4 april-29 november, 30 omgångar). De två sista lagen flyttas direkt ner till Superettan, medan 14:e-placerat lag får kvalspela. Nykomlingarna Örgryte och Västerås SK - som historiskt brukar få kämpa hårt för sin överlevnad som debutanter - är lag att hålla ögonen på i botten.</p>
-      <div class="sources">Källor: Fotbolldirekt, Hurbra.se, allsvenskanstatistik.se</div>
+      <div class="sources">Källor: Fotbolldirekt, Fotbollskanalen, Hurbra.se, allsvenskanstatistik.se</div>
     </section>
 
     <section class="card" id="arsenal">
@@ -394,6 +400,26 @@
       <p><strong>Rättelse - Zubimendi:</strong> Värvningen av Martin Zubimendi rapporterades tidigare här som en färsk nyhet, men affären klubbades faktiskt redan 6 juli - Arsenal utlöste hans 51 miljoner pund-klausul (totalt paket nära 60 miljoner pund) och han skrev på ett femårskontrakt. Real Madrid var också intresserade, och Liverpool hade tidigare försökt värva honom utan framgång; förre lagkamraten Mikel Merino sägs ha hjälpt Arteta övertala honom. Inget nytt i den affären - den är sedan tre veckor tillbaka avslutad, inte en pågående nyhet.</p>
       <div class="sources">Källor: ESPN, Sky Sports, Yahoo Sports</div>
     </section>
+
+    <section class="card" id="internationell-fotboll">
+      <span class="tag">Fotboll</span>
+      <h2 class="section-title">Internationell fotboll &amp; Fotbolls-VM 2026</h2>
+      <p>Fifa-ordförande Gianni Infantino sätter press på förbunden inför sommarens VM: enligt Fotbolldirekt ställs klubbarna inför ett "ultimatum" om att acceptera ett nytt upplägg för intäktsfördelning - annars riskerar de att gå miste om totalt 380 miljoner dollar. La Ligas ordförande Javier Tebas har kallat Infantinos tidigare Instagram-utspel om kritiker som sprider "hat" för "patetiskt", och Fotbollskanalen rapporterar att Uefa överväger att bojkotta VM i protest mot Fifas linje. Samtidigt byter det italienska landslaget tränare - Roberto Mancini tar över igen - och Neymar meddelar att han slutar i det brasilianska landslaget.</p>
+      <div class="sources">Källor: Fotbolldirekt, Fotbollskanalen</div>
+    </section>
+
+    <section class="card" id="transfer">
+      <span class="tag">Fotboll</span>
+      <h2 class="section-title">Transfernyheter</h2>
+      <p>Petar Sučić i Milano för att skriva på för Inter. Cristian Romero kan lämna Tottenham - fyra klubbar intresserade. Antonio Rüdiger kan lämna Real Madrid för Premier League. Alessandro Bastoni är på nytt eftertraktad efter en stark säsong. Yan Diomande (RB Leipzig, se även Arsenal-sektionen) ser ut att lämna klubben, med en avgörande dragkamp om honom. Jadon Sancho söker ny klubb och uppges ha fått ett kontraktserbjudande. Enligt Fotbollskanalen har Real Madrid och Manchester City inlett förhandlingar om Rodri, Danny Welbeck är klar för Chelsea, och Mamadou Sangaré uppges vara på väg till Brentford. (Arsenals värvning av Martin Zubimendi, som tidigare nämndes här som "ny", var i själva verket redan klar 6 juli - se rättelse i Arsenal-sektionen.)</p>
+      <div class="sources">Källor: Fotbollskanalen, Fotbolltransfers.com, Sky Sports, FootballTransfers</div>
+    </section>
+  </div>
+
+  <!-- ============ SPORT I ÖVRIGT ============ -->
+  <div class="tab-panel" id="panel-sport" data-panel="sport">
+    <h2 class="panel-heading">Sport i övrigt</h2>
+    <div class="note" style="margin-bottom:16px;">Fotbollen har flyttat till en egen flik. Här samlas övrig sport: golf, tennis och liknande.</div>
 
     <section class="card" id="golf">
       <span class="tag">Golf</span>
@@ -407,13 +433,6 @@
       <h2 class="section-title">Sportnyheter i övrigt</h2>
       <p>Tennisens nordamerikanska hardcourt-säsong drog igång i veckan med DC Open i Washington - första kombinerade ATP 500/WTA 500-turneringen för säsongen. Venus Williams, nu inne på sitt 33:e proffsår, gör ett efterlängtat hardcourt-comeback i turneringen. NHL och NBA befinner sig i sommaruppehåll (försäsongsträning och free agency-affärer dominerar nyheterna snarare än matcher), medan tennissäsongen nu tar över som den stora internationella sportnyheten fram till US Open i slutet av augusti.</p>
       <div class="sources">Källor: Yardbarker, NBC Sports</div>
-    </section>
-
-    <section class="card" id="transfer">
-      <span class="tag">Fotboll</span>
-      <h2 class="section-title">Transfernyheter</h2>
-      <p>Petar Sučić i Milano för att skriva på för Inter. Cristian Romero kan lämna Tottenham - fyra klubbar intresserade. Antonio Rüdiger kan lämna Real Madrid för Premier League. Alessandro Bastoni är på nytt eftertraktad efter en stark säsong. Yan Diomande (RB Leipzig, se även Arsenal-sektionen) ser ut att lämna klubben, med en avgörande dragkamp om honom. Jadon Sancho söker ny klubb och uppges ha fått ett kontraktserbjudande. (Arsenals värvning av Martin Zubimendi, som tidigare nämndes här som "ny", var i själva verket redan klar 6 juli - se rättelse i Arsenal-sektionen.)</p>
-      <div class="sources">Källor: Fotbolltransfers.com, Sky Sports, FootballTransfers</div>
     </section>
   </div>
 
