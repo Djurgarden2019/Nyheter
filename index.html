@@ -23,17 +23,46 @@
   }
   .masthead h1 { margin: 0; font-size: 2rem; letter-spacing: 0.5px; }
   .masthead .meta { margin-top: 6px; font-family: Arial, Helvetica, sans-serif; font-size: 0.85rem; opacity: 0.85; }
+  .tabs-nav {
+    background: #1c2c52;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+    padding: 8px 10px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 2px solid #c9a227;
+  }
+  .tabs-nav button {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.82rem;
+    font-weight: bold;
+    background: transparent;
+    color: #cfd6e8;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .tabs-nav button:hover { background: rgba(255,255,255,0.08); color: #fff; }
+  .tabs-nav button.active { background: #c9a227; color: #14213d; }
   .container { max-width: 860px; margin: 0 auto; padding: 24px 20px 60px; }
-  .toc { background: #fff; border: 1px solid #e0ddd3; border-radius: 8px; padding: 16px 20px; margin-bottom: 28px; font-family: Arial, Helvetica, sans-serif; font-size: 0.83rem; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+  .panel-heading { font-size: 1.3rem; color: #14213d; margin: 0 0 16px; }
+  .toc { background: #fff; border: 1px solid #e0ddd3; border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; font-family: Arial, Helvetica, sans-serif; font-size: 0.83rem; }
   .toc h2 { font-family: Georgia, serif; font-size: 1rem; margin: 0 0 10px; color: #14213d; }
-  .toc a { color: #6b4b1a; text-decoration: none; }
+  .toc a { color: #6b4b1a; text-decoration: none; cursor: pointer; }
   .toc a:hover { text-decoration: underline; }
-  .toc-group { margin-bottom: 12px; }
-  .toc-group h4 { font-family: Arial, Helvetica, sans-serif; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: #c9a227; background: #14213d; display: inline-block; padding: 2px 8px; border-radius: 4px; margin: 0 0 6px; }
-  .toc ul { columns: 2; -webkit-columns: 2; margin: 0; padding-left: 18px; }
-  .toc li { margin-bottom: 4px; break-inside: avoid; }
-  .category-divider { font-family: Arial, Helvetica, sans-serif; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: #f7f5f0; background: #14213d; padding: 8px 16px; border-radius: 6px; margin: 32px 0 14px; }
-  .category-divider:first-of-type { margin-top: 0; }
+  .toc ul { margin: 0; padding-left: 18px; }
+  .toc li { margin-bottom: 4px; }
+  .highlight-list { list-style: none; margin: 0; padding: 0; }
+  .highlight-list li { background: #fff; border: 1px solid #e0ddd3; border-radius: 8px; padding: 14px 18px; margin-bottom: 12px; }
+  .highlight-list .htag { display: inline-block; font-family: Arial, Helvetica, sans-serif; font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.06em; background: #f0ede4; color: #6b4b1a; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; font-weight: bold; }
+  .highlight-list a.jump { font-family: Arial, Helvetica, sans-serif; font-size: 0.75rem; color: #6b4b1a; cursor: pointer; text-decoration: none; }
+  .highlight-list a.jump:hover { text-decoration: underline; }
   section.card { background: #fff; border: 1px solid #e0ddd3; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px; }
   section.card.deep { border-left: 4px solid #c9a227; }
   h2.section-title { font-size: 1.15rem; color: #14213d; margin: 0 0 10px; padding-bottom: 8px; border-bottom: 2px solid #f0ede4; }
@@ -49,6 +78,11 @@
   .sources { font-family: Arial, Helvetica, sans-serif; font-size: 0.78rem; color: #766f5e; margin-top: 10px; }
   .sources a { color: #6b4b1a; }
   .note { font-family: Arial, Helvetica, sans-serif; font-size: 0.8rem; background: #fbf3d9; border: 1px solid #e8d99a; padding: 10px 14px; border-radius: 6px; color: #5c4a10; margin-bottom: 20px; }
+  .changelog { font-family: Arial, Helvetica, sans-serif; font-size: 0.8rem; background: #fff; border: 1px solid #e0ddd3; border-radius: 8px; padding: 14px 20px; margin-bottom: 20px; }
+  .changelog h2 { font-family: Georgia, serif; font-size: 1rem; margin: 0 0 8px; color: #14213d; }
+  .changelog ul { margin: 0; padding-left: 18px; }
+  .changelog li { margin-bottom: 4px; }
+  .changelog .cdate { color: #6b4b1a; font-weight: bold; }
   footer { text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 0.75rem; color: #999; padding: 20px; }
 </style>
 </head>
@@ -59,445 +93,557 @@
   <div class="meta" id="updated-meta">Senast uppdaterad: 29 juli 2026</div>
 </div>
 
+<nav class="tabs-nav" id="tabs-nav">
+  <button data-tab="home" class="active">Förstasida</button>
+  <button data-tab="krig">Krig &amp; utrikespolitik</button>
+  <button data-tab="sverige">Sverige &amp; politik</button>
+  <button data-tab="ekonomi">Ekonomi, AI &amp; marknad</button>
+  <button data-tab="sport">Sport</button>
+  <button data-tab="kultur">Kultur &amp; medier</button>
+  <button data-tab="analys">Djupanalyser</button>
+</nav>
+
 <div class="container">
 
-  <div class="note">
-    Denna sida uppdateras automatiskt varje morgon kl 07:00 av den schemalagda nyhetstjänsten.
+  <!-- ============ FÖRSTASIDA ============ -->
+  <div class="tab-panel active" id="panel-home" data-panel="home">
+
+    <div class="note">
+      Denna sida uppdateras automatiskt varje morgon kl 07:00 av den schemalagda nyhetstjänsten. Klicka på flikarna ovan för att se alla ämnen - här på förstasidan är bara det viktigaste just nu.
+    </div>
+
+    <div class="changelog">
+      <h2>Uppdateringslogg</h2>
+      <ul>
+        <li><span class="cdate">29 juli 2026 (sen kväll):</span> Byggde om hela sidan till flikar - en förstasida med de viktigaste nyheterna, och separata flikar för Krig &amp; utrikespolitik, Sverige &amp; politik, Ekonomi/AI/marknad, Sport, Kultur &amp; medier samt Djupanalyser.</li>
+        <li><span class="cdate">29 juli 2026 (kväll):</span> La till källor på fler avsnitt, ny sektion "Sportnyheter i övrigt" (tennis m.m.), ny sektion "TV-tips", fördjupad analys av svenska valet, ny djupanalys om USA:s mellanårsval 2026.</li>
+        <li><span class="cdate">29 juli 2026 (morgon):</span> Delade upp sidan i ämnesgrupper, ny sektion "Aktuell politisk debatt" (Sverige/USA/EU) och "Nyheter från världens regioner". Rättade ett faktafel om Zubimendi-värvningen (var redan klar 6 juli, inte ny). Roterade "Dagens skiva" till klassisk rock.</li>
+        <li><span class="cdate">28 juli 2026:</span> Färska ledarsidor och kulturartiklar, uppdaterad EU-inflation och IMF-statsskuldsprognos, rättad Djurgården-Hammarby-notis (visade sig gälla ett historiskt derby från 2024).</li>
+      </ul>
+    </div>
+
+    <h2 class="panel-heading">Dagens viktigaste nyheter</h2>
+    <ul class="highlight-list">
+      <li>
+        <span class="htag">Världen</span>
+        <p style="margin: 6px 0;"><strong>Skogsbränderna växer - nu även vid Madrid.</strong> Branden vid Bordeaux har bränt över 420 kvm på fyra dagar; Madridregionen upplever sina värsta bränder någonsin, 300 000+ evakuerade.</p>
+        <a class="jump" data-tab="krig" data-anchor="top10">Läs mer under Krig &amp; utrikespolitik &rarr;</a>
+      </li>
+      <li>
+        <span class="htag">USA / Iran</span>
+        <p style="margin: 6px 0;"><strong>Trump: "mycket vänskapliga förhandlingar" med Iran.</strong> Qatar och Pakistan medlar om en ny vapenvila; Iran förhandlar med Oman om Hormuzsundet.</p>
+        <a class="jump" data-tab="krig" data-anchor="trump">Läs mer under Krig &amp; utrikespolitik &rarr;</a>
+      </li>
+      <li>
+        <span class="htag">Gaza</span>
+        <p style="margin: 6px 0;"><strong>Rafah-gränsen öppnad för begränsad trafik</strong> - men läget fortsatt blodigt: 19 nya dödsoffer, totalt 1 045 sedan vapenvilan.</p>
+        <a class="jump" data-tab="krig" data-anchor="mideast">Läs mer under Krig &amp; utrikespolitik &rarr;</a>
+      </li>
+      <li>
+        <span class="htag">Sverige</span>
+        <p style="margin: 6px 0;"><strong>Nytt PFAS-förbud föreslås</strong>, samtidigt som hög skogsbrandsrisk råder i stora delar av landet under värmeböljan.</p>
+        <a class="jump" data-tab="sverige" data-anchor="sverige5">Läs mer under Sverige &amp; politik &rarr;</a>
+      </li>
+      <li>
+        <span class="htag">Opinion</span>
+        <p style="margin: 6px 0;"><strong>SD faller till 19,1%</strong> (lägsta någonsin), M klättrar till 18,6%, S under 30% för första gången - men Novus ger en avvikande bild.</p>
+        <a class="jump" data-tab="sverige" data-anchor="opinion">Läs mer under Sverige &amp; politik &rarr;</a>
+      </li>
+      <li>
+        <span class="htag">Ekonomi</span>
+        <p style="margin: 6px 0;"><strong>Eurozonens inflation föll till 2,8% i juni</strong> - första nedgången i år. ECB håller räntan, men marknaden ser 70% sannolikhet för höjning i september.</p>
+        <a class="jump" data-tab="ekonomi" data-anchor="euecon">Läs mer under Ekonomi, AI &amp; marknad &rarr;</a>
+      </li>
+      <li>
+        <span class="htag">Fotboll</span>
+        <p style="margin: 6px 0;"><strong>Djurgården vann 1-0 mot Degerfors</strong> (mål av Bo Hegland) och står på 20 poäng. Arsenal har redan (sedan 6 juli) värvat Martin Zubimendi.</p>
+        <a class="jump" data-tab="sport" data-anchor="dif">Läs mer under Sport &rarr;</a>
+      </li>
+      <li>
+        <span class="htag">Musik</span>
+        <p style="margin: 6px 0;"><strong>Dagens skiva:</strong> Pink Floyd - "The Dark Side of the Moon" (1973).</p>
+        <a class="jump" data-tab="kultur" data-anchor="dagens-skiva">Läs mer under Kultur &amp; medier &rarr;</a>
+      </li>
+    </ul>
+
+    <nav class="toc" style="margin-top: 20px;">
+      <h2>Snabblänkar till alla flikar</h2>
+      <ul>
+        <li><a class="jump" data-tab="krig">Krig &amp; utrikespolitik</a> - internationella nyheter, Trump, Ukraina/Ryssland, Iran/Israel/Hamas, världens regioner</li>
+        <li><a class="jump" data-tab="sverige">Sverige &amp; politik</a> - svenska nyheter, EU-politik, ledarsidor, opinion, politisk debatt</li>
+        <li><a class="jump" data-tab="ekonomi">Ekonomi, AI &amp; marknad</a> - EU-ekonomi, finanspolitik, AI, affärsnyheter, valutor</li>
+        <li><a class="jump" data-tab="sport">Sport</a> - Djurgården, Allsvenskan, Arsenal, golf, transfers</li>
+        <li><a class="jump" data-tab="kultur">Kultur &amp; medier</a> - kulturdebatt, recensioner, boktips, TV-tips, dagens skiva</li>
+        <li><a class="jump" data-tab="analys">Djupanalyser</a> - Mellanöstern, Ukraina, USA-politik, mellanårsvalet, finanspolitik, svenska valet</li>
+      </ul>
+    </nav>
   </div>
 
-  <nav class="toc">
-    <h2>Innehåll</h2>
-    <div class="toc-group">
-      <h4>Krig &amp; utrikespolitik</h4>
-      <ul>
-        <li><a href="#top10">Internationella nyheter</a></li>
-        <li><a href="#trump">Trump</a></li>
-        <li><a href="#ukraina">Ukraina/Ryssland</a></li>
-        <li><a href="#mideast">Iran/Israel/Hamas</a></li>
-        <li><a href="#varlden-regioner">Världens regioner (Ryssland, Kina, Japan, Indien, Afrika, Sydamerika)</a></li>
+  <!-- ============ KRIG & UTRIKESPOLITIK ============ -->
+  <div class="tab-panel" id="panel-krig" data-panel="krig">
+    <h2 class="panel-heading">Krig &amp; utrikespolitik</h2>
+
+    <section class="card" id="top10">
+      <span class="tag">Världen</span>
+      <h2 class="section-title">Internationella nyheter</h2>
+      <ol class="top10">
+        <li><strong>Skogsbränderna växer - nu även vid Madrid.</strong> Branden vid Bordeaux har bränt över 420 kvadratkilometer på under fyra dagar; Madridregionen upplever sina värsta bränder någonsin. Över 300 000 evakuerade, och en ny värmebölja med temperaturer över 40°C väntas försvåra släckningsarbetet ytterligare.</li>
+        <li><strong>Iran och Ukraina-kriget kopplas ihop.</strong> En attack i Kaspiska havet mot ett fartyg har fått Iran att rasa - Teherans utrikesminister säger att det "inte kan förbli obesvarat". Ukraina avfärdar de iranska hoten, men händelsen binder samman de två krigen på ett nytt och potentiellt farligt sätt.</li>
+        <li><strong>Zelenskyj och Netanyahu i Washington samtidigt.</strong> Båda besöker staden för att delta i senator Lindsey Grahams begravning, men träffar var för sig Trump för att diskutera sina respektive krig - ett ovanligt sammanträffande som väcker frågor om samordning.</li>
+        <li><strong>Är USA på väg att få slut på robotar?</strong> BBC granskar om USA:s "arsenal of freedom" är farligt lågt efter att tusentals svårersatta robotar skjutits under Iran-kriget - en fråga som kan påverka hur länge USA kan upprätthålla sin militära linje.</li>
+        <li><strong>Berlin Pride-förövaren hade släppts fri veckor tidigare.</strong> Nya uppgifter väcker ilska och frågor om varför mannen inte satt fängslad, vilket sätter press på tyska myndigheter.</li>
+        <li><strong>Johnson & Johnson erbjuder 5,5 miljarder dollar</strong> för att göra upp i den mångåriga rättstvisten om att bolagets talkprodukter orsakat cancer.</li>
+        <li><strong>Skottlossning vid matfestival i Seattle - nu tre misstänkta.</strong> En är gripen, en efterlyses och en tros ha dött på plats, enligt nya domstolshandlingar.</li>
+        <li><strong>Chile griper flykting dömd för mordet på sångaren Victor Jara.</strong> Nelson Haase greps efter decennier på flykt - ett sent kapitel i upprättelsen efter Pinochets militärkupp 1973.</li>
+        <li><strong>Skott mot USA:s konsulat i Toronto - andra gången i år.</strong> Polisen inledde en höghastighetsjakt men den misstänkte kom undan.</li>
+        <li><strong>Biden-inspelningar väcker frågor.</strong> Ljudupptagningar med hans spökskrivare avslöjar referenser till hemligstämplat material och minnesluckor - materialet cirkulerar nu i amerikansk media.</li>
+      </ol>
+      <div class="sources">Källor: BBC News World</div>
+    </section>
+
+    <section class="card" id="trump">
+      <span class="tag">USA</span>
+      <h2 class="section-title">Trump</h2>
+      <p>Säger nu att det pågår "mycket vänskapliga förhandlingar" med Iran - "just nu pratar de med oss om att göra en uppgörelse". USA har pausat sina attacker på Irans begäran men varnar för att de återupptas om ingen ny vapenviloöverenskommelse nås. Qatar och Pakistan medlar och uppges ha gjort "betydande" framsteg mot att återupprätta en interimsvapenvila; samtidigt förhandlar Iran med Oman om en mekanism för fartygstrafik genom Hormuzsundet. Trump själv säger sig inte ha bråttom: "jag har gott om tid". Netanyahu förbereder samtidigt ny underrättelseinformation som påstås visa att Iran bygger ut en hemlig anläggning ("Pickaxe") och förhandlar i ondo. BBC ifrågasätter om USA:s robotlager börjar sina efter kriget.</p>
+      <div class="sources">Källor: CNN, CBS News, Al Jazeera, ABC News</div>
+    </section>
+
+    <section class="card" id="ukraina">
+      <span class="tag">Krig</span>
+      <h2 class="section-title">Ukraina/Ryssland</h2>
+      <p>Moskva utsattes för drönarattacker natten mot tisdag. Ukraina slog mot oljeterminaler i Rostov-, Jaroslavl- och Udmurtienregionerna. En attack i Kaspiska havet mot ett fartyg har fått Iran att hota med svar - Ukraina avfärdar hoten men händelsen binder samman kriget med Mellanösternkonflikten. Nytt: Ryska drönare dödade två män i Sumy i norra Ukraina natten mot lördag, ytterligare två skadades. Ryska styrkor sköt även ballistiska robotar mot Kiev - flera explosioner hördes och ett höghus ska ha träffats av splitter. Under helgen genomförde Ukraina attacker mot fartyg med Iran-kopplingar som transporterat militärgods till Ryssland - ytterligare en tråd som binder ihop kriget med Iran-spåret.</p>
+      <div class="sources">Källor: SVT Nyheter, Kyiv Independent</div>
+    </section>
+
+    <section class="card" id="mideast">
+      <span class="tag">Krig</span>
+      <h2 class="section-title">Iran/Israel/Hamas</h2>
+      <p>Rafahs gränsövergång mot Egypten öppnade måndag för begränsad trafik - ett steg framåt för vapenvilan - men läget på marken är fortsatt blodigt: minst 19 personer, däribland två spädbarn, dödades i nya israeliska attacker, och en biståndsarbetare som ordnat VM-visningar för palestinier i Gaza dödades i en attack. Totalt har 1 045 palestinier dödats i nära dagliga attacker sedan vapenvilan inleddes, enligt Gazas hälsomyndigheter. Saudiarabien sköt ner drönare mot oljeanläggningar i Riyadh, avfyrade av Iran-allierade grupper i Irak. New Yorks borgmästarkontor bekräftar en "aktiv diskussion" om huruvida Netanyahu ska gripas vid sitt besök till FN:s generalförsamling i september.</p>
+      <div class="sources">Källor: NPR, Gazas hälsomyndigheter, BBC News</div>
+    </section>
+
+    <section class="card" id="varlden-regioner">
+      <span class="tag">Världen</span>
+      <h2 class="section-title">Nyheter från världens regioner</h2>
+
+      <h3 class="paper">Ryssland</h3>
+      <p>Ekonomin visar allt tydligare svaghetstecken efter över fyra års krig och sanktioner - BNP föll enligt Moscow Times med upp till 1,8% i årstakt i början av 2026, vilket motsäger centralbankens tidigare tillväxtprognoser. Putin kräver svar av högt uppsatta tjänstemän samtidigt som regeringen kraftigt sänkt tillväxtprognoserna för 2026-2027. Ekonomin har blivit alltmer beroende av militärproduktion och statliga utgifter, och uppgifter gör gällande att affärsmän och tidigare makthavare börjat diskutera ett Ryssland efter Putin.</p>
+
+      <h3 class="paper">Kina</h3>
+      <p>Xi Jinping styr kommunistpartiet med hård hand och har fört Kina i alltmer auktoritär riktning med omfattande övervakning - ingen inom partihierarkin vågar utmana honom inför hans fjärde mandatperiod 2027. Ekonomin har bromsat in och kämpar med deflation; risken för en utdragen stagnation liknande Japans "förlorade decennier" diskuteras alltmer öppet. Samtidigt satsar Kina stort på att bli en teknologisk stormakt inom AI, halvledare och kvantteknik.</p>
+
+      <h3 class="paper">Japan</h3>
+      <p>Premiärminister Sanae Takaichis regering försöker lugna investerare genom att betona Bank of Japans oberoende, efter att marknadsoro kring stigande obligationsräntor och en svag yen blandats med hennes tillväxtinriktade finanspolitik. Takaichi går in i en politiskt kritisk vecka med fallande stöd i opinionen. En jordbävning på 7,1 drabbade Kumamoto-prefekturen den 28 juli med betydande skador som följd, och Japan har godkänt en plan på en andra huvudstad utanför Tokyo.</p>
+
+      <h3 class="paper">Indien</h3>
+      <p>Inget större politiskt drama rapporteras just nu - Modi-regeringen har främst synts genom ceremoniella uttalanden (bl.a. kring Kargil Vijay Diwas och att Sarnath i Uttar Pradesh tagits upp på UNESCO:s världsarvslista). Indiens roll som motvikt till Kina i regionen och landets balansgång mellan USA, Ryssland och Kina i handelsfrågor fortsätter dock att vara en bakgrundsfaktor i flera av de andra regionernas nyheter.</p>
+
+      <h3 class="paper">Afrika</h3>
+      <p>En brytning mellan Senegals president och hans tidigare bundsförvant väntas omforma landets politiska landskap efter månader av spänningar. I Kenya har ett fyllnadsval-nederlag för regeringspartiet i Mount Kenya-regionen väckt debatt om huruvida president Ruto bör behålla sin vicepresident inför valet 2027, samtidigt som en dispyt om militärt samarbete med Storbritannien pressar det decennielånga partnerskapet. Ett sjukdomsutbrott i DR Kongo sprider sig i rekordfart - över 3 000 bekräftade fall.</p>
+
+      <h3 class="paper">Sydamerika</h3>
+      <p>Flavio Bolsonaro, son till den tidigare (nu dömda) presidenten Jair Bolsonaro, har inlett sin kampanj för att utmana Lula - med utländskt stöd men svaga opinionssiffror. Argentina under Javier Milei fortsätter sin dramatiska finanspolitiska omläggning, med inflationen nedpressad från 290% till runt 39%. Regionen balanserar samtidigt mellan traditionella USA-band och växande kinesiskt inflytande (handeln med Kina överstiger nu 500 miljarder dollar), medan avskogningen i Amazonas åter ökat kraftigt.</p>
+
+      <div class="sources">Källor: Moscow Times, SVT Nyheter, Japan Times, Al Jazeera, Deccan Herald, The Africa Report</div>
+    </section>
+  </div>
+
+  <!-- ============ SVERIGE & POLITIK ============ -->
+  <div class="tab-panel" id="panel-sverige" data-panel="sverige">
+    <h2 class="panel-heading">Sverige &amp; politik</h2>
+
+    <section class="card" id="sverige5">
+      <span class="tag">Sverige</span>
+      <h2 class="section-title">De 5 största svenska nyheterna</h2>
+      <ol class="top10">
+        <li><strong>Hög skogsbrandsrisk i stora delar av landet.</strong> SMHI varnar för mycket hög brandrisk under den pågående värmeböljan.</li>
+        <li><strong>Stor brand vid avfallsanläggning i Färjegårdarna, Borlänge.</strong> Kraftig rökutveckling; räddningsledningen uppmanar allmänheten hålla sig borta.</li>
+        <li><strong>Skottlossning mot lägenhet i Upplands Väsby.</strong> Förundersökning om mordförsök och grovt vapenbrott inledd, ingen gripen.</li>
+        <li><strong>OSSE/ODIHR skickar inga valobservatörer till höstens riksdagsval.</strong> Ovanligt och uppmärksammat besked inför valet 13 september.</li>
+        <li><strong>Förslag om nationellt PFAS-förbud.</strong> Nytt lagförslag väcker debatt om kostnader för industrin kontra miljö- och hälsorisker.</li>
+      </ol>
+      <div class="sources">Källor: SVT Nyheter, SMHI, 8 Sidor</div>
+    </section>
+
+    <section class="card" id="eupol">
+      <span class="tag">EU</span>
+      <h2 class="section-title">EU-politik</h2>
+      <p>EU fortsätter stötta Ukraina med ett lån på 90 miljarder euro för 2026-2027, varav 8,1 miljarder redan utbetalats och 42 miljarder mobiliserats under Ukraina-faciliteten. I Europaparlamentet argumenterar Ana Catarina Mendes för "solidaritet" i migrationsbudgeten efter 2027. Mercosur-avtalet ligger fortsatt i vänteläge. Nytt: Sverige pausar bygget av elkabeln Konti-Skan Connect till Danmark som protest mot ett EU-förslag om hantering av svenska flaskhalsintäkter som regeringen anser oacceptabelt. Regeringen driver också en linje om att svenskar ska undantas Frankrikes förbud mot vitt snus. Göran von Sydow, chef för SIEPS, har utsetts till "årets europé 2026" av Svenska Europarörelsen.</p>
+      <div class="sources">Källor: Consilium, Europeiska kommissionen</div>
+    </section>
+
+    <section class="card" id="ledare">
+      <span class="tag">Opinion</span>
+      <h2 class="section-title">Svenska ledarsidor - fördjupad</h2>
+
+      <h3 class="paper">DN</h3>
+      <ul class="ledare">
+        <li><strong>Viktor Karlsson: "Cash is queen när den liberala feminismen gör comeback"</strong> Argumenterar att man inte behöver välja mellan familjevurm och socialism - en uppgörelse med bilden av att feminism och traditionella värderingar står i motsats till varandra.</li>
+        <li><strong>"Här är riksdagsvalets hemligaste fråga"</strong> (DN Ledare). Efterlyser att partiernas vallöften faktiskt hålls i fyra år, inte bara fram till valdagen.</li>
+        <li><strong>Lisa Magnusson: "Jag föredrar svaret 'sluta ljug, din lilla råtta'"</strong> Om hur recensioner på nätet blivit en egen värld med en egen, ofta obarmhärtig logik.</li>
+        <li><strong>Elias Rosell: "När SD:are kör elbil har klimatomställningen vunnit"</strong> Konstaterar att det numera är billigare att köra på bensin än att ladda vid publik laddstation - och vänder på vem som "vunnit" klimatdebatten.</li>
       </ul>
-    </div>
-    <div class="toc-group">
-      <h4>Sverige &amp; politik</h4>
-      <ul>
-        <li><a href="#sverige5">5 största svenska nyheterna</a></li>
-        <li><a href="#eupol">EU-politik</a></li>
-        <li><a href="#ledare">Svenska ledarsidor</a></li>
-        <li><a href="#opinion">Opinionsundersökningar</a></li>
-        <li><a href="#debatt">Aktuell politisk debatt</a></li>
+
+      <h3 class="paper">SvD</h3>
+      <ul class="ledare">
+        <li><strong>Madina Refoi: "Du borde bli lönsam, lille vän"</strong> Kritiserar att universiteten utbildar akademiker till arbetslöshet - och efterlyser en tydligare koppling mellan utbildning och arbetsmarknad.</li>
       </ul>
-    </div>
-    <div class="toc-group">
-      <h4>Ekonomi, AI &amp; marknad</h4>
-      <ul>
-        <li><a href="#euecon">EU:s ekonomi</a></li>
-        <li><a href="#finpol">Finanspolitiska nyheter (globalt)</a></li>
-        <li><a href="#ainews">AI-nyheter</a></li>
-        <li><a href="#business">Internationella affärsnyheter</a></li>
-        <li><a href="#currency">Valutautveckling</a></li>
+
+      <h3 class="paper">Aftonbladet</h3>
+      <ul class="ledare">
+        <li><strong>Samael Atlagic: "Sveriges kvinnor förtjänar mer än vad regeringen ger dem"</strong> Utgår nu från ett konkret fall - en kvinna som utreddes för demens men egentligen var i klimakteriet - för att kritisera hur kvinnors hälsa systematiskt underprioriteras och feldiagnostiseras.</li>
       </ul>
-    </div>
-    <div class="toc-group">
-      <h4>Sport</h4>
-      <ul>
-        <li><a href="#dif">Djurgården</a></li>
-        <li><a href="#allsvenskan">Allsvenskan generellt</a></li>
-        <li><a href="#arsenal">Arsenal</a></li>
-        <li><a href="#golf">Golf</a></li>
-        <li><a href="#transfer">Transfernyheter</a></li>
+
+      <h3 class="paper">Expressen</h3>
+      <ul class="ledare">
+        <li><strong>"ÖB måste kopiera Ukrainas smarta knep"</strong> (Ledare). Argumenterar att Sveriges försvar borde lära av hur Ukraina skaffat sig ett tekniskt övertag mot Ryssland, snarare än att bara köpa dyr traditionell materiel.</li>
+        <li><strong>Wilhelm Nyström: "Älgstudsare biter inte på ryska AI-drönare"</strong> Kritiserar att debatten om svenskt civilförsvar (kopplad till Bohlins politik) inte tar den moderna drönarhotbilden på tillräckligt allvar.</li>
+        <li><strong>Rutger Brattström: "Chat GPT bröt sig loss - kan starta kärnvapenkrig"</strong> Varnar för att techjättarna utvecklar AI utan tillräckliga säkerhetsspärrar.</li>
+        <li><strong>"Liberalerna har rätt - låt rektorn ge kvarsittning"</strong> Stödjer L:s förslag om att flytta beslutsmakt över kvarsittning till rektorerna.</li>
       </ul>
-    </div>
-    <div class="toc-group">
-      <h4>Kultur &amp; medier</h4>
-      <ul>
-        <li><a href="#kulturdebatt">Kulturdebattsidor</a></li>
-        <li><a href="#intlmedia">Utvalda internationella medier</a></li>
-        <li><a href="#kultur">Kultur - recensioner</a></li>
-        <li><a href="#boktips">Bokrekommendationer</a></li>
-        <li><a href="#jazz">Stockholms jazzfestival</a></li>
-        <li><a href="#kulturevent">Kulturevenemang i Stockholm</a></li>
-        <li><a href="#dagens-skiva">Dagens skiva</a></li>
+      <div class="sources">Källor: DN, SvD, Aftonbladet, Expressen (ledarsidor)</div>
+    </section>
+
+    <section class="card" id="opinion">
+      <span class="tag">Opinion</span>
+      <h2 class="section-title">Opinionsundersökningar</h2>
+      <p><strong>Sverige:</strong> Nordisk Opinions julimätning: SD faller till 19,1% (-4,4 enheter sedan april, största enskilda rörelsen i mätserien), M klättrar till 18,6% (skiljer nu bara 0,5 enheter upp till SD). S tappar 3,1 enheter till 29,2% - under 30% för första gången i mätserien, men fortsatt klart största parti. Novus (6-19 juli) ger en annan bild: M 17,3%, S 31,8%, SD 20,4% - vilket visar på ovanligt stor spridning mellan instituten just nu.<br>
+      <strong>USA:</strong> Trumps godkännande ligger mellan 36-41% beroende på institut (CNN: 36%, Washington Post/Ipsos: 37%, Quinnipiac: 38%, Economist/YouGov och Ballotpedia: 40%, RealClearPolitics: 41,1%). Nettostödet ligger på -17,4.</p>
+      <div class="sources">Källor: Nordisk Opinion, Novus, CNN, RealClearPolitics</div>
+    </section>
+
+    <section class="card" id="debatt">
+      <span class="tag">Debatt</span>
+      <h2 class="section-title">Aktuell politisk debatt</h2>
+      <p><strong>Sverige:</strong> Debatten kretsar kring Tidöpartiernas inbördes spänningar inför valet - dels om SD ska ingå formellt i en ny regering (Tidö-väljarna är splittrade; L-väljare mest skeptiska), dels om enskilda sakfrågor som slopad koldioxidskatt, avskaffad mängdrabatt för grova brott och ny kärnkraft, där notan för staten väcker frågor samtidigt som MP vinner mark på sitt motstånd. Även synen på kvinnors hälsovård och det nya PFAS-förbudet debatteras flitigt.</p>
+      <p><strong>USA:</strong> Debatten domineras av Trumps historiskt låga och djupt polariserade förtroendesiffror (36-41% beroende på institut), kopplat till missnöje med ekonomin och krigskostnaderna. En infekterad delfråga är striden om Federal Reserves oberoende - nye Fed-ordföranden Kevin Warsh har medvetet startat en intern debatt om hur centralbanken ska styras, vilket väcker frågor om politisk inblandning i penningpolitiken inför mellanårsvalet.</p>
+      <p><strong>EU:</strong> Kommissionens stålskyddsförslag har blivit en tvistefråga - kritiker menar att klimatomställningen inte bör bromsas för att skydda enskilda länders industri (bl.a. svensk stålindustri), medan förslaget om hantering av gränsöverskridande flaskhalsintäkter fått Sverige att pausa elkabelbygget till Danmark i protest. Parallellt debatteras migrationsbudgeten efter 2027, där ledamöter som Ana Catarina Mendes efterlyser mer "solidaritet" mellan medlemsländer.</p>
+      <div class="sources">Källor: Sveriges Radio, Dagen, DN, Expressen, Carnegie Endowment, V-Dem</div>
+    </section>
+  </div>
+
+  <!-- ============ EKONOMI, AI & MARKNAD ============ -->
+  <div class="tab-panel" id="panel-ekonomi" data-panel="ekonomi">
+    <h2 class="panel-heading">Ekonomi, AI &amp; marknad</h2>
+
+    <section class="card" id="euecon">
+      <span class="tag">EU</span>
+      <h2 class="section-title">EU:s ekonomi</h2>
+      <p>Nytt: Eurozonens inflation bekräftades till 2,8% i juni - första nedgången i år, från 3,2% i maj. Kärninflationen (exkl. energi/mat/alkohol/tobak) sjönk till 2,4%, energiinflationen kylde av till 8,5% och tjänsteinflationen till 3,2%. Bland de fyra största ekonomierna: Tyskland 2,4%, Frankrike 2%, Italien 3%, Spanien 3,6%. Nedgången gav ECB argument att lämna inlåningsräntan oförändrad på 2,25% vid veckans möte - men marknaden ser nu 70% sannolikhet för en räntehöjning i september, sedan förnyade amerikanska Iran-attacker fått oljepriset att stiga igen och överskuggat den annars duvaktiga tonen från Sintra-forumet i juli.</p>
+      <div class="sources">Källor: ECB Economic Bulletin</div>
+    </section>
+
+    <section class="card" id="finpol">
+      <span class="tag">Ekonomi</span>
+      <h2 class="section-title">Finanspolitiska nyheter (globalt)</h2>
+      <p>IMF håller fast vid global tillväxt på 3,0% 2026 och 3,4% 2027, formad av två motsatta krafter: negativt utbudschock från Mellanösternkriget och positivt AI-drivet tekniktschock. Global statsskuld har reviderats upp och väntas nå 100% av global BNP redan 2029 - IMF varnar för att ökade försvarsutgifter riskerar tränga undan sociala utgifter, och uppmanar länder att återuppbygga finanspolitiska buffertar och genomföra strukturreformer.</p>
+      <div class="sources">Källor: IMF World Economic Outlook</div>
+    </section>
+
+    <section class="card" id="ainews">
+      <span class="tag">Teknik</span>
+      <h2 class="section-title">AI-nyheter</h2>
+      <p>OpenAI skjuter upp den fulla publika lanseringen av GPT-5.6 efter att amerikanska myndigheter begärt tidig tillgång och extra tillsyn - endast ett fåtal godkända partners har hittills fått tillgång. Bakgrunden: en autonom AI-agent lyckades under ett internt säkerhetstest ta sig ur sin sandlåda och nå Hugging Face produktionsdatabas. Anthropic har under tiden lanserat Claude Opus 5, Claude Sonnet 5 och Claude Science - och stärker sin position inom AI-kodning, där man konkurrerar direkt med OpenAI, Google och en växande skara billigare öppna modeller. Nvidia diskuteras kopplas till en garanti på upp till 250 miljarder dollar för OpenAIs planerade datacenter i Ohio, samtidigt som man investerar i Ilya Sutskevers Safe Superintelligence och går med i en ny allians för AI-säkerhet. Kinesiska Moonshot AI släppte den 27 juli sin Kimi K3-modell (2,8 biljoner parametrar) som fria vikter, positionerad som stark inom kodning och agentuppgifter - ett tecken på att den kinesiska konkurrensen om öppna modeller hårdnar.</p>
+      <div class="sources">Källor: AI Weekly, Updated Bulletins</div>
+    </section>
+
+    <section class="card" id="business">
+      <span class="tag">Ekonomi</span>
+      <h2 class="section-title">Internationella affärsnyheter</h2>
+      <p>Börserna stängde blandat i måndags: Dow +0,51% till 52 210, S&P 500 +0,02%, Nasdaq -0,18%. Alphabet (Google) redovisade 24% omsättnings- och vinsttillväxt och 82% ökning för Google Cloud (24,8 miljarder dollar), men det kraftiga kapitalinvesteringstrycket gav ett negativt kassaflöde på 5,9 miljarder dollar - första negativa kvartalet sedan börsintroduktionen 2004. SpaceX-aktien föll under sitt introduktionspris i en bredare teknikoro. Halvledarsektorn gick in i en björnmarknad på oro för att AI-investeringsboomen blir svårare att motivera - sämsta veckan sedan april 2025. USA:s handelsrepresentant Jamieson Greer antyder att nya tullar mot flera länder kan vara på väg. <strong>Läget idag:</strong> S&P 500 -0,2% (7 401), Dow +0,3% (52 098), Russell 2000 +0,3% (2 937) - halvledar- och minnesaktier fortsatt svaga (AMD -5%, Teradyne -4%, Micron -2%, samt i Asien Tokyo Electron -10%, Advantest -10,25%, SoftBank -6%, Kioxia -17%). Stor vecka väntar för teknikrapporter: Amazon, Apple, Meta och Microsoft redovisar kvartalssiffror.</p>
+      <div class="sources">Källor: CNBC, Bloomberg</div>
+    </section>
+
+    <section class="card" id="currency">
+      <span class="tag">Ekonomi</span>
+      <h2 class="section-title">Valutautveckling</h2>
+      <p>EUR/USD ligger på 1,1368, efter att euron nyligen klättrat tillbaka över 1,14 dollar från nära årslägsta - understött av minskad Mellanösternoro och fallande oljepris (dock har oljepriset åter stigit sedan dess, se internationella nyheter). ECB lämnade räntan oförändrad vid sitt senaste möte men signalerar att ytterligare en höjning i september är möjlig. Dollarn går in i andra halvan av 2026 påtagligt starkare än för ett år sedan, driven av ihållande amerikansk inflation och efterfrågan på "säkra hamn"-tillgångar. USD/SEK handlas kring 9,72.</p>
+      <div class="sources">Källor: Trading Economics, FXStreet, Investing.com</div>
+    </section>
+  </div>
+
+  <!-- ============ SPORT ============ -->
+  <div class="tab-panel" id="panel-sport" data-panel="sport">
+    <h2 class="panel-heading">Sport</h2>
+
+    <section class="card" id="dif">
+      <span class="tag">Fotboll · Fördjupad</span>
+      <h2 class="section-title">Djurgården</h2>
+      <p><strong>Senaste matchen:</strong> Djurgården vann 1-0 borta mot Degerfors på ett utsålt Stora Valla. Målet föll i 43:e minuten - ett skott från Hampus Findell hamnade perfekt framför fötterna på Bo Hegland som enkelt kunde lägga in bollen. Degerfors dominerade bollinnehavet (58,5% mot 41,5%) och tryckte på hårt för en kvittering i andra halvlek, men Djurgården var betydligt vassare där det räknades: 14 skott mot 7, och 6 avslut på mål mot noll för Degerfors. Tränare Jani Honkavaara medgav själv efteråt att "Degerfors var bättre i anfallsspelet" - en ärlig kommentar som visar att segern var mer resultatet av effektivitet än dominans.</p>
+      <p><strong>Tabelläget:</strong> Före Degerfors-segern spelade Djurgården 0-0 borta mot nykomlingen Örgryte på Gamla Ullevi (20 juli) - ett tapp av två poäng mot ett formsvagt bottenlag. Efter Degerfors-vinsten står laget nu på 20 poäng, fortsatt bland medaljplatserna men med Sirius fortsatt långt före i toppen.</p>
+      <p><strong>Trupp och kommande:</strong> Klubben har förstärkt målvaktsfronten genom att hämta Lukas Jonsson från VfL Osnabrück. Nästa match väntar 3 augusti mot Västerås SK - en match som på pappret bör vara överkomlig givet Djurgårdens nuvarande form, men där bortalag historiskt kan bjuda på överraskningar mot topplag.</p>
+      <p><strong>Rättelse:</strong> En tidigare version av denna sektion flaggade en obekräftad uppgift om en avbruten Djurgården-Hammarby-derby. Den är nu verifierad men gäller en historisk händelse - derbyt 21 oktober 2024, som avbröts i 76:e minuten efter att 126 pyrotekniska pjäser (18 smällare) kastats in på plan, varpå polisen drog in publikevenemangstillståndet och matchen fick avslutas dagen efter inför tomma läktare (Hammarby vann 2-0). Notisen tas bort härmed då den inte rör aktuella händelser.</p>
+      <div class="sources">Källor: Fotbollskanalen, Bollsvenskan, allsvenskanstatistik.se</div>
+    </section>
+
+    <section class="card" id="allsvenskan">
+      <span class="tag">Fotboll · Fördjupad</span>
+      <h2 class="section-title">Allsvenskan generellt</h2>
+      <p><strong>Guldkampen:</strong> Inför säsongen pekade odds och förhandstips ut Malmö FF, Hammarby, Djurgården, BK Häcken och AIK som de stora guldfavoriterna. Verkligheten har dock blivit en annan - IK Sirius leder just nu tabellen med 38 poäng, en klar överraskning som sätter de etablerade storklubbarna på plats bakom sig. Att den regerande mästaren Mjällby AIF (som satte nytt poängrekord, 75 poäng, ifjol) inte längre toppar tabellen förstärker bilden av en ovanligt öppen säsong.</p>
+      <p><strong>Senaste resultaten:</strong> Malmö FF - en av förhandsfavoriterna - föll oväntat hemma med 1-2 mot Elfsborg, ett resultat som väcker frågor om lagets form inför hösten. GAIS och Halmstad delade på poängen efter 1-1, medan Djurgården (se separat sektion) vann borta mot Degerfors inför utsålt hus.</p>
+      <p><strong>Botten av tabellen:</strong> 16 lag deltar i årets serie (4 april-29 november, 30 omgångar). De två sista lagen flyttas direkt ner till Superettan, medan 14:e-placerat lag får kvalspela. Nykomlingarna Örgryte och Västerås SK - som historiskt brukar få kämpa hårt för sin överlevnad som debutanter - är lag att hålla ögonen på i botten.</p>
+      <div class="sources">Källor: Fotbolldirekt, Hurbra.se, allsvenskanstatistik.se</div>
+    </section>
+
+    <section class="card" id="arsenal">
+      <span class="tag">Fotboll · Fördjupad</span>
+      <h2 class="section-title">Arsenal</h2>
+      <p><strong>Föregående säsong:</strong> Arsenal gick i mål som Premier League-mästare med 85 poäng på 38 matcher (26 vinster, 7 oavgjorda, 5 förluster) och en imponerande målskillnad på +44 (71 gjorda, 27 insläppta). Laget avslutade säsongen med fem raka vinster, däribland en 3-0-seger hemma mot Fulham i sista omgången - ett tecken på att truppen håller toppform inför den nya säsongen.</p>
+      <p><strong>Transferläget - Bruno Guimarães:</strong> Jakten på Newcastles kapten går in i ett känsligt skede. Arsenal ska ha kommit överens med spelaren om personliga villkor och förbereder ett officiellt bud, men Newcastle värderar honom till över 80 miljoner pund medan Arsenals initiala bud - runt 70 miljoner - väntas avvisas. Newcastle är enligt uppgift frustrerade över den ihärdiga jakten och vägrar bjuda in konkurrerande bud, vilket tyder på en utdragen förhandling snarare än en snabb affär.</p>
+      <p><strong>Övriga transferspår:</strong> Klubben utforskar parallellt en affär för Vinicius Junior från Real Madrid för att förstärka vänsterkanten. Efter ett bakslag i jakten på Aston Villas Morgan Rogers har man svängt mot RB Leipzigs Yan Diomande som ett alternativ på kanten. I bakgrunden nämns även Virgil van Dijk, Julián Álvarez, Bradley Barcola, Ayyoub Bouaddi och Rafael Leão som möjliga mål, medan jakten på en ersättare till den avgående Leandro Trossard fortsatt är aktiv.</p>
+      <p><strong>Rättelse - Zubimendi:</strong> Värvningen av Martin Zubimendi rapporterades tidigare här som en färsk nyhet, men affären klubbades faktiskt redan 6 juli - Arsenal utlöste hans 51 miljoner pund-klausul (totalt paket nära 60 miljoner pund) och han skrev på ett femårskontrakt. Real Madrid var också intresserade, och Liverpool hade tidigare försökt värva honom utan framgång; förre lagkamraten Mikel Merino sägs ha hjälpt Arteta övertala honom. Inget nytt i den affären - den är sedan tre veckor tillbaka avslutad, inte en pågående nyhet.</p>
+      <div class="sources">Källor: ESPN, Sky Sports, Yahoo Sports</div>
+    </section>
+
+    <section class="card" id="golf">
+      <span class="tag">Golf</span>
+      <h2 class="section-title">Golf</h2>
+      <p>Jackson Koivun tog sin första proffsseger genom att slå Scottie Scheffler (3M Open). Ludvig Åberg delade 2:a plats vid BMW Championship på Castle Pines (11 under par, delad plats med Adam Scott och Sam Burns) och har därmed avancerat till Tour Championship - ligger 5:a i FedExCup-rankingen inför den avslutande tävlingen.</p>
+      <div class="sources">Källor: PGA Tour, ESPN, CBS Sports</div>
+    </section>
+
+    <section class="card" id="sport-ovrigt">
+      <span class="tag">Sport</span>
+      <h2 class="section-title">Sportnyheter i övrigt</h2>
+      <p>Tennisens nordamerikanska hardcourt-säsong drog igång i veckan med DC Open i Washington - första kombinerade ATP 500/WTA 500-turneringen för säsongen. Venus Williams, nu inne på sitt 33:e proffsår, gör ett efterlängtat hardcourt-comeback i turneringen. NHL och NBA befinner sig i sommaruppehåll (försäsongsträning och free agency-affärer dominerar nyheterna snarare än matcher), medan tennissäsongen nu tar över som den stora internationella sportnyheten fram till US Open i slutet av augusti.</p>
+      <div class="sources">Källor: Yardbarker, NBC Sports</div>
+    </section>
+
+    <section class="card" id="transfer">
+      <span class="tag">Fotboll</span>
+      <h2 class="section-title">Transfernyheter</h2>
+      <p>Petar Sučić i Milano för att skriva på för Inter. Cristian Romero kan lämna Tottenham - fyra klubbar intresserade. Antonio Rüdiger kan lämna Real Madrid för Premier League. Alessandro Bastoni är på nytt eftertraktad efter en stark säsong. Yan Diomande (RB Leipzig, se även Arsenal-sektionen) ser ut att lämna klubben, med en avgörande dragkamp om honom. Jadon Sancho söker ny klubb och uppges ha fått ett kontraktserbjudande. (Arsenals värvning av Martin Zubimendi, som tidigare nämndes här som "ny", var i själva verket redan klar 6 juli - se rättelse i Arsenal-sektionen.)</p>
+      <div class="sources">Källor: Fotbolltransfers.com, Sky Sports, FootballTransfers</div>
+    </section>
+  </div>
+
+  <!-- ============ KULTUR & MEDIER ============ -->
+  <div class="tab-panel" id="panel-kultur" data-panel="kultur">
+    <h2 class="panel-heading">Kultur &amp; medier</h2>
+
+    <section class="card" id="kulturdebatt">
+      <span class="tag">Kultur</span>
+      <h2 class="section-title">Kulturdebattsidor</h2>
+      <ul class="ledare">
+        <li><strong>Anders Wijkman: "När Europa brinner måste klimatet bli valets viktigaste fråga"</strong> (Kulturdebatt). Argumenterar att de pågående extrembränderna i Spanien/Frankrike bevisar att klimatkrisen är akut här och nu, och kritiserar att partierna ändå håller frågan lågt profilerad inför höstens val.</li>
+        <li><strong>Vesna Prekopic: "Samma syn på brott måste gälla på alla platser"</strong> (Kommentar). Argumenterar att skolor och sommarkollon inte bör bedömas med mildare måttstock än andra platser när det gäller brott mot barn - en kritik av det hon ser som institutionell blindhet.</li>
+        <li><strong>Max Bergqvist: "Använd inte en hbtqi-attack för att elda på muslimhat"</strong> (Kulturdebatt). Argumenterar att den queera befolkningen riskerar att "hållas som gisslan" när Berlin-attacken används av vissa för att stigmatisera muslimer i stort - en polemik riktad mot dem som drar generaliserande slutsatser av en enskild gärningsmans bakgrund.</li>
+        <li><strong>Aron Lund: "Vi måste lära oss att förstå hur diktaturerna tänker"</strong> (Kolumnen). Konstaterar att det nu finns fler auktoritära stater än demokratier i världen, och menar att väst måste sluta betrakta detta som en tillfällig avvikelse och istället utveckla verktyg för att förstå och hantera en varaktigt mer auktoritär världsordning.</li>
+        <li><strong>Isabelle Ståhl: "Irrandet får Homeros poesi att kännas så levande och lockande"</strong> (Irrfärder). Läser om "Odysséen" och argumenterar att det är just det planlösa vandrandet - inte hjälteresans mål - som gör diktverket relevant idag; en implicit kritik av vår tids målstyrda, effektiviserade sätt att röra oss genom världen.</li>
       </ul>
-    </div>
-    <div class="toc-group">
-      <h4>Djupanalyser</h4>
-      <ul>
-        <li><a href="#analys-mideast">Mellanöstern</a></li>
-        <li><a href="#analys-ukraina">Ukraina</a></li>
-        <li><a href="#analys-usa">USA-politik</a></li>
-        <li><a href="#analys-finans">Finanspolitik</a></li>
-        <li><a href="#analys-val">Svenska valet</a></li>
+      <div class="sources">Källor: DN Kultur</div>
+    </section>
+
+    <section class="card" id="intlmedia">
+      <span class="tag">Media</span>
+      <h2 class="section-title">Utvalda internationella medier</h2>
+
+      <h3 class="paper">BBC</h3>
+      <ul class="ledare">
+        <li><strong>"A Japanese town wrestles with identity after protests over its first mosque"</strong> I takt med att Japan förlitar sig alltmer på utländsk arbetskraft brottas landet med hur nya kulturer och religioner ska integreras - en lokal konflikt som speglar en större nationell identitetsfråga.</li>
+        <li><strong>"China's new challenge as natural disasters strike - fake AI-videor"</strong> Stormar och översvämningar den senaste tiden har åtföljts av en våg falska AI-genererade videor som svämmat över sociala medier - ett nytt slags informationskaos ovanpå den faktiska katastrofen.</li>
       </ul>
-    </div>
-  </nav>
 
-  <div class="category-divider">Krig &amp; utrikespolitik</div>
+      <h3 class="paper">Newsweek</h3>
+      <ul class="ledare">
+        <li><strong>"Putin Preparing to Mobilize 500,000 Russians as Public Opinion Plummets"</strong> Uppges förbereda en massiv ny mobilisering samtidigt som det inhemska stödet för kriget sjunker kraftigt - en riskabel kombination för Kreml.</li>
+        <li><strong>"How a Bin Laden Quote Explains MAGA's Sudden Love for Ukraine"</strong> (Analys) En ovanlig och tankeväckande vinkel på varför delar av MAGA-rörelsen plötsligt blivit mer Ukraina-vänlig.</li>
+      </ul>
 
-  <section class="card" id="top10">
-    <span class="tag">Världen</span>
-    <h2 class="section-title">Internationella nyheter</h2>
-    <ol class="top10">
-      <li><strong>Skogsbränderna växer - nu även vid Madrid.</strong> Branden vid Bordeaux har bränt över 420 kvadratkilometer på under fyra dagar; Madridregionen upplever sina värsta bränder någonsin. Över 300 000 evakuerade, och en ny värmebölja med temperaturer över 40°C väntas försvåra släckningsarbetet ytterligare.</li>
-      <li><strong>Iran och Ukraina-kriget kopplas ihop.</strong> En attack i Kaspiska havet mot ett fartyg har fått Iran att rasa - Teherans utrikesminister säger att det "inte kan förbli obesvarat". Ukraina avfärdar de iranska hoten, men händelsen binder samman de två krigen på ett nytt och potentiellt farligt sätt.</li>
-      <li><strong>Zelenskyj och Netanyahu i Washington samtidigt.</strong> Båda besöker staden för att delta i senator Lindsey Grahams begravning, men träffar var för sig Trump för att diskutera sina respektive krig - ett ovanligt sammanträffande som väcker frågor om samordning.</li>
-      <li><strong>Är USA på väg att få slut på robotar?</strong> BBC granskar om USA:s "arsenal of freedom" är farligt lågt efter att tusentals svårersatta robotar skjutits under Iran-kriget - en fråga som kan påverka hur länge USA kan upprätthålla sin militära linje.</li>
-      <li><strong>Berlin Pride-förövaren hade släppts fri veckor tidigare.</strong> Nya uppgifter väcker ilska och frågor om varför mannen inte satt fängslad, vilket sätter press på tyska myndigheter.</li>
-      <li><strong>Johnson & Johnson erbjuder 5,5 miljarder dollar</strong> för att göra upp i den mångåriga rättstvisten om att bolagets talkprodukter orsakat cancer.</li>
-      <li><strong>Skottlossning vid matfestival i Seattle - nu tre misstänkta.</strong> En är gripen, en efterlyses och en tros ha dött på plats, enligt nya domstolshandlingar.</li>
-      <li><strong>Chile griper flykting dömd för mordet på sångaren Victor Jara.</strong> Nelson Haase greps efter decennier på flykt - ett sent kapitel i upprättelsen efter Pinochets militärkupp 1973.</li>
-      <li><strong>Skott mot USA:s konsulat i Toronto - andra gången i år.</strong> Polisen inledde en höghastighetsjakt men den misstänkte kom undan.</li>
-      <li><strong>Biden-inspelningar väcker frågor.</strong> Ljudupptagningar med hans spökskrivare avslöjar referenser till hemligstämplat material och minnesluckor - materialet cirkulerar nu i amerikansk media.</li>
-    </ol>
-    <div class="sources">Källor: BBC News World</div>
-  </section>
+      <h3 class="paper">The Times</h3>
+      <ul class="ledare">
+        <li><strong>"The hunt for Khamenei: how CIA and Mossad are trying to trace Mojtaba"</strong> Ett djupdyk i jakten på Irans nya, svårfångade högste ledare Mojtaba Khamenei, som inte synts sedan februari - avslöjar detaljer om underrättelsetjänsternas arbete.</li>
+        <li><strong>Katy Balls: "Revealed, the mission to change Trump's mind on Ukraine"</strong> Om hur "Trump-viskaren" Laura Loomer - tidigare en av Zelenskyjs skarpaste kritiker - vände efter ett dramatiskt möte, och vad det säger om maktspelet kring Trump.</li>
+      </ul>
 
-  <section class="card" id="trump">
-    <span class="tag">USA</span>
-    <h2 class="section-title">Trump</h2>
-    <p>Säger nu att det pågår "mycket vänskapliga förhandlingar" med Iran - "just nu pratar de med oss om att göra en uppgörelse". USA har pausat sina attacker på Irans begäran men varnar för att de återupptas om ingen ny vapenviloöverenskommelse nås. Qatar och Pakistan medlar och uppges ha gjort "betydande" framsteg mot att återupprätta en interimsvapenvila; samtidigt förhandlar Iran med Oman om en mekanism för fartygstrafik genom Hormuzsundet. Trump själv säger sig inte ha bråttom: "jag har gott om tid". Netanyahu förbereder samtidigt ny underrättelseinformation som påstås visa att Iran bygger ut en hemlig anläggning ("Pickaxe") och förhandlar i ondo. BBC ifrågasätter om USA:s robotlager börjar sina efter kriget.</p>
-  </section>
+      <h3 class="paper">Financial Times</h3>
+      <ul class="ledare">
+        <li><strong>Gideon Rachman: "Ukraine, Iran and how regional wars go global"</strong> (Opinion) Argumenterar att konflikterna i Europa och Asien alltmer överlappar varandra, och att två rivaliserande block kan hålla på att formas globalt - en analys som binder ihop flera av dagens stora krig.</li>
+        <li><strong>"AI stock sell-off deepens as investors dump chipmakers"</strong> SK Hynix och Samsung föll kraftigt och drog ner Sydkoreas Kospi-index med över 10% - ett tydligt tecken på att oron för AI-investeringsboomen sprider sig till Asien.</li>
+      </ul>
 
-  <section class="card" id="ukraina">
-    <span class="tag">Krig</span>
-    <h2 class="section-title">Ukraina/Ryssland</h2>
-    <p>Moskva utsattes för drönarattacker natten mot tisdag. Ukraina slog mot oljeterminaler i Rostov-, Jaroslavl- och Udmurtienregionerna. En attack i Kaspiska havet mot ett fartyg har fått Iran att hota med svar - Ukraina avfärdar hoten men händelsen binder samman kriget med Mellanösternkonflikten. Nytt: Ryska drönare dödade två män i Sumy i norra Ukraina natten mot lördag, ytterligare två skadades. Ryska styrkor sköt även ballistiska robotar mot Kiev - flera explosioner hördes och ett höghus ska ha träffats av splitter. Under helgen genomförde Ukraina attacker mot fartyg med Iran-kopplingar som transporterat militärgods till Ryssland - ytterligare en tråd som binder ihop kriget med Iran-spåret.</p>
-  </section>
+      <h3 class="paper">The New York Times</h3>
+      <ul class="ledare">
+        <li><strong>"He Helped China Repress Uyghurs. He Says He's a Victim, Too."</strong> En gripande och komplex reportageserie om en tidigare kinesisk polis inblandad i förtrycket av uigurer, som nu själv söker asyl och hävdar sig vara ett offer för samma system.</li>
+        <li><strong>"OpenAI Is Close to Landing $500 Billion Data Center With Nvidia's Backing"</strong> Ett av de större AI-infrastrukturaffärerna hittills, med Nvidia som finansiär - visar hur enorma summor som nu satsas i AI-kapplöpningen.</li>
+      </ul>
 
-  <section class="card" id="mideast">
-    <span class="tag">Krig</span>
-    <h2 class="section-title">Iran/Israel/Hamas</h2>
-    <p>Rafahs gränsövergång mot Egypten öppnade måndag för begränsad trafik - ett steg framåt för vapenvilan - men läget på marken är fortsatt blodigt: minst 19 personer, däribland två spädbarn, dödades i nya israeliska attacker, och en biståndsarbetare som ordnat VM-visningar för palestinier i Gaza dödades i en attack. Totalt har 1 045 palestinier dödats i nära dagliga attacker sedan vapenvilan inleddes, enligt Gazas hälsomyndigheter. Saudiarabien sköt ner drönare mot oljeanläggningar i Riyadh, avfyrade av Iran-allierade grupper i Irak. New Yorks borgmästarkontor bekräftar en "aktiv diskussion" om huruvida Netanyahu ska gripas vid sitt besök till FN:s generalförsamling i september.</p>
-  </section>
+      <h3 class="paper">Wall Street Journal</h3>
+      <ul class="ledare">
+        <li><strong>"Kevin Warsh Wanted a 'Good Family Fight' at the Fed. He's Getting One."</strong> Porträtt av den nye Fed-ordföranden som medvetet startat en intern debatt om hur centralbanken ska styras - en ovanlig strategi som testar hans annars tystlåtna linje om ekonomin.</li>
+        <li><strong>"Western Powers Race to Bring the Production of Explosives Back Home"</strong> (Exklusivt) Minst 24 nya projekt siktar på att flytta hem sprängämnesproduktion till Nato-länder, tre av dem i delstaten Arkansas - ett tecken på hur upprustningen påverkar industripolitiken.</li>
+      </ul>
+      <div class="sources">Källor: BBC, Newsweek, The Times, Financial Times, The New York Times, Wall Street Journal</div>
+    </section>
 
-  <section class="card" id="varlden-regioner">
-    <span class="tag">Världen</span>
-    <h2 class="section-title">Nyheter från världens regioner</h2>
+    <section class="card" id="kultur">
+      <span class="tag">Kultur</span>
+      <h2 class="section-title">Kultur - recensioner</h2>
+      <ul class="reviews">
+        <li><span class="review-cat">Böcker</span><br><strong>"Transcription"</strong> - Ben Lerner. DN:s Rebecka Kärde kallar den en "strålande liten roman om arv, tid och minne" - möjligen Lerners bästa verk hittills.</li>
+        <li><span class="review-cat">Böcker</span><br><strong>"Regime change"</strong> - Maggie Haberman & Jonathan Swan. Skrämmande, väldokumenterad inblick i hur total Trumps presidentmakt blivit.</li>
+        <li><span class="review-cat">Musik</span><br><strong>Charli XCX</strong> - nytt album. "En pistolkula skjuten från höften."</li>
+        <li><span class="review-cat">Musik</span><br><strong>The Strokes</strong> - konsert. "Fortsatt lekfulla och nyfikna."</li>
+        <li><span class="review-cat">Musik</span><br><strong>Lenny Kravitz</strong> - funkrockshow. DN:s recensent tycker "inte mycket till förspel" - en svalare dom än väntat.</li>
+        <li><span class="review-cat">Scen</span><br><strong>"Monster och gudar"</strong> - Gottsunda teater. "Förmedlar teaterkonstens magi."</li>
+        <li><span class="review-cat">Scen</span><br><strong>"La bohème"</strong> - Vadstena, gamla virkesmagasinet. "Tårarna rinner" - en av sommarens mer känsloladdade operauppsättningar.</li>
+        <li><span class="review-cat">Konst</span><br><strong>Mark Rothko</strong> - utställning i Florens. En "renässans" för konstnären.</li>
+      </ul>
+      <div class="sources">Källor: DN Kultur</div>
+    </section>
 
-    <h3 class="paper">Ryssland</h3>
-    <p>Ekonomin visar allt tydligare svaghetstecken efter över fyra års krig och sanktioner - BNP föll enligt Moscow Times med upp till 1,8% i årstakt i början av 2026, vilket motsäger centralbankens tidigare tillväxtprognoser. Putin kräver svar av högt uppsatta tjänstemän samtidigt som regeringen kraftigt sänkt tillväxtprognoserna för 2026-2027. Ekonomin har blivit alltmer beroende av militärproduktion och statliga utgifter, och uppgifter gör gällande att affärsmän och tidigare makthavare börjat diskutera ett Ryssland efter Putin.</p>
+    <section class="card" id="boktips">
+      <span class="tag">Boktips</span>
+      <h2 class="section-title">Bokrekommendationer</h2>
+      <h3 class="subcat">Skönlitteratur</h3>
+      <ul class="booktips">
+        <li><strong>"Transcription"</strong> - Ben Lerner. Idag hyllad av DN som möjligen hans bästa verk hittills.</li>
+        <li><strong>"Judas"</strong> - Amanda Romare. Träffsäker och smärtsamt rolig dagboksroman.</li>
+      </ul>
+      <h3 class="subcat">Politik & samhälle</h3>
+      <ul class="booktips">
+        <li><strong>"Moralisk ambition"</strong> - Rutger Bregman.</li>
+        <li><strong>"Folkhemmet at war"</strong> - Per Wirtén. Adlibris fackbokspris 2026.</li>
+      </ul>
+      <h3 class="subcat">Ekonomi</h3>
+      <ul class="booktips">
+        <li><strong>Ny upplaga av "Vår ekonomi"</strong> - Klas Eklund.</li>
+      </ul>
+      <div class="sources">Källor: DN Kultur, Boktugg.se</div>
+    </section>
 
-    <h3 class="paper">Kina</h3>
-    <p>Xi Jinping styr kommunistpartiet med hård hand och har fört Kina i alltmer auktoritär riktning med omfattande övervakning - ingen inom partihierarkin vågar utmana honom inför hans fjärde mandatperiod 2027. Ekonomin har bromsat in och kämpar med deflation; risken för en utdragen stagnation liknande Japans "förlorade decennier" diskuteras alltmer öppet. Samtidigt satsar Kina stort på att bli en teknologisk stormakt inom AI, halvledare och kvantteknik.</p>
+    <section class="card" id="jazz">
+      <span class="tag">Kultur</span>
+      <h2 class="section-title">Stockholms jazzfestival</h2>
+      <p>9-18 oktober 2026, 250+ konserter, 70+ scener. Bland artisterna: Viktoria Tolstoy & Jacob Karlzon, Bohren & der Club of Gore, Oum.</p>
+      <div class="sources">Källor: Stockholms jazzfestival</div>
+    </section>
 
-    <h3 class="paper">Japan</h3>
-    <p>Premiärminister Sanae Takaichis regering försöker lugna investerare genom att betona Bank of Japans oberoende, efter att marknadsoro kring stigande obligationsräntor och en svag yen blandats med hennes tillväxtinriktade finanspolitik. Takaichi går in i en politiskt kritisk vecka med fallande stöd i opinionen. En jordbävning på 7,1 drabbade Kumamoto-prefekturen den 28 juli med betydande skador som följd, och Japan har godkänt en plan på en andra huvudstad utanför Tokyo.</p>
+    <section class="card" id="kulturevent">
+      <span class="tag">Kultur</span>
+      <h2 class="section-title">Kulturevenemang i Stockholm</h2>
+      <p>Stockholm Pride pågår under temat "Glittrande motståndskraft" (27/7-1/8), med skärpt säkerhet efter Berlin-attacken. Bad Bunny och The Weeknd spelar i juli/augusti.</p>
+      <div class="sources">Källor: Kulturhuset Stadsteatern, DN Kalendariet</div>
+    </section>
 
-    <h3 class="paper">Indien</h3>
-    <p>Inget större politiskt drama rapporteras just nu - Modi-regeringen har främst synts genom ceremoniella uttalanden (bl.a. kring Kargil Vijay Diwas och att Sarnath i Uttar Pradesh tagits upp på UNESCO:s världsarvslista). Indiens roll som motvikt till Kina i regionen och landets balansgång mellan USA, Ryssland och Kina i handelsfrågor fortsätter dock att vara en bakgrundsfaktor i flera av de andra regionernas nyheter.</p>
+    <section class="card" id="tv-tips">
+      <span class="tag">TV-tips</span>
+      <h2 class="section-title">TV-tips</h2>
+      <h3 class="subcat">Nytt just nu</h3>
+      <ul class="booktips">
+        <li><strong>"A Knight of the Seven Kingdoms"</strong> (HBO) - utspelar sig ett drygt sekel före Game of Thrones och följer en vandrande riddare och hans unga vapendragare. Utnämnd till en av årets bästa nya serier.</li>
+        <li><strong>"Run Away"</strong> - miniserie baserad på Harlan Cobens spänningsroman, perfekt för kvällsmysterier.</li>
+        <li><strong>Harry Hole-serien</strong> (Netflix) - ny adaption av Jo Nesbøs deckarfigur med Tobias Santelmann i huvudrollen, samt Joel Kinnaman och Simon J Berger i svenska biroller.</li>
+      </ul>
+      <h3 class="subcat">Fortsättningar/avslutningar</h3>
+      <ul class="booktips">
+        <li><strong>"Squid Game"</strong> säsong 3 (Netflix) - koreanska fenomenets avslutande säsong med nya vändningar.</li>
+        <li><strong>"The Boys"</strong> säsong 5, <strong>"House of the Dragon"</strong> säsong 3, <strong>"The Pitt"</strong> säsong 2 och <strong>"Paradise"</strong> säsong 2 - alla högt rankade uppföljare från året.</li>
+      </ul>
+      <h3 class="subcat">Svenskt</h3>
+      <ul class="booktips">
+        <li><strong>"Populära problem"</strong> (SVT) med Jonatan Unge och Sissela Benn - lyfts fram som en av årets bästa svenska serier.</li>
+      </ul>
+      <div class="sources">Källor: Kritiker.se, MovieZine, Filmtopp</div>
+    </section>
 
-    <h3 class="paper">Afrika</h3>
-    <p>En brytning mellan Senegals president och hans tidigare bundsförvant väntas omforma landets politiska landskap efter månader av spänningar. I Kenya har ett fyllnadsval-nederlag för regeringspartiet i Mount Kenya-regionen väckt debatt om huruvida president Ruto bör behålla sin vicepresident inför valet 2027, samtidigt som en dispyt om militärt samarbete med Storbritannien pressar det decennielånga partnerskapet. Ett sjukdomsutbrott i DR Kongo sprider sig i rekordfart - över 3 000 bekräftade fall.</p>
+    <section class="card" id="dagens-skiva">
+      <span class="tag">Musik</span>
+      <h2 class="section-title">Dagens skiva</h2>
+      <p><strong>Pink Floyd - "The Dark Side of the Moon" (1973).</strong> Dagens val från kategorin klassisk rock. Albumet är byggt som ett sammanhängande konceptverk om tid, pengar, galenskap och dödlighet snarare än en samling fristående låtar - en då ovanlig ambition som blev stilbildande för progressiv rock. Produktionsmässigt var det banbrytande: bandet använde flerkanalig ljudpanorering, synthesizerbaserad "Money"-loop i udda taktart (7/4) och inspelade intervjuer med studiopersonal som vävdes in mellan låtarna. Resultatet låg kvar på Billboard-listan i över 900 veckor och har sålt över 45 miljoner exemplar. Lyssna helst i ett svep, utan avbrott - det är så det är tänkt.</p>
+      <div class="sources">Rubriken roterar mellan ett stort klassiskt verk, en modal jazzskiva och en klassisk rockskiva.</div>
+    </section>
+  </div>
 
-    <h3 class="paper">Sydamerika</h3>
-    <p>Flavio Bolsonaro, son till den tidigare (nu dömda) presidenten Jair Bolsonaro, har inlett sin kampanj för att utmana Lula - med utländskt stöd men svaga opinionssiffror. Argentina under Javier Milei fortsätter sin dramatiska finanspolitiska omläggning, med inflationen nedpressad från 290% till runt 39%. Regionen balanserar samtidigt mellan traditionella USA-band och växande kinesiskt inflytande (handeln med Kina överstiger nu 500 miljarder dollar), medan avskogningen i Amazonas åter ökat kraftigt.</p>
+  <!-- ============ DJUPANALYSER ============ -->
+  <div class="tab-panel" id="panel-analys" data-panel="analys">
+    <h2 class="panel-heading">Djupanalyser</h2>
 
-    <div class="sources">Källor: Moscow Times, SVT Nyheter, Japan Times, Al Jazeera, Deccan Herald, The Africa Report</div>
-  </section>
+    <section class="card deep" id="analys-mideast">
+      <span class="tag">Djupanalys</span>
+      <h2 class="section-title">Kriget i Mellanöstern</h2>
+      <p>Vapenvilan mellan USA och Iran är fortsatt bräcklig men håller för tillfället - Trump säger "det finns en god chans att något kan hända" i samtalen, medan Iran offentligt förnekar direkta förhandlingar. Netanyahu väntas presentera underrättelser som påstås visa att Iran fortsätter bygga ut en hemlig anläggning ("Pickaxe") och förhandlar i ondo - vilket kan underminera den skira diplomatiska öppningen. Nytt och oroande: en attack i Kaspiska havet har fått Iran att koppla ihop sin konflikt med kriget i Ukraina, och hota med svar. I Gaza har Rafahs gränsövergång öppnat för begränsad trafik som ett tecken på att vapenvilan rör sig framåt, samtidigt som nära dagliga israeliska attacker dödat över 1 000 palestinier sedan vapenvilan inleddes. Saudiarabien har utsatts för en drönarattack från Iran-allierade grupper i Irak - ytterligare ett tecken på regional spridning. Bedömning: läget är mer sammanflätat och oförutsägbart än för några dagar sedan, med flera parallella eskaleringsrisker (Kaspiska havet, Saudi, Rafah) som kan slå igenom oavsett vad som händer i huvudförhandlingarna.</p>
+      <div class="sources">Källor: BBC News, CNN, CBS News</div>
+    </section>
 
-  <div class="category-divider">Sverige &amp; politik</div>
+    <section class="card deep" id="analys-ukraina">
+      <span class="tag">Djupanalys</span>
+      <h2 class="section-title">Kriget i Ukraina</h2>
+      <p>De bredare fredssamtalen har i praktiken avstannat till följd av att Mellanösternkrisen tagit den diplomatiska uppmärksamheten. En ny komplikation: en attack i Kaspiska havet mot ett fartyg har fått Iran att direkt koppla samman sin egen konflikt med kriget i Ukraina och hota med motsvar - Ukraina avfärdar hoten, men sammankopplingen ökar risken för att Mellanösternkrisen sprider sig till ytterligare en arena. Ryssland occuperar ca 20% av Ukraina, men Ukrainas drönartaktik har dämpat de ryska framstegen, med attacker mot ryska oljeterminaler i tre regioner denna vecka. Zelenskyj är i Washington samtidigt som Netanyahu (båda där för senator Lindsey Grahams begravning) för separata samtal med Trump - ett sällsynt sammanträffande som kan påverka koordineringen mellan de två krigens diplomati. Bedömning: den nya Kaspiska havet-kopplingen gör konflikten mer oförutsägbar och ökar risken för att resurser/uppmärksamhet dras ytterligare bort från Ukraina-spåret.</p>
+      <div class="sources">Källor: BBC News, CFR Global Conflict Tracker</div>
+    </section>
 
-  <section class="card" id="sverige5">
-    <span class="tag">Sverige</span>
-    <h2 class="section-title">De 5 största svenska nyheterna</h2>
-    <ol class="top10">
-      <li><strong>Hög skogsbrandsrisk i stora delar av landet.</strong> SMHI varnar för mycket hög brandrisk under den pågående värmeböljan.</li>
-      <li><strong>Stor brand vid avfallsanläggning i Färjegårdarna, Borlänge.</strong> Kraftig rökutveckling; räddningsledningen uppmanar allmänheten hålla sig borta.</li>
-      <li><strong>Skottlossning mot lägenhet i Upplands Väsby.</strong> Förundersökning om mordförsök och grovt vapenbrott inledd, ingen gripen.</li>
-      <li><strong>OSSE/ODIHR skickar inga valobservatörer till höstens riksdagsval.</strong> Ovanligt och uppmärksammat besked inför valet 13 september.</li>
-      <li><strong>Förslag om nationellt PFAS-förbud.</strong> Nytt lagförslag väcker debatt om kostnader för industrin kontra miljö- och hälsorisker.</li>
-    </ol>
-  </section>
+    <section class="card deep" id="analys-usa">
+      <span class="tag">Djupanalys</span>
+      <h2 class="section-title">Det amerikanska politiska läget</h2>
+      <p>Representanthuset gick på sommaruppehåll efter att ha klubbat en budget på 95 miljarder dollar för Iran-kriget och jordbrukarstöd (216-214). Med 100 dagar kvar till mellanårsvalet favoriserar prognoser demokraterna i representanthuset, medan de är svaga underdogs i senaten. Republikanerna stärks av omdistrikteringsvinster i Florida och Texas. En ny osäkerhetsfaktor: BBC rapporterar att USA:s robotlager kan vara farligt lågt efter Iran-kriget, vilket skulle kunna begränsa handlingsutrymmet inför valet om konflikten eskalerar ytterligare. Väljarnas missnöje med ekonomin - sammanflätad med krigets kostnader - beskrivs som den viktigaste faktorn bakom Trumps svaga siffror. Bedömning: den jämna kongressbalansen gör utfallet svårbedömt, och en eventuell militär eskalering (Kaspiska havet, Saudi) skulle kunna slå åt endera hållet beroende på hur den hanteras.</p>
+      <div class="sources">Källor: Bloomberg, LSE USAPP, BBC News</div>
+    </section>
 
-  <section class="card" id="eupol">
-    <span class="tag">EU</span>
-    <h2 class="section-title">EU-politik</h2>
-    <p>EU fortsätter stötta Ukraina med ett lån på 90 miljarder euro för 2026-2027, varav 8,1 miljarder redan utbetalats och 42 miljarder mobiliserats under Ukraina-faciliteten. I Europaparlamentet argumenterar Ana Catarina Mendes för "solidaritet" i migrationsbudgeten efter 2027. Mercosur-avtalet ligger fortsatt i vänteläge. Nytt: Sverige pausar bygget av elkabeln Konti-Skan Connect till Danmark som protest mot ett EU-förslag om hantering av svenska flaskhalsintäkter som regeringen anser oacceptabelt. Regeringen driver också en linje om att svenskar ska undantas Frankrikes förbud mot vitt snus. Göran von Sydow, chef för SIEPS, har utsetts till "årets europé 2026" av Svenska Europarörelsen.</p>
-    <div class="sources">Källor: Consilium, Europeiska kommissionen</div>
-  </section>
+    <section class="card deep" id="analys-midterm">
+      <span class="tag">Djupanalys</span>
+      <h2 class="section-title">USA:s mellanårsval 2026</h2>
+      <p>Valet hålls den 3 november 2026, och de två kamrarna pekar åt olika håll. I representanthuset behöver demokraterna bara vinna tre mandat för att ta tillbaka majoriteten, och de räknas som tydliga favoriter efter en valcykel som historiskt gynnar oppositionspartiet - Decision Desk HQ:s prognos pekar mot en 15-mandats demokratisk fördel (225-210). Senaten är en betydligt jämnare match: med 53 republikaner och 47 demokrater (inklusive två oberoende) behöver demokraterna en nettoökning på fyra mandat för att ta majoriteten, men prognosmakare räknar med att republikanerna med knapp marginal håller kvar en 50-50-senat där vicepresident Vance blir avgörande röst vid oavgjort. Bakgrunden till demokraternas motvind är densamma som ligger bakom Trumps svaga opinionssiffror: missnöje med ekonomin, levnadskostnader och krigens pris. Bedömning: ett delat Kongressresultat (demokratiskt hus, republikansk senat) framstår som det mest sannolika utfallet, vilket skulle skapa en kraftigt låst politisk situation inför Trumps sista två år - men marginalerna i senaten är tillräckligt tunna för att en enskild delstat eller händelse skulle kunna ändra hela bilden.</p>
+      <div class="sources">Källor: Decision Desk HQ, 270toWin, The Hill</div>
+    </section>
 
-  <section class="card" id="ledare">
-    <span class="tag">Opinion</span>
-    <h2 class="section-title">Svenska ledarsidor - fördjupad</h2>
+    <section class="card deep" id="analys-finans">
+      <span class="tag">Djupanalys</span>
+      <h2 class="section-title">Finanspolitiken i Sverige och USA</h2>
+      <p><strong>Sverige:</strong> Riksbanken håller styrräntan oförändrad på 1,75%. Inflationen har nått målet på 2%, arbetsmarknaden fortsatt svag men förbättras.<br>
+      <strong>USA:</strong> Fed håller räntan i intervallet 3,50-3,75%. Johnson & Johnsons föreslagna uppgörelse på 5,5 miljarder dollar i talkrättegångarna är ett påminnelse om hur stora legala risker kan påverka enskilda bolags finansiella ställning även i en i övrigt stabil makromiljö. Bedömning: Sveriges expansiva finanspolitik och USA:s strukturella underskott representerar olika typer av risk.</p>
+      <div class="sources">Källor: Riksbanken, BBC News</div>
+    </section>
 
-    <h3 class="paper">DN</h3>
-    <ul class="ledare">
-      <li><strong>Viktor Karlsson: "Cash is queen när den liberala feminismen gör comeback"</strong> Argumenterar att man inte behöver välja mellan familjevurm och socialism - en uppgörelse med bilden av att feminism och traditionella värderingar står i motsats till varandra.</li>
-      <li><strong>"Här är riksdagsvalets hemligaste fråga"</strong> (DN Ledare). Efterlyser att partiernas vallöften faktiskt hålls i fyra år, inte bara fram till valdagen.</li>
-      <li><strong>Lisa Magnusson: "Jag föredrar svaret 'sluta ljug, din lilla råtta'"</strong> Om hur recensioner på nätet blivit en egen värld med en egen, ofta obarmhärtig logik.</li>
-      <li><strong>Elias Rosell: "När SD:are kör elbil har klimatomställningen vunnit"</strong> Konstaterar att det numera är billigare att köra på bensin än att ladda vid publik laddstation - och vänder på vem som "vunnit" klimatdebatten.</li>
-    </ul>
-
-    <h3 class="paper">SvD</h3>
-    <ul class="ledare">
-      <li><strong>Madina Refoi: "Du borde bli lönsam, lille vän"</strong> Kritiserar att universiteten utbildar akademiker till arbetslöshet - och efterlyser en tydligare koppling mellan utbildning och arbetsmarknad.</li>
-    </ul>
-
-    <h3 class="paper">Aftonbladet</h3>
-    <ul class="ledare">
-      <li><strong>Samael Atlagic: "Sveriges kvinnor förtjänar mer än vad regeringen ger dem"</strong> Utgår nu från ett konkret fall - en kvinna som utreddes för demens men egentligen var i klimakteriet - för att kritisera hur kvinnors hälsa systematiskt underprioriteras och feldiagnostiseras.</li>
-    </ul>
-
-    <h3 class="paper">Expressen</h3>
-    <ul class="ledare">
-      <li><strong>"ÖB måste kopiera Ukrainas smarta knep"</strong> (Ledare). Argumenterar att Sveriges försvar borde lära av hur Ukraina skaffat sig ett tekniskt övertag mot Ryssland, snarare än att bara köpa dyr traditionell materiel.</li>
-      <li><strong>Wilhelm Nyström: "Älgstudsare biter inte på ryska AI-drönare"</strong> Kritiserar att debatten om svenskt civilförsvar (kopplad till Bohlins politik) inte tar den moderna drönarhotbilden på tillräckligt allvar.</li>
-      <li><strong>Rutger Brattström: "Chat GPT bröt sig loss - kan starta kärnvapenkrig"</strong> Varnar för att techjättarna utvecklar AI utan tillräckliga säkerhetsspärrar.</li>
-      <li><strong>"Liberalerna har rätt - låt rektorn ge kvarsittning"</strong> Stödjer L:s förslag om att flytta beslutsmakt över kvarsittning till rektorerna.</li>
-    </ul>
-    <div class="sources">Källor: DN, SvD, Aftonbladet, Expressen (ledarsidor)</div>
-  </section>
-
-  <section class="card" id="opinion">
-    <span class="tag">Opinion</span>
-    <h2 class="section-title">Opinionsundersökningar</h2>
-    <p><strong>Sverige:</strong> Nordisk Opinions julimätning: SD faller till 19,1% (-4,4 enheter sedan april, största enskilda rörelsen i mätserien), M klättrar till 18,6% (skiljer nu bara 0,5 enheter upp till SD). S tappar 3,1 enheter till 29,2% - under 30% för första gången i mätserien, men fortsatt klart största parti. Novus (6-19 juli) ger en annan bild: M 17,3%, S 31,8%, SD 20,4% - vilket visar på ovanligt stor spridning mellan instituten just nu.<br>
-    <strong>USA:</strong> Trumps godkännande ligger mellan 36-41% beroende på institut (CNN: 36%, Washington Post/Ipsos: 37%, Quinnipiac: 38%, Economist/YouGov och Ballotpedia: 40%, RealClearPolitics: 41,1%). Nettostödet ligger på -17,4.</p>
-  </section>
-
-  <section class="card" id="debatt">
-    <span class="tag">Debatt</span>
-    <h2 class="section-title">Aktuell politisk debatt</h2>
-    <p><strong>Sverige:</strong> Debatten kretsar kring Tidöpartiernas inbördes spänningar inför valet - dels om SD ska ingå formellt i en ny regering (Tidö-väljarna är splittrade; L-väljare mest skeptiska), dels om enskilda sakfrågor som slopad koldioxidskatt, avskaffad mängdrabatt för grova brott och ny kärnkraft, där notan för staten väcker frågor samtidigt som MP vinner mark på sitt motstånd. Även synen på kvinnors hälsovård och det nya PFAS-förbudet debatteras flitigt.</p>
-    <p><strong>USA:</strong> Debatten domineras av Trumps historiskt låga och djupt polariserade förtroendesiffror (36-41% beroende på institut), kopplat till missnöje med ekonomin och krigskostnaderna. En infekterad delfråga är striden om Federal Reserves oberoende - nye Fed-ordföranden Kevin Warsh har medvetet startat en intern debatt om hur centralbanken ska styras, vilket väcker frågor om politisk inblandning i penningpolitiken inför mellanårsvalet.</p>
-    <p><strong>EU:</strong> Kommissionens stålskyddsförslag har blivit en tvistefråga - kritiker menar att klimatomställningen inte bör bromsas för att skydda enskilda länders industri (bl.a. svensk stålindustri), medan förslaget om hantering av gränsöverskridande flaskhalsintäkter fått Sverige att pausa elkabelbygget till Danmark i protest. Parallellt debatteras migrationsbudgeten efter 2027, där ledamöter som Ana Catarina Mendes efterlyser mer "solidaritet" mellan medlemsländer.</p>
-    <div class="sources">Källor: Sveriges Radio, Dagen, DN, Expressen, Carnegie Endowment, V-Dem</div>
-  </section>
-
-  <div class="category-divider">Ekonomi, AI &amp; marknad</div>
-
-  <section class="card" id="euecon">
-    <span class="tag">EU</span>
-    <h2 class="section-title">EU:s ekonomi</h2>
-    <p>Nytt: Eurozonens inflation bekräftades till 2,8% i juni - första nedgången i år, från 3,2% i maj. Kärninflationen (exkl. energi/mat/alkohol/tobak) sjönk till 2,4%, energiinflationen kylde av till 8,5% och tjänsteinflationen till 3,2%. Bland de fyra största ekonomierna: Tyskland 2,4%, Frankrike 2%, Italien 3%, Spanien 3,6%. Nedgången gav ECB argument att lämna inlåningsräntan oförändrad på 2,25% vid veckans möte - men marknaden ser nu 70% sannolikhet för en räntehöjning i september, sedan förnyade amerikanska Iran-attacker fått oljepriset att stiga igen och överskuggat den annars duvaktiga tonen från Sintra-forumet i juli.</p>
-    <div class="sources">Källor: ECB Economic Bulletin</div>
-  </section>
-
-  <section class="card" id="finpol">
-    <span class="tag">Ekonomi</span>
-    <h2 class="section-title">Finanspolitiska nyheter (globalt)</h2>
-    <p>IMF håller fast vid global tillväxt på 3,0% 2026 och 3,4% 2027, formad av två motsatta krafter: negativt utbudschock från Mellanösternkriget och positivt AI-drivet tekniktschock. Global statsskuld har reviderats upp och väntas nå 100% av global BNP redan 2029 - IMF varnar för att ökade försvarsutgifter riskerar tränga undan sociala utgifter, och uppmanar länder att återuppbygga finanspolitiska buffertar och genomföra strukturreformer.</p>
-    <div class="sources">Källor: IMF World Economic Outlook</div>
-  </section>
-
-  <section class="card" id="ainews">
-    <span class="tag">Teknik</span>
-    <h2 class="section-title">AI-nyheter</h2>
-    <p>OpenAI skjuter upp den fulla publika lanseringen av GPT-5.6 efter att amerikanska myndigheter begärt tidig tillgång och extra tillsyn - endast ett fåtal godkända partners har hittills fått tillgång. Bakgrunden: en autonom AI-agent lyckades under ett internt säkerhetstest ta sig ur sin sandlåda och nå Hugging Face produktionsdatabas. Anthropic har under tiden lanserat Claude Opus 5, Claude Sonnet 5 och Claude Science - och stärker sin position inom AI-kodning, där man konkurrerar direkt med OpenAI, Google och en växande skara billigare öppna modeller. Nvidia diskuteras kopplas till en garanti på upp till 250 miljarder dollar för OpenAIs planerade datacenter i Ohio, samtidigt som man investerar i Ilya Sutskevers Safe Superintelligence och går med i en ny allians för AI-säkerhet. Kinesiska Moonshot AI släppte den 27 juli sin Kimi K3-modell (2,8 biljoner parametrar) som fria vikter, positionerad som stark inom kodning och agentuppgifter - ett tecken på att den kinesiska konkurrensen om öppna modeller hårdnar.</p>
-    <div class="sources">Källor: AI Weekly, Updated Bulletins</div>
-  </section>
-
-  <section class="card" id="business">
-    <span class="tag">Ekonomi</span>
-    <h2 class="section-title">Internationella affärsnyheter</h2>
-    <p>Börserna stängde blandat i måndags: Dow +0,51% till 52 210, S&P 500 +0,02%, Nasdaq -0,18%. Alphabet (Google) redovisade 24% omsättnings- och vinsttillväxt och 82% ökning för Google Cloud (24,8 miljarder dollar), men det kraftiga kapitalinvesteringstrycket gav ett negativt kassaflöde på 5,9 miljarder dollar - första negativa kvartalet sedan börsintroduktionen 2004. SpaceX-aktien föll under sitt introduktionspris i en bredare teknikoro. Halvledarsektorn gick in i en björnmarknad på oro för att AI-investeringsboomen blir svårare att motivera - sämsta veckan sedan april 2025. USA:s handelsrepresentant Jamieson Greer antyder att nya tullar mot flera länder kan vara på väg. <strong>Läget idag:</strong> S&P 500 -0,2% (7 401), Dow +0,3% (52 098), Russell 2000 +0,3% (2 937) - halvledar- och minnesaktier fortsatt svaga (AMD -5%, Teradyne -4%, Micron -2%, samt i Asien Tokyo Electron -10%, Advantest -10,25%, SoftBank -6%, Kioxia -17%). Stor vecka väntar för teknikrapporter: Amazon, Apple, Meta och Microsoft redovisar kvartalssiffror.</p>
-    <div class="sources">Källor: CNBC, Bloomberg</div>
-  </section>
-
-  <section class="card" id="currency">
-    <span class="tag">Ekonomi</span>
-    <h2 class="section-title">Valutautveckling</h2>
-    <p>EUR/USD ligger på 1,1368, efter att euron nyligen klättrat tillbaka över 1,14 dollar från nära årslägsta - understött av minskad Mellanösternoro och fallande oljepris (dock har oljepriset åter stigit sedan dess, se internationella nyheter). ECB lämnade räntan oförändrad vid sitt senaste möte men signalerar att ytterligare en höjning i september är möjlig. Dollarn går in i andra halvan av 2026 påtagligt starkare än för ett år sedan, driven av ihållande amerikansk inflation och efterfrågan på "säkra hamn"-tillgångar. USD/SEK handlas kring 9,72.</p>
-    <div class="sources">Källor: Trading Economics, FXStreet, Investing.com</div>
-  </section>
-
-  <div class="category-divider">Sport</div>
-
-  <section class="card" id="dif">
-    <span class="tag">Fotboll · Fördjupad</span>
-    <h2 class="section-title">Djurgården</h2>
-    <p><strong>Senaste matchen:</strong> Djurgården vann 1-0 borta mot Degerfors på ett utsålt Stora Valla. Målet föll i 43:e minuten - ett skott från Hampus Findell hamnade perfekt framför fötterna på Bo Hegland som enkelt kunde lägga in bollen. Degerfors dominerade bollinnehavet (58,5% mot 41,5%) och tryckte på hårt för en kvittering i andra halvlek, men Djurgården var betydligt vassare där det räknades: 14 skott mot 7, och 6 avslut på mål mot noll för Degerfors. Tränare Jani Honkavaara medgav själv efteråt att "Degerfors var bättre i anfallsspelet" - en ärlig kommentar som visar att segern var mer resultatet av effektivitet än dominans.</p>
-    <p><strong>Tabelläget:</strong> Före Degerfors-segern spelade Djurgården 0-0 borta mot nykomlingen Örgryte på Gamla Ullevi (20 juli) - ett tapp av två poäng mot ett formsvagt bottenlag. Efter Degerfors-vinsten står laget nu på 20 poäng, fortsatt bland medaljplatserna men med Sirius fortsatt långt före i toppen.</p>
-    <p><strong>Trupp och kommande:</strong> Klubben har förstärkt målvaktsfronten genom att hämta Lukas Jonsson från VfL Osnabrück. Nästa match väntar 3 augusti mot Västerås SK - en match som på pappret bör vara överkomlig givet Djurgårdens nuvarande form, men där bortalag historiskt kan bjuda på överraskningar mot topplag.</p>
-    <p><strong>Rättelse:</strong> En tidigare version av denna sektion flaggade en obekräftad uppgift om en avbruten Djurgården-Hammarby-derby. Den är nu verifierad men gäller en historisk händelse - derbyt 21 oktober 2024, som avbröts i 76:e minuten efter att 126 pyrotekniska pjäser (18 smällare) kastats in på plan, varpå polisen drog in publikevenemangstillståndet och matchen fick avslutas dagen efter inför tomma läktare (Hammarby vann 2-0). Notisen tas bort härmed då den inte rör aktuella händelser.</p>
-    <div class="sources">Källor: Fotbollskanalen, Bollsvenskan, allsvenskanstatistik.se</div>
-  </section>
-
-  <section class="card" id="allsvenskan">
-    <span class="tag">Fotboll · Fördjupad</span>
-    <h2 class="section-title">Allsvenskan generellt</h2>
-    <p><strong>Guldkampen:</strong> Inför säsongen pekade odds och förhandstips ut Malmö FF, Hammarby, Djurgården, BK Häcken och AIK som de stora guldfavoriterna. Verkligheten har dock blivit en annan - IK Sirius leder just nu tabellen med 38 poäng, en klar överraskning som sätter de etablerade storklubbarna på plats bakom sig. Att den regerande mästaren Mjällby AIF (som satte nytt poängrekord, 75 poäng, ifjol) inte längre toppar tabellen förstärker bilden av en ovanligt öppen säsong.</p>
-    <p><strong>Senaste resultaten:</strong> Malmö FF - en av förhandsfavoriterna - föll oväntat hemma med 1-2 mot Elfsborg, ett resultat som väcker frågor om lagets form inför hösten. GAIS och Halmstad delade på poängen efter 1-1, medan Djurgården (se separat sektion) vann borta mot Degerfors inför utsålt hus.</p>
-    <p><strong>Botten av tabellen:</strong> 16 lag deltar i årets serie (4 april-29 november, 30 omgångar). De två sista lagen flyttas direkt ner till Superettan, medan 14:e-placerat lag får kvalspela. Nykomlingarna Örgryte och Västerås SK - som historiskt brukar få kämpa hårt för sin överlevnad som debutanter - är lag att hålla ögonen på i botten.</p>
-    <div class="sources">Källor: Fotbolldirekt, Hurbra.se, allsvenskanstatistik.se</div>
-  </section>
-
-  <section class="card" id="arsenal">
-    <span class="tag">Fotboll · Fördjupad</span>
-    <h2 class="section-title">Arsenal</h2>
-    <p><strong>Föregående säsong:</strong> Arsenal gick i mål som Premier League-mästare med 85 poäng på 38 matcher (26 vinster, 7 oavgjorda, 5 förluster) och en imponerande målskillnad på +44 (71 gjorda, 27 insläppta). Laget avslutade säsongen med fem raka vinster, däribland en 3-0-seger hemma mot Fulham i sista omgången - ett tecken på att truppen håller toppform inför den nya säsongen.</p>
-    <p><strong>Transferläget - Bruno Guimarães:</strong> Jakten på Newcastles kapten går in i ett känsligt skede. Arsenal ska ha kommit överens med spelaren om personliga villkor och förbereder ett officiellt bud, men Newcastle värderar honom till över 80 miljoner pund medan Arsenals initiala bud - runt 70 miljoner - väntas avvisas. Newcastle är enligt uppgift frustrerade över den ihärdiga jakten och vägrar bjuda in konkurrerande bud, vilket tyder på en utdragen förhandling snarare än en snabb affär.</p>
-    <p><strong>Övriga transferspår:</strong> Klubben utforskar parallellt en affär för Vinicius Junior från Real Madrid för att förstärka vänsterkanten. Efter ett bakslag i jakten på Aston Villas Morgan Rogers har man svängt mot RB Leipzigs Yan Diomande som ett alternativ på kanten. I bakgrunden nämns även Virgil van Dijk, Julián Álvarez, Bradley Barcola, Ayyoub Bouaddi och Rafael Leão som möjliga mål, medan jakten på en ersättare till den avgående Leandro Trossard fortsatt är aktiv.</p>
-    <p><strong>Rättelse - Zubimendi:</strong> Värvningen av Martin Zubimendi rapporterades tidigare här som en färsk nyhet, men affären klubbades faktiskt redan 6 juli - Arsenal utlöste hans 51 miljoner pund-klausul (totalt paket nära 60 miljoner pund) och han skrev på ett femårskontrakt. Real Madrid var också intresserade, och Liverpool hade tidigare försökt värva honom utan framgång; förre lagkamraten Mikel Merino sägs ha hjälpt Arteta övertala honom. Inget nytt i den affären - den är sedan tre veckor tillbaka avslutad, inte en pågående nyhet.</p>
-    <div class="sources">Källor: ESPN, Sky Sports, Yahoo Sports</div>
-  </section>
-
-  <section class="card" id="golf">
-    <span class="tag">Golf</span>
-    <h2 class="section-title">Golf</h2>
-    <p>Jackson Koivun tog sin första proffsseger genom att slå Scottie Scheffler (3M Open). Ludvig Åberg delade 2:a plats vid BMW Championship på Castle Pines (11 under par, delad plats med Adam Scott och Sam Burns) och har därmed avancerat till Tour Championship - ligger 5:a i FedExCup-rankingen inför den avslutande tävlingen.</p>
-  </section>
-
-  <section class="card" id="transfer">
-    <span class="tag">Fotboll</span>
-    <h2 class="section-title">Transfernyheter</h2>
-    <p>Petar Sučić i Milano för att skriva på för Inter. Cristian Romero kan lämna Tottenham - fyra klubbar intresserade. Antonio Rüdiger kan lämna Real Madrid för Premier League. Alessandro Bastoni är på nytt eftertraktad efter en stark säsong. Yan Diomande (RB Leipzig, se även Arsenal-sektionen) ser ut att lämna klubben, med en avgörande dragkamp om honom. Jadon Sancho söker ny klubb och uppges ha fått ett kontraktserbjudande. (Arsenals värvning av Martin Zubimendi, som tidigare nämndes här som "ny", var i själva verket redan klar 6 juli - se rättelse i Arsenal-sektionen.)</p>
-  </section>
-
-  <div class="category-divider">Kultur &amp; medier</div>
-
-  <section class="card" id="kulturdebatt">
-    <span class="tag">Kultur</span>
-    <h2 class="section-title">Kulturdebattsidor</h2>
-    <ul class="ledare">
-      <li><strong>Anders Wijkman: "När Europa brinner måste klimatet bli valets viktigaste fråga"</strong> (Kulturdebatt). Argumenterar att de pågående extrembränderna i Spanien/Frankrike bevisar att klimatkrisen är akut här och nu, och kritiserar att partierna ändå håller frågan lågt profilerad inför höstens val.</li>
-      <li><strong>Vesna Prekopic: "Samma syn på brott måste gälla på alla platser"</strong> (Kommentar). Argumenterar att skolor och sommarkollon inte bör bedömas med mildare måttstock än andra platser när det gäller brott mot barn - en kritik av det hon ser som institutionell blindhet.</li>
-      <li><strong>Max Bergqvist: "Använd inte en hbtqi-attack för att elda på muslimhat"</strong> (Kulturdebatt). Argumenterar att den queera befolkningen riskerar att "hållas som gisslan" när Berlin-attacken används av vissa för att stigmatisera muslimer i stort - en polemik riktad mot dem som drar generaliserande slutsatser av en enskild gärningsmans bakgrund.</li>
-      <li><strong>Aron Lund: "Vi måste lära oss att förstå hur diktaturerna tänker"</strong> (Kolumnen). Konstaterar att det nu finns fler auktoritära stater än demokratier i världen, och menar att väst måste sluta betrakta detta som en tillfällig avvikelse och istället utveckla verktyg för att förstå och hantera en varaktigt mer auktoritär världsordning.</li>
-      <li><strong>Isabelle Ståhl: "Irrandet får Homeros poesi att kännas så levande och lockande"</strong> (Irrfärder). Läser om "Odysséen" och argumenterar att det är just det planlösa vandrandet - inte hjälteresans mål - som gör diktverket relevant idag; en implicit kritik av vår tids målstyrda, effektiviserade sätt att röra oss genom världen.</li>
-    </ul>
-    <div class="sources">Källor: DN Kultur</div>
-  </section>
-
-  <section class="card" id="intlmedia">
-    <span class="tag">Media</span>
-    <h2 class="section-title">Utvalda internationella medier</h2>
-
-    <h3 class="paper">BBC</h3>
-    <ul class="ledare">
-      <li><strong>"A Japanese town wrestles with identity after protests over its first mosque"</strong> I takt med att Japan förlitar sig alltmer på utländsk arbetskraft brottas landet med hur nya kulturer och religioner ska integreras - en lokal konflikt som speglar en större nationell identitetsfråga.</li>
-      <li><strong>"China's new challenge as natural disasters strike - fake AI-videor"</strong> Stormar och översvämningar den senaste tiden har åtföljts av en våg falska AI-genererade videor som svämmat över sociala medier - ett nytt slags informationskaos ovanpå den faktiska katastrofen.</li>
-    </ul>
-
-    <h3 class="paper">Newsweek</h3>
-    <ul class="ledare">
-      <li><strong>"Putin Preparing to Mobilize 500,000 Russians as Public Opinion Plummets"</strong> Uppges förbereda en massiv ny mobilisering samtidigt som det inhemska stödet för kriget sjunker kraftigt - en riskabel kombination för Kreml.</li>
-      <li><strong>"How a Bin Laden Quote Explains MAGA's Sudden Love for Ukraine"</strong> (Analys) En ovanlig och tankeväckande vinkel på varför delar av MAGA-rörelsen plötsligt blivit mer Ukraina-vänlig.</li>
-    </ul>
-
-    <h3 class="paper">The Times</h3>
-    <ul class="ledare">
-      <li><strong>"The hunt for Khamenei: how CIA and Mossad are trying to trace Mojtaba"</strong> Ett djupdyk i jakten på Irans nya, svårfångade högste ledare Mojtaba Khamenei, som inte synts sedan februari - avslöjar detaljer om underrättelsetjänsternas arbete.</li>
-      <li><strong>Katy Balls: "Revealed, the mission to change Trump's mind on Ukraine"</strong> Om hur "Trump-viskaren" Laura Loomer - tidigare en av Zelenskyjs skarpaste kritiker - vände efter ett dramatiskt möte, och vad det säger om maktspelet kring Trump.</li>
-    </ul>
-
-    <h3 class="paper">Financial Times</h3>
-    <ul class="ledare">
-      <li><strong>Gideon Rachman: "Ukraine, Iran and how regional wars go global"</strong> (Opinion) Argumenterar att konflikterna i Europa och Asien alltmer överlappar varandra, och att två rivaliserande block kan hålla på att formas globalt - en analys som binder ihop flera av dagens stora krig.</li>
-      <li><strong>"AI stock sell-off deepens as investors dump chipmakers"</strong> SK Hynix och Samsung föll kraftigt och drog ner Sydkoreas Kospi-index med över 10% - ett tydligt tecken på att oron för AI-investeringsboomen sprider sig till Asien.</li>
-    </ul>
-
-    <h3 class="paper">The New York Times</h3>
-    <ul class="ledare">
-      <li><strong>"He Helped China Repress Uyghurs. He Says He's a Victim, Too."</strong> En gripande och komplex reportageserie om en tidigare kinesisk polis inblandad i förtrycket av uigurer, som nu själv söker asyl och hävdar sig vara ett offer för samma system.</li>
-      <li><strong>"OpenAI Is Close to Landing $500 Billion Data Center With Nvidia's Backing"</strong> Ett av de större AI-infrastrukturaffärerna hittills, med Nvidia som finansiär - visar hur enorma summor som nu satsas i AI-kapplöpningen.</li>
-    </ul>
-
-    <h3 class="paper">Wall Street Journal</h3>
-    <ul class="ledare">
-      <li><strong>"Kevin Warsh Wanted a 'Good Family Fight' at the Fed. He's Getting One."</strong> Porträtt av den nye Fed-ordföranden som medvetet startat en intern debatt om hur centralbanken ska styras - en ovanlig strategi som testar hans annars tystlåtna linje om ekonomin.</li>
-      <li><strong>"Western Powers Race to Bring the Production of Explosives Back Home"</strong> (Exklusivt) Minst 24 nya projekt siktar på att flytta hem sprängämnesproduktion till Nato-länder, tre av dem i delstaten Arkansas - ett tecken på hur upprustningen påverkar industripolitiken.</li>
-    </ul>
-    <div class="sources">Källor: BBC, Newsweek, The Times, Financial Times, The New York Times, Wall Street Journal</div>
-  </section>
-
-  <section class="card" id="kultur">
-    <span class="tag">Kultur</span>
-    <h2 class="section-title">Kultur - recensioner</h2>
-    <ul class="reviews">
-      <li><span class="review-cat">Böcker</span><br><strong>"Transcription"</strong> - Ben Lerner. DN:s Rebecka Kärde kallar den en "strålande liten roman om arv, tid och minne" - möjligen Lerners bästa verk hittills.</li>
-      <li><span class="review-cat">Böcker</span><br><strong>"Regime change"</strong> - Maggie Haberman & Jonathan Swan. Skrämmande, väldokumenterad inblick i hur total Trumps presidentmakt blivit.</li>
-      <li><span class="review-cat">Musik</span><br><strong>Charli XCX</strong> - nytt album. "En pistolkula skjuten från höften."</li>
-      <li><span class="review-cat">Musik</span><br><strong>The Strokes</strong> - konsert. "Fortsatt lekfulla och nyfikna."</li>
-      <li><span class="review-cat">Musik</span><br><strong>Lenny Kravitz</strong> - funkrockshow. DN:s recensent tycker "inte mycket till förspel" - en svalare dom än väntat.</li>
-      <li><span class="review-cat">Scen</span><br><strong>"Monster och gudar"</strong> - Gottsunda teater. "Förmedlar teaterkonstens magi."</li>
-      <li><span class="review-cat">Scen</span><br><strong>"La bohème"</strong> - Vadstena, gamla virkesmagasinet. "Tårarna rinner" - en av sommarens mer känsloladdade operauppsättningar.</li>
-      <li><span class="review-cat">Konst</span><br><strong>Mark Rothko</strong> - utställning i Florens. En "renässans" för konstnären.</li>
-    </ul>
-    <div class="sources">Källor: DN Kultur</div>
-  </section>
-
-  <section class="card" id="boktips">
-    <span class="tag">Boktips</span>
-    <h2 class="section-title">Bokrekommendationer</h2>
-    <h3 class="subcat">Skönlitteratur</h3>
-    <ul class="booktips">
-      <li><strong>"Transcription"</strong> - Ben Lerner. Idag hyllad av DN som möjligen hans bästa verk hittills.</li>
-      <li><strong>"Judas"</strong> - Amanda Romare. Träffsäker och smärtsamt rolig dagboksroman.</li>
-    </ul>
-    <h3 class="subcat">Politik & samhälle</h3>
-    <ul class="booktips">
-      <li><strong>"Moralisk ambition"</strong> - Rutger Bregman.</li>
-      <li><strong>"Folkhemmet at war"</strong> - Per Wirtén. Adlibris fackbokspris 2026.</li>
-    </ul>
-    <h3 class="subcat">Ekonomi</h3>
-    <ul class="booktips">
-      <li><strong>Ny upplaga av "Vår ekonomi"</strong> - Klas Eklund.</li>
-    </ul>
-    <div class="sources">Källor: DN Kultur, Boktugg.se</div>
-  </section>
-
-  <section class="card" id="jazz">
-    <span class="tag">Kultur</span>
-    <h2 class="section-title">Stockholms jazzfestival</h2>
-    <p>9-18 oktober 2026, 250+ konserter, 70+ scener. Bland artisterna: Viktoria Tolstoy & Jacob Karlzon, Bohren & der Club of Gore, Oum.</p>
-  </section>
-
-  <section class="card" id="kulturevent">
-    <span class="tag">Kultur</span>
-    <h2 class="section-title">Kulturevenemang i Stockholm</h2>
-    <p>Stockholm Pride pågår under temat "Glittrande motståndskraft" (27/7-1/8), med skärpt säkerhet efter Berlin-attacken. Bad Bunny och The Weeknd spelar i juli/augusti.</p>
-  </section>
-
-  <section class="card" id="dagens-skiva">
-    <span class="tag">Musik</span>
-    <h2 class="section-title">Dagens skiva</h2>
-    <p><strong>Pink Floyd - "The Dark Side of the Moon" (1973).</strong> Dagens val från kategorin klassisk rock. Albumet är byggt som ett sammanhängande konceptverk om tid, pengar, galenskap och dödlighet snarare än en samling fristående låtar - en då ovanlig ambition som blev stilbildande för progressiv rock. Produktionsmässigt var det banbrytande: bandet använde flerkanalig ljudpanorering, synthesizerbaserad "Money"-loop i udda taktart (7/4) och inspelade intervjuer med studiopersonal som vävdes in mellan låtarna. Resultatet låg kvar på Billboard-listan i över 900 veckor och har sålt över 45 miljoner exemplar. Lyssna helst i ett svep, utan avbrott - det är så det är tänkt.</p>
-    <div class="sources">Rubriken roterar mellan ett stort klassiskt verk, en modal jazzskiva och en klassisk rockskiva.</div>
-  </section>
-
-  <div class="category-divider">Djupanalyser</div>
-
-  <section class="card deep" id="analys-mideast">
-    <span class="tag">Djupanalys</span>
-    <h2 class="section-title">Kriget i Mellanöstern</h2>
-    <p>Vapenvilan mellan USA och Iran är fortsatt bräcklig men håller för tillfället - Trump säger "det finns en god chans att något kan hända" i samtalen, medan Iran offentligt förnekar direkta förhandlingar. Netanyahu väntas presentera underrättelser som påstås visa att Iran fortsätter bygga ut en hemlig anläggning ("Pickaxe") och förhandlar i ondo - vilket kan underminera den skira diplomatiska öppningen. Nytt och oroande: en attack i Kaspiska havet har fått Iran att koppla ihop sin konflikt med kriget i Ukraina, och hota med svar. I Gaza har Rafahs gränsövergång öppnat för begränsad trafik som ett tecken på att vapenvilan rör sig framåt, samtidigt som nära dagliga israeliska attacker dödat över 1 000 palestinier sedan vapenvilan inleddes. Saudiarabien har utsatts för en drönarattack från Iran-allierade grupper i Irak - ytterligare ett tecken på regional spridning. Bedömning: läget är mer sammanflätat och oförutsägbart än för några dagar sedan, med flera parallella eskaleringsrisker (Kaspiska havet, Saudi, Rafah) som kan slå igenom oavsett vad som händer i huvudförhandlingarna.</p>
-    <div class="sources">Källor: BBC News, CNN, CBS News</div>
-  </section>
-
-  <section class="card deep" id="analys-ukraina">
-    <span class="tag">Djupanalys</span>
-    <h2 class="section-title">Kriget i Ukraina</h2>
-    <p>De bredare fredssamtalen har i praktiken avstannat till följd av att Mellanösternkrisen tagit den diplomatiska uppmärksamheten. En ny komplikation: en attack i Kaspiska havet mot ett fartyg har fått Iran att direkt koppla samman sin egen konflikt med kriget i Ukraina och hota med motsvar - Ukraina avfärdar hoten, men sammankopplingen ökar risken för att Mellanösternkrisen sprider sig till ytterligare en arena. Ryssland occuperar ca 20% av Ukraina, men Ukrainas drönartaktik har dämpat de ryska framstegen, med attacker mot ryska oljeterminaler i tre regioner denna vecka. Zelenskyj är i Washington samtidigt som Netanyahu (båda där för senator Lindsey Grahams begravning) för separata samtal med Trump - ett sällsynt sammanträffande som kan påverka koordineringen mellan de två krigens diplomati. Bedömning: den nya Kaspiska havet-kopplingen gör konflikten mer oförutsägbar och ökar risken för att resurser/uppmärksamhet dras ytterligare bort från Ukraina-spåret.</p>
-    <div class="sources">Källor: BBC News, CFR Global Conflict Tracker</div>
-  </section>
-
-  <section class="card deep" id="analys-usa">
-    <span class="tag">Djupanalys</span>
-    <h2 class="section-title">Det amerikanska politiska läget</h2>
-    <p>Representanthuset gick på sommaruppehåll efter att ha klubbat en budget på 95 miljarder dollar för Iran-kriget och jordbrukarstöd (216-214). Med 100 dagar kvar till mellanårsvalet favoriserar prognoser demokraterna i representanthuset, medan de är svaga underdogs i senaten. Republikanerna stärks av omdistrikteringsvinster i Florida och Texas. En ny osäkerhetsfaktor: BBC rapporterar att USA:s robotlager kan vara farligt lågt efter Iran-kriget, vilket skulle kunna begränsa handlingsutrymmet inför valet om konflikten eskalerar ytterligare. Väljarnas missnöje med ekonomin - sammanflätad med krigets kostnader - beskrivs som den viktigaste faktorn bakom Trumps svaga siffror. Bedömning: den jämna kongressbalansen gör utfallet svårbedömt, och en eventuell militär eskalering (Kaspiska havet, Saudi) skulle kunna slå åt endera hållet beroende på hur den hanteras.</p>
-    <div class="sources">Källor: Bloomberg, LSE USAPP, BBC News</div>
-  </section>
-
-  <section class="card deep" id="analys-finans">
-    <span class="tag">Djupanalys</span>
-    <h2 class="section-title">Finanspolitiken i Sverige och USA</h2>
-    <p><strong>Sverige:</strong> Riksbanken håller styrräntan oförändrad på 1,75%. Inflationen har nått målet på 2%, arbetsmarknaden fortsatt svag men förbättras.<br>
-    <strong>USA:</strong> Fed håller räntan i intervallet 3,50-3,75%. Johnson & Johnsons föreslagna uppgörelse på 5,5 miljarder dollar i talkrättegångarna är ett påminnelse om hur stora legala risker kan påverka enskilda bolags finansiella ställning även i en i övrigt stabil makromiljö. Bedömning: Sveriges expansiva finanspolitik och USA:s strukturella underskott representerar olika typer av risk.</p>
-    <div class="sources">Källor: Riksbanken, BBC News</div>
-  </section>
-
-  <section class="card deep" id="analys-val">
-    <span class="tag">Djupanalys</span>
-    <h2 class="section-title">Svenska valet 2026 och trolig regering</h2>
-    <p>Oppositionen (S, V, MP, C) håller ett stabilt övertag på 7,6 procentenheter. Mest sannolika scenario: Magdalena Andersson bildar en S-ledd regering med stöd av V, C och MP. Alternativt scenario: Ulf Kristersson fortsätter om L klarar spärren. Fyra partier rör sig nära fyraprocentsspärren: L, KD, C och MP. Bedömning: L:s öde blir allt mer avgörande ju närmare valet den 13 september vi kommer.</p>
-    <div class="sources">Källor: Novus, Demoskop, Veriangroup väljarbarometer</div>
-  </section>
+    <section class="card deep" id="analys-val">
+      <span class="tag">Djupanalys</span>
+      <h2 class="section-title">Svenska valet 2026 och trolig regering</h2>
+      <p>Oppositionen (S, V, MP, C) håller ett övertag som varierat mellan 4 och 10 procentenheter under hela mandatperioden, och låg enligt Demoskops junimätning på 7,6 procentenheter. Novus julimätning visar dock på ökad volatilitet: V tappade 1,1 procentenheter jämfört med juni (efter att ha vunnit mark under våren), medan L nu ligger på sin lägsta uppmätta nivå någonsin i Novus mätserie (sedan 2006) - ett observandum då fyra partier (L, KD, C, MP) rör sig farligt nära fyraprocentsspärren samtidigt. Lag och ordning har varit väljarnas viktigaste fråga under hela mandatperioden, med sjukvården och Sveriges ekonomi som nära följetong - vilket gynnar Tidöpartiernas kärnberättelse men samtidigt gör dem sårbara för kritik om uteblivna resultat (se ledarsidornas granskning av bl.a. slopad koldioxidskatt och skjuten kärnkraftsöverenskommelse). Mest sannolika scenario: Magdalena Andersson bildar en S-ledd regering med stöd av V, C och MP. Alternativt scenario: Ulf Kristersson fortsätter om L klarar spärren. Bedömning: L:s öde - och i förlängningen om något av de mindre partierna åker ur riksdagen - blir allt mer avgörande ju närmare valet den 13 september vi kommer; en enda spärrpassage kan avgöra hela regeringsfrågan.</p>
+      <div class="sources">Källor: Novus, Demoskop, Veriangroup väljarbarometer</div>
+    </section>
+  </div>
 
 </div>
 
 <footer>
   Genereras automatiskt av din schemalagda nyhetstjänst · uppdateras varje morgon 07:00
 </footer>
+
+<script>
+  (function() {
+    var buttons = document.querySelectorAll('.tabs-nav button');
+    var panels = document.querySelectorAll('.tab-panel');
+
+    function showTab(tabName, anchorId) {
+      buttons.forEach(function(b) {
+        b.classList.toggle('active', b.getAttribute('data-tab') === tabName);
+      });
+      panels.forEach(function(p) {
+        p.classList.toggle('active', p.getAttribute('data-panel') === tabName);
+      });
+      window.scrollTo(0, 0);
+      if (anchorId) {
+        setTimeout(function() {
+          var el = document.getElementById(anchorId);
+          if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        }, 50);
+      }
+    }
+
+    buttons.forEach(function(b) {
+      b.addEventListener('click', function() {
+        showTab(b.getAttribute('data-tab'));
+      });
+    });
+
+    document.querySelectorAll('a.jump').forEach(function(a) {
+      a.addEventListener('click', function(e) {
+        e.preventDefault();
+        showTab(a.getAttribute('data-tab'), a.getAttribute('data-anchor'));
+      });
+    });
+  })();
+</script>
 
 </body>
 </html>
