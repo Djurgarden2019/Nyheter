@@ -99,6 +99,7 @@
   <button data-tab="sport">Sport i övrigt</button>
   <button data-tab="kultur">Kultur &amp; medier</button>
   <button data-tab="analys">Djupanalyser</button>
+  <button data-tab="special">Specialartiklar</button>
 </nav>
 
 <div class="container">
@@ -173,7 +174,8 @@
         <li><a class="jump" data-tab="fotboll">Fotboll</a> - Djurgården, Allsvenskan, Arsenal, transfers, internationell fotboll</li>
         <li><a class="jump" data-tab="sport">Sport i övrigt</a> - golf, Formel 1, tennis och annan sport utanför fotbollen</li>
         <li><a class="jump" data-tab="kultur">Kultur &amp; medier</a> - kulturdebatt, medielandskap, recensioner, boktips, kulturevenemang i Stockholm och Nacka, TV-tips, dagens skiva</li>
-        <li><a class="jump" data-tab="analys">Djupanalyser</a> - Mellanöstern, Ukraina, USA-politik, mellanårsvalet, finanspolitik, svenska valet, nationalekonomi (Sverige/USA/Storbritannien/Japan/EU), samt Specialartiklar</li>
+        <li><a class="jump" data-tab="analys">Djupanalyser</a> - Mellanöstern, Ukraina, USA-politik, mellanårsvalet, finanspolitik, svenska valet, nationalekonomi (Sverige/USA/Storbritannien/Japan/EU)</li>
+        <li><a class="jump" data-tab="special">Specialartiklar</a> - fristående fördjupningsartiklar, t.ex. negativ inkomstskatt</li>
       </ul>
     </nav>
   </div>
@@ -930,7 +932,12 @@
       <div class="sources">Källor: <a href="https://ec.europa.eu/eurostat/" target="_blank" rel="noopener">Eurostat</a>, <a href="https://tradingeconomics.com/" target="_blank" rel="noopener">Trading Economics</a>, <a href="https://www.conference-board.org/" target="_blank" rel="noopener">The Conference Board</a> · Uppdaterad: 29 juli 2026</div>
     </section>
 
-    <h2 class="panel-heading" style="margin-top: 32px;">Specialartiklar</h2>
+  </div>
+
+  <!-- ============ SPECIALARTIKLAR ============ -->
+  <div class="tab-panel" id="panel-special" data-panel="special">
+    <h2 class="panel-heading">Specialartiklar</h2>
+    <div class="note" style="margin-bottom:16px;">Fristående, fördjupade temaartiklar som inte uppdateras dagligen - de står kvar som de skrevs om inget nytt uttryckligen efterfrågas.</div>
 
     <section class="card deep" id="special-negativ-inkomstskatt">
       <span class="tag">Specialartikel · Ekonomi</span>
@@ -950,7 +957,16 @@
         <li><strong>Politisk risk för "glidning":</strong> En invändning som redan Friedman brottades med är risken att nivån på grundutbetalningen med tiden pressas uppåt av politiskt tryck, vilket urholkar systemets ursprungliga kostnadseffektivitet.</li>
       </ul>
       <p><strong>Svensk relevans:</strong> Sverige har inget renodlat NIT-system i dag, utan en kombination av jobbskatteavdrag, grundavdrag och behovsprövade bidrag (bostadsbidrag, försörjningsstöd, etc.) som i praktiken försöker lösa liknande problem på andra sätt. Idén dyker regelbundet upp i den svenska välfärdsdebatten - inte minst i diskussioner om hur man kan förenkla bidragssystemet och minska marginaleffekterna för låginkomsttagare - men har hittills inte lett till något konkret lagförslag i Sveriges riksdag. Modellen är värd att känna till som referenspunkt eftersom den återkommer i internationella debatter om medborgarlön, jobbskatteavdrag och hur välfärdsstaten bäst kan moderniseras.</p>
-      <div class="sources">Källor: <a href="https://www.econlib.org/library/Enc/NegativeIncomeTax.html" target="_blank" rel="noopener">Econlib</a>, <a href="https://miltonfriedman.hoover.org/" target="_blank" rel="noopener">Hoover Institution (Milton Friedman-arkivet)</a>, <a href="https://mises.org/" target="_blank" rel="noopener">Mises Institute</a>, <a href="https://www.riksdagen.se/" target="_blank" rel="noopener">Sveriges riksdag</a> · Uppdaterad: 30 juli 2026</div>
+      <p><strong>Hur skulle Sverige kunna införa det?</strong> Sverige har faktiskt redan mycket av den infrastruktur som krävs, vilket gör en svensk NIT mer en fråga om politisk vilja än om ny teknik. Ett tänkbart genomförande skulle kunna se ut så här:</p>
+      <ul class="ledare">
+        <li><strong>Bygg vidare på Skatteverkets befintliga system:</strong> Alla svenska löntagare finns redan registrerade med aktuell inkomstuppgift via arbetsgivardeklarationer som lämnas månadsvis. Samma infrastruktur som i dag beräknar och drar skatt skulle kunna vändas om och betala ut ett skattetillgodohavande när inkomsten understiger en fastställd gräns - utan att någon ny myndighet eller separat ansökningsprocess behöver skapas.</li>
+        <li><strong>Utgå från jobbskatteavdraget:</strong> Sverige har redan en beprövad mekanism - jobbskatteavdraget, infört 2007 och utökat vid flera tillfällen - som sänker skatten på arbetsinkomster gradvis. En NIT skulle kunna konstrueras som en förlängning av samma avdrag nedåt: i stället för att avdraget bara minskar skatten till noll vid låg inkomst, skulle det kunna fortsätta ner i "minus" och generera en utbetalning. Även dagens förhöjda grundavdrag och jobbskatteavdrag för personer över 67 år fungerar redan i praktiken som en begränsad negativ skatt, vilket visar att modellen inte är principiellt främmande för svensk skattelagstiftning.</li>
+        <li><strong>Ersätt eller slå ihop delar av det befintliga bidragssystemet:</strong> För att undvika att en NIT bara läggs ovanpå befintliga stöd (och blir dyrare än nödvändigt) skulle en reform rimligen behöva samordnas med eller ersätta delar av försörjningsstöd, bostadsbidrag och andra behovsprövade bidrag - i linje med hur Timbro och liknande tankesmedjor resonerat kring att förenkla "lapptäcket" av stöd till en enda, transparent modell.</li>
+        <li><strong>Sätt en försiktig avtrappningstakt:</strong> Nivån på grundutbetalningen och hur snabbt den trappas bort i takt med stigande inkomst är den mest politiskt känsliga designfrågan - för brant avtrappning skapar nya marginaleffekter (samma "bidragsfälleproblem" NIT är tänkt att lösa), medan för långsam avtrappning blir dyr. En rimlig svensk modell skulle sannolikt behöva pröva flera avtrappningsnivåer i simuleringar innan lansering, liknande hur Finansdepartementet redan i dag konsekvensberäknar skatteförslag.</li>
+        <li><strong>Inför stegvis, gärna som pilot:</strong> Givet den politiska känsligheten och de stora fördelningseffekterna skulle en försiktig väg framåt vara att först testa modellen på en avgränsad grupp (till exempel unga vuxna utan etablering på arbetsmarknaden, eller inom ett enskilt län) innan ett nationellt införande - ett tillvägagångssätt som använts för andra svenska välfärdsreformer.</li>
+        <li><strong>Politisk hemvist i dag:</strong> Idén har historiskt lockat både marknadsliberaler (som ser den som ett sätt att minska statlig detaljstyrning) och delar av vänstern (som ser den som ett sätt att garantera en anständig grundnivå) - men i svensk partipolitik finns i dag inget parti som driver frågan som ett konkret förslag, vilket gör att ett genomförande i praktiken skulle kräva att någon aktör (tankesmedja, utredning eller ett enskilt parti) först lyfter fram en fullt uträknad svensk modell för allmän debatt.</li>
+      </ul>
+      <div class="sources">Källor: <a href="https://www.econlib.org/library/Enc/NegativeIncomeTax.html" target="_blank" rel="noopener">Econlib</a>, <a href="https://miltonfriedman.hoover.org/" target="_blank" rel="noopener">Hoover Institution (Milton Friedman-arkivet)</a>, <a href="https://mises.org/" target="_blank" rel="noopener">Mises Institute</a>, <a href="https://www.riksdagen.se/" target="_blank" rel="noopener">Sveriges riksdag</a>, <a href="https://timbro.se/ekonomi/skatter/arbete/" target="_blank" rel="noopener">Timbro</a>, <a href="https://www.skatteverket.se/privat/skatter/arbeteochinkomst/skattereduktioner/jobbskatteavdrag.4.6fdde64a12cc4eee2308000107.html" target="_blank" rel="noopener">Skatteverket</a> · Uppdaterad: 30 juli 2026</div>
     </section>
   </div>
 
