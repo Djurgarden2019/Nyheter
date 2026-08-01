@@ -80,6 +80,17 @@
   .sources a { color: #6b4b1a; }
   .note { font-family: Arial, Helvetica, sans-serif; font-size: 0.8rem; background: #fbf3d9; border: 1px solid #e8d99a; padding: 10px 14px; border-radius: 6px; color: #5c4a10; margin-bottom: 20px; }
   footer { text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 0.75rem; color: #999; padding: 20px; }
+  .del-choice { max-width: 720px; margin: 0 auto; padding: 40px 20px 60px; text-align: center; }
+  .del-choice h2 { font-size: 1.3rem; color: #14213d; margin: 0 0 6px; }
+  .del-choice .del-sub { font-family: Arial, Helvetica, sans-serif; font-size: 0.85rem; color: #766f5e; margin: 0 0 28px; }
+  .del-choice-inner { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+  .del-card { flex: 1 1 260px; background: #fff; border: 2px solid #14213d; border-radius: 10px; padding: 30px 24px; text-align: center; cursor: pointer; font-family: Georgia, 'Times New Roman', serif; transition: background 0.15s, transform 0.15s; }
+  .del-card:hover { background: #f0ede4; transform: translateY(-2px); }
+  .del-card-title { display: block; font-size: 1.7rem; font-weight: bold; color: #14213d; margin-bottom: 12px; }
+  .del-card-desc { display: block; font-family: Arial, Helvetica, sans-serif; font-size: 0.85rem; color: #6b4b1a; line-height: 1.5; }
+  .back-btn { font-family: Arial, Helvetica, sans-serif; font-size: 0.78rem; font-weight: bold; background: transparent; color: #c9a227; border: 1px solid rgba(201,162,39,0.5); padding: 8px 14px; border-radius: 6px; cursor: pointer; margin-right: 8px; }
+  .back-btn:hover { background: rgba(201,162,39,0.15); }
+  .del-label { font-family: Arial, Helvetica, sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #cfd6e8; padding: 8px 6px 8px 4px; align-self: center; }
 </style>
 </head>
 <body>
@@ -89,27 +100,49 @@
   <div class="meta" id="updated-meta">Senast uppdaterad: 1 augusti 2026</div>
 </div>
 
-<nav class="tabs-nav" id="tabs-nav">
-  <button data-tab="home" class="active">Förstasida</button>
-  <button data-tab="utrikespolitik">Utrikes</button>
+<div class="del-choice" id="del-choice">
+  <h2>Välj del</h2>
+  <p class="del-sub">Nyhetsdelen samlar dagens nyheter ämne för ämne. Magasinet samlar fördjupningar, analyser och återkommande innehåll som inte är knutet till dagens nyhetsflöde.</p>
+  <div class="del-choice-inner">
+    <button class="del-card" data-del="nyheter" type="button">
+      <span class="del-card-title">Nyhetsdel</span>
+      <span class="del-card-desc">Sverige · Utrikes · Ekonomi · Sport · Kultur · Miljö och klimat</span>
+    </button>
+    <button class="del-card" data-del="magasin" type="button">
+      <span class="del-card-title">Magasin</span>
+      <span class="del-card-desc">Analyser · Filosofi och Psykologi · Framtid · Mat &amp; Dryck</span>
+    </button>
+  </div>
+</div>
+
+<nav class="tabs-nav" id="tabs-nav-nyheter" data-del-nav="nyheter" style="display:none;">
+  <button class="back-btn" type="button" data-action="back-to-del">&larr; Byt del</button>
+  <span class="del-label">Nyhetsdel</span>
+  <button data-tab="home" class="active">Översikt</button>
   <button data-tab="sverige">Sverige</button>
-  <button data-tab="ekonomi">Ekonomi, AI &amp; marknad</button>
+  <button data-tab="utrikespolitik">Utrikes</button>
+  <button data-tab="ekonomi">Ekonomi</button>
   <button data-tab="sport">Sport</button>
-  <button data-tab="kultur">Kultur &amp; medier</button>
+  <button data-tab="kultur">Kultur</button>
+  <button data-tab="miljoklimat">Miljö och klimat</button>
+</nav>
+
+<nav class="tabs-nav" id="tabs-nav-magasin" data-del-nav="magasin" style="display:none;">
+  <button class="back-btn" type="button" data-action="back-to-del">&larr; Byt del</button>
+  <span class="del-label">Magasin</span>
   <button data-tab="analys">Analyser</button>
   <button data-tab="filosofipsykologi">Filosofi och Psykologi</button>
   <button data-tab="framtid">Framtid</button>
-  <button data-tab="miljoklimat">Miljö &amp; klimat</button>
   <button data-tab="matdryck">Mat &amp; Dryck</button>
 </nav>
 
-<div class="container">
+<div class="container" id="container" style="display:none;">
 
   <!-- ============ FÖRSTASIDA ============ -->
   <div class="tab-panel active" id="panel-home" data-panel="home">
 
     <div class="note">
-      Denna sida uppdateras automatiskt varje morgon kl 07:00 av den schemalagda nyhetstjänsten. Klicka på flikarna ovan för att se alla ämnen - här på förstasidan är bara det viktigaste just nu, och ingen nyhet i listan nedan är äldre än 24 timmar.
+      Denna sida uppdateras automatiskt varje morgon kl 07:00 av den schemalagda nyhetstjänsten. Klicka på flikarna ovan för att se alla ämnen inom Nyhetsdel, eller på "Byt del" för att gå till Magasinet. Här på översikten är bara det viktigaste just nu, och ingen nyhet i listan nedan är äldre än 24 timmar.
     </div>
 
     <div class="note" style="margin-bottom:16px; border-left: 3px solid #c9a227; padding-left: 12px;">
@@ -171,17 +204,23 @@
     </ul>
 
     <nav class="toc" style="margin-top: 20px;">
-      <h2>Snabblänkar till alla flikar</h2>
+      <h2>Snabblänkar - Nyhetsdel</h2>
       <ul>
-        <li><a class="jump" data-tab="utrikespolitik">Utrikes</a> - de aktiva krigen (Ukraina/Ryssland, Iran/Israel/Hamas), internationella nyheter, Trump, världens regioner, utvalda internationella medier</li>
         <li><a class="jump" data-tab="sverige">Sverige</a> - svenska nyheter, väder och nyheter om Nacka, senaste nyheterna om Stockholm, EU-politik, ledarsidor, opinion, politisk debatt</li>
-        <li><a class="jump" data-tab="ekonomi">Ekonomi, AI &amp; marknad</a> - EU-ekonomi, finanspolitik, AI, affärsnyheter, valutor och börsindex (inkl. 3 månaders utveckling)</li>
+        <li><a class="jump" data-tab="utrikespolitik">Utrikes</a> - de aktiva krigen (Ukraina/Ryssland, Iran/Israel/Hamas), internationella nyheter, Trump, världens regioner, utvalda internationella medier</li>
+        <li><a class="jump" data-tab="ekonomi">Ekonomi</a> - EU-ekonomi, finanspolitik, AI, affärsnyheter, valutor och börsindex (inkl. 3 månaders utveckling)</li>
         <li><a class="jump" data-tab="sport">Sport</a> - Djurgården, Allsvenskan, Arsenal, transfers, internationell fotboll, golf, Formel 1, tennis och annan sport</li>
-        <li><a class="jump" data-tab="kultur">Kultur &amp; medier</a> - kulturdebatt, medielandskap, recensioner, boktips, kulturevenemang i Stockholm och Nacka, TV-tips, dagens skiva</li>
+        <li><a class="jump" data-tab="kultur">Kultur</a> - kulturdebatt, medielandskap, recensioner, boktips, kulturevenemang i Stockholm och Nacka, TV-tips, dagens skiva</li>
+        <li><a class="jump" data-tab="miljoklimat">Miljö och klimat</a> - internationellt klimatläge samt ny klimatteknik</li>
+      </ul>
+    </nav>
+
+    <nav class="toc" style="margin-top: 16px;">
+      <h2>Snabblänkar - Magasin</h2>
+      <ul>
         <li><a class="jump" data-tab="analys">Analyser</a> - Mellanöstern, Ukraina, USA-politik, mellanårsvalet, finanspolitik, svenska valet, nationalekonomi (Sverige/USA/Storbritannien/Japan/EU), samt fristående specialartiklar (t.ex. negativ inkomstskatt)</li>
         <li><a class="jump" data-tab="filosofipsykologi">Filosofi och Psykologi</a> - senaste inom filosofi och psykologi, samt dagliga fördjupningar om en stor filosof och en stor psykolog</li>
         <li><a class="jump" data-tab="framtid">Framtid</a> - forskning och prognoser om framtidens arbete, relationer/familj/barn, teknik/vardagsvanor samt samhälle/politik/religion</li>
-        <li><a class="jump" data-tab="miljoklimat">Miljö &amp; klimat</a> - internationellt klimatläge samt ny klimatteknik</li>
         <li><a class="jump" data-tab="matdryck">Mat &amp; Dryck</a> - konkreta recept, vinrekommendationer och källbelagda krogrecensioner</li>
       </ul>
     </nav>
@@ -1254,11 +1293,47 @@
 
 <script>
   (function() {
-    var buttons = document.querySelectorAll('.tabs-nav button');
+    var delChoice = document.getElementById('del-choice');
+    var container = document.getElementById('container');
+    var navs = {
+      nyheter: document.getElementById('tabs-nav-nyheter'),
+      magasin: document.getElementById('tabs-nav-magasin')
+    };
     var panels = document.querySelectorAll('.tab-panel');
+    var currentDel = null;
+
+    var tabDel = {
+      home: 'nyheter', sverige: 'nyheter', utrikespolitik: 'nyheter', ekonomi: 'nyheter',
+      sport: 'nyheter', kultur: 'nyheter', miljoklimat: 'nyheter',
+      analys: 'magasin', filosofipsykologi: 'magasin', framtid: 'magasin', matdryck: 'magasin'
+    };
+
+    function openDel(del) {
+      currentDel = del;
+      delChoice.style.display = 'none';
+      container.style.display = 'block';
+      Object.keys(navs).forEach(function(key) {
+        navs[key].style.display = (key === del) ? 'flex' : 'none';
+      });
+      window.scrollTo(0, 0);
+    }
+
+    function backToDel() {
+      currentDel = null;
+      delChoice.style.display = 'block';
+      container.style.display = 'none';
+      Object.keys(navs).forEach(function(key) {
+        navs[key].style.display = 'none';
+      });
+      window.scrollTo(0, 0);
+    }
 
     function showTab(tabName, anchorId) {
-      buttons.forEach(function(b) {
+      var del = tabDel[tabName];
+      if (del && del !== currentDel) {
+        openDel(del);
+      }
+      document.querySelectorAll('.tabs-nav button[data-tab]').forEach(function(b) {
         b.classList.toggle('active', b.getAttribute('data-tab') === tabName);
       });
       panels.forEach(function(p) {
@@ -1273,7 +1348,19 @@
       }
     }
 
-    buttons.forEach(function(b) {
+    document.querySelectorAll('.del-card').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var del = btn.getAttribute('data-del');
+        openDel(del);
+        showTab(del === 'nyheter' ? 'home' : 'analys');
+      });
+    });
+
+    document.querySelectorAll('[data-action="back-to-del"]').forEach(function(btn) {
+      btn.addEventListener('click', backToDel);
+    });
+
+    document.querySelectorAll('.tabs-nav button[data-tab]').forEach(function(b) {
       b.addEventListener('click', function() {
         showTab(b.getAttribute('data-tab'));
       });
