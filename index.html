@@ -91,6 +91,13 @@
   .back-btn { font-family: Arial, Helvetica, sans-serif; font-size: 0.78rem; font-weight: bold; background: transparent; color: #c9a227; border: 1px solid rgba(201,162,39,0.5); padding: 8px 14px; border-radius: 6px; cursor: pointer; margin-right: 8px; }
   .back-btn:hover { background: rgba(201,162,39,0.15); }
   .del-label { font-family: Arial, Helvetica, sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #cfd6e8; padding: 8px 6px 8px 4px; align-self: center; }
+  .subtabs-nav { display: flex; justify-content: flex-end; gap: 6px; margin-bottom: 16px; border-bottom: 1px solid #e0ddd3; padding-bottom: 10px; }
+  .subtabs-nav button { font-family: Arial, Helvetica, sans-serif; font-size: 0.78rem; font-weight: bold; background: transparent; color: #6b4b1a; border: 1px solid rgba(201,162,39,0.5); padding: 6px 14px; border-radius: 6px; cursor: pointer; }
+  .subtabs-nav button:hover { background: rgba(201,162,39,0.12); }
+  .subtabs-nav button.active { background: #c9a227; color: #14213d; border-color: #c9a227; }
+  .subtab-panel { display: none; }
+  .subtab-panel.active { display: block; }
+  .archive-note { font-family: Arial, Helvetica, sans-serif; font-size: 0.8rem; color: #766f5e; margin: 0 0 16px; }
 </style>
 </head>
 <body>
@@ -110,7 +117,7 @@
     </button>
     <button class="del-card" data-del="magasin" type="button">
       <span class="del-card-title">Magasin</span>
-      <span class="del-card-desc">Analyser · Filosofi och Psykologi · Framtid · Mat &amp; Dryck</span>
+      <span class="del-card-desc">Analyser · Filosofi och Psykologi · Framtid · Mat &amp; Dryck · Historia</span>
     </button>
   </div>
 </div>
@@ -134,6 +141,7 @@
   <button data-tab="filosofipsykologi">Filosofi och Psykologi</button>
   <button data-tab="framtid">Framtid</button>
   <button data-tab="matdryck">Mat &amp; Dryck</button>
+  <button data-tab="historia">Historia</button>
 </nav>
 
 <div class="container" id="container" style="display:none;">
@@ -222,6 +230,7 @@
         <li><a class="jump" data-tab="filosofipsykologi">Filosofi och Psykologi</a> - senaste inom filosofi och psykologi, samt dagliga fördjupningar om en stor filosof och en stor psykolog</li>
         <li><a class="jump" data-tab="framtid">Framtid</a> - forskning och prognoser om framtidens arbete, relationer/familj/barn, teknik/vardagsvanor samt samhälle/politik/religion</li>
         <li><a class="jump" data-tab="matdryck">Mat &amp; Dryck</a> - konkreta recept, vinrekommendationer och källbelagda krogrecensioner</li>
+        <li><a class="jump" data-tab="historia">Historia</a> - fördjupade artiklar om stora historiska händelser, t.ex. franska revolutionen, slaget vid Stalingrad och spanska inkvisitionen</li>
       </ul>
     </nav>
   </div>
@@ -268,11 +277,9 @@
         <li><strong>UEFA ger Fifas Infantino ultimatum.</strong> Infantino ska antingen avgå eller möta en extra misstroendeomröstning efter sitt (nu tillbakadragna) förslag om att sälja andelar i Fifa Forward Enterprise. <a href="https://www.euronews.com/video/2026/08/02/latest-news-bulletin-august-2nd-2026-morning" target="_blank" rel="noopener" class="inline-src">(källa: Euronews)</a></li>
         <li><strong>Iran varnar för "äventyrliga handlingar" från USA.</strong> Utrikesminister Araghchi markerar mot Washington trots Trumps besked om inställda attacker - Teheran bekräftar inte att man bett om detta. <a href="https://abcnews.com/International/live-updates/iran-live-updates-tehran-progress-made-strait-hormuz/?id=135110405" target="_blank" rel="noopener" class="inline-src">(källa: ABC News)</a></li>
         <li><strong>Tankfartyget Gaslog Shanghai bland de träffade i Hormuzsundet.</strong> Det Bermuda-flaggade LNG-fartyget, som fraktade last från Qatar, var enligt uppgift ett av de fartyg som träffades i attackerna häromdagen. <a href="https://www.euronews.com/video/2026/08/02/latest-news-bulletin-august-2nd-2026-morning" target="_blank" rel="noopener" class="inline-src">(källa: Euronews)</a></li>
-        <li><strong>Human Rights Watch: ryskledda Africa Corps-attacker dödar civila i Mali.</strong> En ny rapport dokumenterar flyganfall mot civila i Mali kopplade till den ryskkontrollerade paramilitära styrkan Africa Corps. <a href="https://www.hrw.org/" target="_blank" rel="noopener" class="inline-src">(källa: Human Rights Watch)</a></li>
         <li><strong>Fortsatta israeliska attacker i Gaza och Nablus.</strong> Nya dödsoffer i Gaza City efter israeliska flyganfall, samtidigt som militära operationer pågår i Nablus på Västbanken. <a href="https://www.haaretz.com/" target="_blank" rel="noopener" class="inline-src">(källa: Haaretz)</a></li>
-        <li><strong>Kolumbiens Petro reser till Kuba inför mandatperiodens slut.</strong> Möte med Kubas president Miguel Díaz-Canel en vecka innan Petros fyraåriga mandatperiod löper ut. <a href="https://www.infobae.com/america/agencias/2026/07/30/viernes-31-de-julio-de-2026-1930-gmt/" target="_blank" rel="noopener" class="inline-src">(källa: Infobae/EFE)</a></li>
       </ol>
-      <div class="sources">Källor: <a href="https://www.timesofisrael.com/liveblog-august-2-2026/" target="_blank" rel="noopener">The Times of Israel</a>, <a href="https://www.npr.org/2026/07/30/g-s1-136276/russia-ukraine-war" target="_blank" rel="noopener">NPR</a>, <a href="https://www.cbsnews.com/" target="_blank" rel="noopener">CBS News</a>, <a href="https://www.euronews.com/" target="_blank" rel="noopener">Euronews</a>, <a href="https://www.hrw.org/" target="_blank" rel="noopener">Human Rights Watch</a>, <a href="https://www.infobae.com/america/agencias/2026/07/30/viernes-31-de-julio-de-2026-1930-gmt/" target="_blank" rel="noopener">Infobae/EFE</a> · Uppdaterad: 2 augusti 2026</div>
+      <div class="sources">Källor: <a href="https://www.timesofisrael.com/liveblog-august-2-2026/" target="_blank" rel="noopener">The Times of Israel</a>, <a href="https://www.npr.org/2026/07/30/g-s1-136276/russia-ukraine-war" target="_blank" rel="noopener">NPR</a>, <a href="https://www.cbsnews.com/" target="_blank" rel="noopener">CBS News</a>, <a href="https://www.euronews.com/" target="_blank" rel="noopener">Euronews</a>, <a href="https://www.haaretz.com/" target="_blank" rel="noopener">Haaretz</a> · Uppdaterad: 2 augusti 2026</div>
     </section>
 
     <section class="card" id="trump">
@@ -300,7 +307,7 @@
       <p>Xi Jinping styr kommunistpartiet med hård hand och har fört Kina i alltmer auktoritär riktning med omfattande övervakning - ingen inom partihierarkin vågar utmana honom inför hans fjärde mandatperiod 2027. Ekonomin har bromsat in och kämpar med deflation; risken för en utdragen stagnation liknande Japans "förlorade decennier" diskuteras alltmer öppet. Samtidigt satsar Kina stort på att bli en teknologisk stormakt inom AI, halvledare och kvantteknik. <strong>Nytt:</strong> Det officiella inköpschefsindexet (PMI) väntas ha sjunkit till 50,4 från 50,6 i juli - fortsatt precis inom tillväxtzonen, men en påminnelse om hur skör återhämtningen är trots kraftig exportökning inom high tech. <a href="https://www.riotimesonline.com/global-economy-briefing-july-31-2026/" target="_blank" rel="noopener" class="inline-src">(källa: Rio Times)</a></p>
 
       <h3 class="paper">Japan</h3>
-      <p>Jordbävningen på magnitud 7,1 som drabbade Kyushu/Kumamoto-regionen den 28 juli har krävt minst 28 liv och skadat över 60 - dödsfall har även orsakats av att en skorsten vid en pappersmassefabrik kollapsade samt en gasexplosion i ett köpcentrum, utöver skadorna från själva skalvet. Räddningsteam fortsätter för tredje dagen i rad söka efter flera saknade personer under rasmassor i Kumamoto-prefekturen. Samtidigt försöker premiärminister Sanae Takaichis regering lugna investerare genom att betona Bank of Japans oberoende, efter att marknadsoro kring stigande obligationsräntor och en svag yen blandats med hennes tillväxtinriktade finanspolitik - centralbanken höll under veckan styrräntan oförändrad på 1,0%, som väntat. Takaichi går in i en politiskt kritisk vecka med fallande stöd i opinionen, och Japan har godkänt en plan på en andra huvudstad utanför Tokyo. <a href="https://www.riotimesonline.com/global-economy-briefing-july-31-2026/" target="_blank" rel="noopener" class="inline-src">(källa: Rio Times)</a></p>
+      <p>Efterdyningarna av jordbävningen på magnitud 7,1 som drabbade Kyushu/Kumamoto-regionen 28 juli (minst 28 döda, över 60 skadade) fortsätter prägla den politiska och ekonomiska bilden. Premiärminister Sanae Takaichis regering försöker lugna investerare genom att betona Bank of Japans oberoende, efter att marknadsoro kring stigande obligationsräntor och en svag yen blandats med hennes tillväxtinriktade finanspolitik - centralbanken har hållit styrräntan oförändrad på 1,0%, som väntat. Takaichi går in i en politiskt kritisk period med fallande stöd i opinionen, och Japan har godkänt en plan på en andra huvudstad utanför Tokyo. <a href="https://www.riotimesonline.com/global-economy-briefing-july-31-2026/" target="_blank" rel="noopener" class="inline-src">(källa: Rio Times)</a></p>
 
       <h3 class="paper">Indien</h3>
       <p>Den s.k. "Cockroach"-proteströrelsen bland studenter hotar blossa upp igen efter massgripanden, och beskrivs av Guardian som ett tecken på sprickor i Modi-regeringens ställning inför kommande val. I grannlandet Pakistan har myndigheterna anklagats för att skjuta ihjäl 30 obeväpnade demonstranter i Kashmir, en anklagelse som skärper regionens redan spända läge. Indiens roll som motvikt till Kina och landets balansgång mellan USA, Ryssland och Kina i handelsfrågor fortsätter att vara en bakgrundsfaktor i flera av de andra regionernas nyheter.</p>
@@ -327,67 +334,24 @@
       <h3 class="paper">Newsweek (World)</h3>
       <ul class="ledare">
         <li><strong>"Ebola Outbreak: Trump Admin Warns Europe Ahead of World Cup"</strong> USA:s utrikesdepartement uppmanar Europa att skärpa åtgärderna mot ebolaspridning inför sommarens fotbolls-VM - annars kan resenärer möta nya reserestriktioner. <a href="https://www.newsweek.com/ebola-outbreak-2026-world-cup-donald-trump-europe-12051272" target="_blank" rel="noopener" class="inline-src">(källa: Newsweek)</a></li>
-        <li><strong>"US Retaliates After Trump Says Iran Downed Helicopter Amid Ceasefire"</strong> USA/Israel svarade med nya attacker efter uppgifter om att Iran sköt ner en helikopter mitt under den bräckliga vapenvilan - ytterligare ett tecken på hur skört läget fortsatt är. <a href="https://www.newsweek.com/israel-defies-trumps-ceasefire-with-new-strikes-lebanon-12047898" target="_blank" rel="noopener" class="inline-src">(källa: Newsweek)</a></li>
-        <li><strong>"Donald Trump Issues Veiled Threat to Netanyahu After Iran Strikes"</strong> Trump uppges ha kommit med en förtäckt varning till den israeliske premiärministern efter de senaste irakiska/iranska attackerna. <a href="https://www.newsweek.com/donald-trump-issues-veiled-threat-to-netanyahu-after-iran-strikes-12045871" target="_blank" rel="noopener" class="inline-src">(källa: Newsweek)</a></li>
-        <li><strong>"Iran Ally Joins War with Blockade of Yet Another Global Trade Chokepoint"</strong> En Iran-allierad aktör har enligt Newsweek blockerat ytterligare en global handelsknutpunkt - ett tecken på att kriget fortsätter sprida sig till fler sjöfartsleder. <a href="https://www.newsweek.com/iran-ally-joins-war-blockade-another-global-trade-chokepoint-12043202" target="_blank" rel="noopener" class="inline-src">(källa: Newsweek)</a></li>
         <li><strong>"China's Xi Reels In North Korea As Kim and Putin's Alliance Deepens"</strong> Xi Jinping reste till Nordkorea för att knyta Kim Jong-un närmare Peking, samtidigt som alliansen mellan Nordkorea och Ryssland fördjupas - ett maktspel som oroar Washington. <a href="https://www.newsweek.com/xi-reels-in-north-korea-kim-putin-alliance-12047618" target="_blank" rel="noopener" class="inline-src">(källa: Newsweek)</a></li>
-        <li><strong>"Why 'Pacifist' Japan Has China Worried"</strong> Trots sin officiellt pacifistiska hållning gör Japans säkerhetspolitiska omsvängning under Takaichi-regeringen Peking allt mer nervöst, enligt Newsweeks genomgång. <a href="https://www.newsweek.com/why-pacifist-japan-has-china-worried-12042737" target="_blank" rel="noopener" class="inline-src">(källa: Newsweek)</a></li>
-      </ul>
-
-      <h3 class="paper">The Times</h3>
-      <ul class="ledare">
-        <li><strong>"The hunt for Khamenei: how CIA and Mossad are trying to trace Mojtaba"</strong> Ett djupdyk i jakten på Irans nya, svårfångade högste ledare Mojtaba Khamenei, som inte synts sedan februari - avslöjar detaljer om underrättelsetjänsternas arbete. <a href="https://www.thetimes.co.uk/" target="_blank" rel="noopener" class="inline-src">(källa: The Times)</a></li>
-        <li><strong>Katy Balls: "Revealed, the mission to change Trump's mind on Ukraine"</strong> Om hur "Trump-viskaren" Laura Loomer - tidigare en av Zelenskyjs skarpaste kritiker - vände efter ett dramatiskt möte, och vad det säger om maktspelet kring Trump. <a href="https://www.thetimes.co.uk/" target="_blank" rel="noopener" class="inline-src">(källa: The Times)</a></li>
       </ul>
 
       <h3 class="paper">Financial Times</h3>
       <ul class="ledare">
         <li><strong>Gideon Rachman: "Ukraine, Iran and how regional wars go global"</strong> (Opinion) Argumenterar att konflikterna i Europa och Asien alltmer överlappar varandra, och att två rivaliserande block kan hålla på att formas globalt - en analys som binder ihop flera av dagens stora krig. <a href="https://www.ft.com/" target="_blank" rel="noopener" class="inline-src">(källa: Financial Times)</a></li>
-        <li><strong>"AI stock sell-off deepens as investors dump chipmakers"</strong> SK Hynix och Samsung föll kraftigt och drog ner Sydkoreas Kospi-index med över 10% - ett tydligt tecken på att oron för AI-investeringsboomen sprider sig till Asien. <a href="https://www.ft.com/" target="_blank" rel="noopener" class="inline-src">(källa: Financial Times)</a></li>
       </ul>
 
       <h3 class="paper">The New York Times</h3>
       <ul class="ledare">
-        <li><strong>"He Helped China Repress Uyghurs. He Says He's a Victim, Too."</strong> En gripande och komplex reportageserie om en tidigare kinesisk polis inblandad i förtrycket av uigurer, som nu själv söker asyl och hävdar sig vara ett offer för samma system. <a href="https://www.nytimes.com/section/world" target="_blank" rel="noopener" class="inline-src">(källa: The New York Times)</a></li>
         <li><strong>"OpenAI Is Close to Landing $500 Billion Data Center With Nvidia's Backing"</strong> Ett av de större AI-infrastrukturaffärerna hittills, med Nvidia som finansiär - visar hur enorma summor som nu satsas i AI-kapplöpningen. <a href="https://www.nytimes.com/section/world" target="_blank" rel="noopener" class="inline-src">(källa: The New York Times)</a></li>
       </ul>
 
       <h3 class="paper">Wall Street Journal</h3>
       <ul class="ledare">
         <li><strong>"Kevin Warsh Wanted a 'Good Family Fight' at the Fed. He's Getting One."</strong> Porträtt av den nye Fed-ordföranden som medvetet startat en intern debatt om hur centralbanken ska styras - en ovanlig strategi som testar hans annars tystlåtna linje om ekonomin. <a href="https://www.wsj.com/" target="_blank" rel="noopener" class="inline-src">(källa: Wall Street Journal)</a></li>
-        <li><strong>"Western Powers Race to Bring the Production of Explosives Back Home"</strong> (Exklusivt) Minst 24 nya projekt siktar på att flytta hem sprängämnesproduktion till Nato-länder, tre av dem i delstaten Arkansas - ett tecken på hur upprustningen påverkar industripolitiken. <a href="https://www.wsj.com/" target="_blank" rel="noopener" class="inline-src">(källa: Wall Street Journal)</a></li>
       </ul>
-
-      <h3 class="paper">Washington Post (engelska, USA)</h3>
-      <ul class="ledare">
-        <li><strong>"Zelensky urged Trump to send Patriot missiles"</strong> Zelenskyj erbjuder samtidigt Ukrainas anti-drönarexpertis i utbyte - enligt Washington Post glider krigen i Ukraina och kring Iran alltmer samman, något som besannades när Ryssland gick till storanfall mot Kiev natten mot torsdag efter att Zelenskyj varnat för en "massiv attack". <a href="https://www.washingtonpost.com/world/" target="_blank" rel="noopener" class="inline-src">(källa: Washington Post)</a></li>
-        <li><strong>Centcom: "kraftfull våg" attacker mot Iran.</strong> Enligt Washington Post har amerikanska Centcom slagit mot iranska militära kommandocentraler, robot-/drönarfabriker och en kustbevakningsanläggning som svar på Irans attacker mot amerikanska mål i Mellanöstern. <a href="https://www.washingtonpost.com/world/" target="_blank" rel="noopener" class="inline-src">(källa: Washington Post)</a></li>
-      </ul>
-
-      <h3 class="paper">franceinfo (franska)</h3>
-      <ul class="ledare">
-        <li><strong>Houthierna förnekar attack mot egyptisk hamn.</strong> I sin direktrapportering om kriget i Mellanöstern skriver franceinfo att den Iranstödda Huthi-rörelsen i Jemen förnekar att man låg bakom den senaste drönarattacken mot en egyptisk hamn - ett försök att undvika ytterligare upptrappning gentemot Kairo. <a href="https://www.franceinfo.fr/monde/iran/guerre-entre-les-etats-unis-israel-et-l-iran/direct-guerre-au-moyen-orient-des-dizaines-de-cibles-visees-par-des-frappes-americaines-en-iran-trois-personnes-tuees_8128010.html" target="_blank" rel="noopener" class="inline-src">(källa: franceinfo)</a></li>
-      </ul>
-
-      <h3 class="paper">Tagesspiegel (tyska)</h3>
-      <ul class="ledare">
-        <li><strong>"Attacken kan inte förbli obesvarad": Iran hotar Ukraina.</strong> Berlin-tidningen Tagesspiegel rapporterar att Iran säger att attacken mot fartyget i Kaspiska havet inte kan förbli obesvarad - samma eskalering som beskrivs mer utförligt under Krig/Utrikes ovan. <a href="https://www.tagesspiegel.de/internationales/angriff-kann-nicht-unbeantwortet-bleiben-iran-droht-ukraine-nach-beschuss-von-schiff-im-kaspischen-meer-15886017.html" target="_blank" rel="noopener" class="inline-src">(källa: Tagesspiegel)</a></li>
-      </ul>
-
-      <h3 class="paper">ANSA (italienska nyhetsbyrån)</h3>
-      <ul class="ledare">
-        <li><strong>Revolutionsgardet lovar "brutalt svar".</strong> Enligt ANSA:s liveblogg om läget i Mellanöstern hotar Irans revolutionsgarde (IRGC) med kraftfulla motåtgärder mot länder som anses ha bistått USA i attackerna mot Iran, samtidigt som Jordaniens militär uppger att man sköt ner fem iranska robotar riktade mot kungadömet utan att någon skadades. <a href="https://www.ansa.it/sito/notizie/mondo/2026/07/30/medio-oriente-la-giornata-del-30-luglio-2026-liveblog_edbbf734-96fd-47ea-ba02-1bfc1b57381b.html" target="_blank" rel="noopener" class="inline-src">(källa: ANSA)</a></li>
-        <li><strong>Kina avfärdar uppgifter om robotleveranser till Iran.</strong> Peking kallar rapporter om att landet skulle leverera 400 robotavskjutningsramper till Iran för "falska och grundlösa", enligt samma ANSA-rapportering. <a href="https://www.ansa.it/sito/notizie/mondo/2026/07/30/medio-oriente-la-giornata-del-30-luglio-2026-liveblog_edbbf734-96fd-47ea-ba02-1bfc1b57381b.html" target="_blank" rel="noopener" class="inline-src">(källa: ANSA)</a></li>
-      </ul>
-
-      <h3 class="paper">EFE (spanska nyhetsbyrån)</h3>
-      <ul class="ledare">
-        <li><strong>Skogsbranden vid Gironde i Frankrike fortsatt stabiliserad.</strong> Men de 220 000 evakuerade kan ännu inte återvända hem eftersom extremvärmen riskerar att tända nya bränder. <a href="https://www.infobae.com/america/agencias/2026/07/30/temas-del-dia-de-efe-internacional-del-jueves-30-de-julio-de-2026-1200-gmt/" target="_blank" rel="noopener" class="inline-src">(källa: EFE)</a></li>
-        <li><strong>Italien drabbas av sommarens fjärde värmebölja.</strong> Temperaturer nära 40 grader väntas i Rom och andra italienska städer. <a href="https://www.infobae.com/america/agencias/2026/07/30/temas-del-dia-de-efe-internacional-del-jueves-30-de-julio-de-2026-1200-gmt/" target="_blank" rel="noopener" class="inline-src">(källa: EFE)</a></li>
-        <li><strong>Samsung redovisar rekordvinst.</strong> 71,6 biljoner won i nettovinst under andra kvartalet 2026, driven av global efterfrågan på AI-halvledare. <a href="https://www.infobae.com/america/agencias/2026/07/30/temas-del-dia-de-efe-internacional-del-jueves-30-de-julio-de-2026-1200-gmt/" target="_blank" rel="noopener" class="inline-src">(källa: EFE)</a></li>
-        <li><strong>Venezuela och oppositionen inleder ny dialogprocess.</strong> Samtidigt tar Chiles president José Antonio Kast emot Sydkoreas president Lee Jae-myung på statsbesök. <a href="https://www.infobae.com/america/agencias/2026/07/30/temas-del-dia-de-efe-internacional-del-jueves-30-de-julio-de-2026-1200-gmt/" target="_blank" rel="noopener" class="inline-src">(källa: EFE)</a></li>
-      </ul>
-      <div class="sources">Källor: <a href="https://www.bbc.com/news" target="_blank" rel="noopener">BBC</a>, <a href="https://www.newsweek.com/world" target="_blank" rel="noopener">Newsweek - World</a>, <a href="https://www.thetimes.co.uk/" target="_blank" rel="noopener">The Times</a>, <a href="https://www.ft.com/" target="_blank" rel="noopener">Financial Times</a>, <a href="https://www.nytimes.com/" target="_blank" rel="noopener">The New York Times</a>, <a href="https://www.wsj.com/" target="_blank" rel="noopener">Wall Street Journal</a>, <a href="https://www.washingtonpost.com/world/" target="_blank" rel="noopener">Washington Post</a>, <a href="https://www.franceinfo.fr/" target="_blank" rel="noopener">franceinfo</a>, <a href="https://www.tagesspiegel.de/internationales/" target="_blank" rel="noopener">Tagesspiegel</a>, <a href="https://www.ansa.it/" target="_blank" rel="noopener">ANSA</a>, <a href="https://www.infobae.com/" target="_blank" rel="noopener">EFE (via Infobae)</a> · Uppdaterad: 2 augusti 2026 (kontrollerat)</div>
+      <div class="sources">Källor: <a href="https://www.bbc.com/news" target="_blank" rel="noopener">BBC</a>, <a href="https://www.newsweek.com/world" target="_blank" rel="noopener">Newsweek - World</a>, <a href="https://www.ft.com/" target="_blank" rel="noopener">Financial Times</a>, <a href="https://www.nytimes.com/" target="_blank" rel="noopener">The New York Times</a>, <a href="https://www.wsj.com/" target="_blank" rel="noopener">Wall Street Journal</a> · Uppdaterad: 2 augusti 2026 (gamla ceasefire-era artiklar, enskilda vädernyheter och engångshändelser äldre än ett par dagar borttagna)</div>
     </section>
   </div>
 
@@ -401,16 +365,10 @@
       <ol class="top10">
         <li><strong>Knivslagsmål vid Sätra idrottsplats i Stockholm.</strong> Flera inblandade i ett bråk som urartade med knivar under söndagseftermiddagen - polis larmades och en person fördes till sjukhus med skador som inte bedöms vara livshotande. <a href="https://www.svt.se/nyheter/lokalt/stockholm/" target="_blank" rel="noopener" class="inline-src">(källa: SVT Nyheter Stockholm)</a></li>
         <li><strong>Tre män gripna i Norrköping efter polisinsats.</strong> Gripandena kopplas till misstänkt grov brottslighet i länet - förundersökning pågår och fler detaljer väntas under veckan. <a href="https://www.nt.se/" target="_blank" rel="noopener" class="inline-src">(källa: Norrköpings Tidningar)</a></li>
-        <li><strong>Ny lag: kommuner får själva anställa läkare i äldreomsorgen från i dag.</strong> Från 1 augusti kan kommuner anställa egna läkare för vård- och omsorgsboenden och hemtjänst - men intresset bland kommunerna är hittills nästan obefintligt. <a href="https://www.svt.se/nyheter/" target="_blank" rel="noopener" class="inline-src">(källa: SVT Nyheter)</a></li>
-        <li><strong>Julibarometern: SD faller kraftigt, S under 30% för första gången.</strong> Nordisk Opinions julimätning visar ovanligt stora rörelser - SD ner 4,4 enheter till 19,1%, S ner 3,1 enheter till 29,2%, medan C och KD noterar sina bästa resultat hittills i mätningsserien. <a href="https://nordiskopinion.se/nyheter/julibarometern-sd-faller-mitten-lyfter" target="_blank" rel="noopener" class="inline-src">(källa: Nordisk Opinion)</a></li>
-        <li><strong>Försök till mordbrand mot S-lokal i Sölvesborg.</strong> En man greps misstänkt för mordbrandsförsök efter att en ruta krossats och eld anlagts vid Socialdemokraternas partilokal natten mot onsdag - vittnen uppger att nazistiska slagord ropades innan förövarna fördes bort. <a href="https://8sidor.se/" target="_blank" rel="noopener" class="inline-src">(källa: 8 Sidor)</a></li>
         <li><strong>Hög skogsbrandsrisk i stora delar av landet.</strong> SMHI varnar för mycket hög brandrisk under den pågående värmeböljan. <a href="https://omni.se/" target="_blank" rel="noopener" class="inline-src">(källa: Omni)</a></li>
-        <li><strong>Söndagens Allsvenskan-matcher spelas i dag.</strong> Brommapojkarna-Malmö FF och IFK Göteborg-Degerfors spelas klockan 14.00, AIK-Örgryte klockan 16.30. <a href="https://www.svenskfotboll.se/allsvenskan/" target="_blank" rel="noopener" class="inline-src">(källa: Svensk Fotboll)</a></li>
-        <li><strong>Skottlossning mot lägenhet i Upplands Väsby.</strong> Förundersökning om mordförsök och grovt vapenbrott inledd, ingen gripen. <a href="https://nyheter24.se/" target="_blank" rel="noopener" class="inline-src">(källa: Nyheter24)</a></li>
         <li><strong>OSSE/ODIHR skickar inga valobservatörer till höstens riksdagsval.</strong> Ovanligt och uppmärksammat besked inför valet 13 september. <a href="https://www.dagensdatum.nu/" target="_blank" rel="noopener" class="inline-src">(källa: Dagens Datum)</a></li>
-        <li><strong>Förtidsröstning för utlandssvenskar pågår.</strong> Svenskar bosatta utomlands röstar nu inför höstens riksdagsval. <a href="https://www.smhi.se/" target="_blank" rel="noopener" class="inline-src">(källa: SMHI)</a></li>
       </ol>
-      <div class="sources">Källor: <a href="https://nordiskopinion.se/nyheter/julibarometern-sd-faller-mitten-lyfter" target="_blank" rel="noopener">Nordisk Opinion</a>, <a href="https://www.svt.se/nyheter/" target="_blank" rel="noopener">SVT Nyheter</a>, <a href="https://www.smhi.se/" target="_blank" rel="noopener">SMHI</a>, <a href="https://8sidor.se/" target="_blank" rel="noopener">8 Sidor</a>, <a href="https://omni.se/" target="_blank" rel="noopener">Omni</a>, <a href="https://www.nt.se/" target="_blank" rel="noopener">Norrköpings Tidningar</a>, <a href="https://nyheter24.se/" target="_blank" rel="noopener">Nyheter24</a>, <a href="https://www.dagensdatum.nu/" target="_blank" rel="noopener">Dagens Datum</a>, <a href="https://www.svenskfotboll.se/allsvenskan/" target="_blank" rel="noopener">Svensk Fotboll</a> · Uppdaterad: 2 augusti 2026 (eftermiddag)</div>
+      <div class="sources">Källor: <a href="https://www.svt.se/nyheter/lokalt/stockholm/" target="_blank" rel="noopener">SVT Nyheter Stockholm</a>, <a href="https://www.nt.se/" target="_blank" rel="noopener">Norrköpings Tidningar</a>, <a href="https://omni.se/" target="_blank" rel="noopener">Omni</a>, <a href="https://www.dagensdatum.nu/" target="_blank" rel="noopener">Dagens Datum</a> · Uppdaterad: 2 augusti 2026 (eftermiddag - äldre poster som redan hunnit bli inaktuella, bl.a. nya äldreomsorgslagen, julibarometern (se Opinion), Sölvesborg-mordbranden och söndagens redan spelade Allsvenskan-matcher, borttagna)</div>
     </section>
 
     <section class="card" id="nacka-lokalt">
@@ -431,9 +389,7 @@
       <span class="tag">Stockholm</span>
       <h2 class="section-title">Senaste nyheterna om Stockholm</h2>
       <ul class="ledare">
-        <li><strong>Stockholm Pride avslutas i dag:</strong> Prideveckan, som pågått sedan 27 juli, avslutas i dag, lördag 1 augusti - de flesta partiledare har deltagit under veckan, medan SD fortsatt hålls portade från medverkan. <a href="https://www.svt.se/nyheter/lokalt/stockholm/" target="_blank" rel="noopener" class="inline-src">(källa: SVT Nyheter Stockholm)</a></li>
-        <li><strong>Kolargatan avstängd:</strong> Gatan är avstängd 31 juli-9 augusti mellan Jägmästargatan och Artemisgatan på grund av reparation av en vattenläcka. <a href="https://trafiken.nu/stockholm/nyheter/2026/juli/veckans-trafik-27-juli2-augusti/" target="_blank" rel="noopener" class="inline-src">(källa: Trafiken.nu Stockholm)</a></li>
-        <li><strong>Fotbollsfest på Strawberry Arena:</strong> Manchester United möter Atlético Madrid i en uppmärksammad sommarmatch på arenan denna vecka. <a href="https://www.ticketmaster.se/discover/stockholm" target="_blank" rel="noopener" class="inline-src">(källa: Ticketmaster)</a></li>
+        <li><strong>Kolargatan avstängd:</strong> Gatan är avstängd till 9 augusti mellan Jägmästargatan och Artemisgatan på grund av reparation av en vattenläcka. <a href="https://trafiken.nu/stockholm/nyheter/2026/juli/veckans-trafik-27-juli2-augusti/" target="_blank" rel="noopener" class="inline-src">(källa: Trafiken.nu Stockholm)</a></li>
         <li><strong>Hotellpriser upp:</strong> Övernattningspriserna i Stockholm har stigit jämfört med samma period förra året, en trend som märks tydligt under högsäsongen. <a href="https://www.mitti.se/" target="_blank" rel="noopener" class="inline-src">(källa: Mitt i)</a></li>
         <li><strong>Vårdläget i sommar:</strong> Region Stockholm publicerar sin åttonde veckorapport om vårdläget denna sommar - köerna följs tätt under semesterperioden. <a href="https://www.regionstockholm.se/nyheter/2026/07/rapport-om-laget-i-varden-vecka-31/" target="_blank" rel="noopener" class="inline-src">(källa: Region Stockholm)</a></li>
       </ul>
@@ -460,8 +416,6 @@
 
       <h3 class="paper">DN</h3>
       <ul class="ledare">
-        <li><strong>Viktor Karlsson: "Är det okej att vara gay i Sverige 2026?"</strong> Skriven i skuggan av Prideveckans avslutning - årets Pride präglas enligt Karlsson av kampen för trygghet och öppenhet snarare än ren firande. <a href="https://www.dn.se/ledare/" target="_blank" rel="noopener" class="inline-src">(källa: DN)</a></li>
-        <li><strong>DN Ledare: "Kommunerna bör säga ja - äldres hälsa som står på spel"</strong> Kommenterar dagens (1/8) nya lag som gör det möjligt för kommuner att själva anställa läkare inom äldreomsorgen - ledarsidan menar att fler kommuner borde nappa trots det hittills svala intresset. <a href="https://www.dn.se/ledare/" target="_blank" rel="noopener" class="inline-src">(källa: DN)</a></li>
         <li><strong>Viktor Karlsson: "När hamnade humanitära krisen i andra rummet?"</strong> Kritiserar att politiker verkar mer oroade för att flyktingar ska ta sig till Sverige än för själva den humanitära krisen. <a href="https://www.dn.se/ledare/" target="_blank" rel="noopener" class="inline-src">(källa: DN)</a></li>
         <li><strong>Aron Lund: "Vi måste lära oss att förstå hur diktaturerna tänker"</strong> (Kolumnen) Konstaterar att det numera finns fler auktoritära stater än demokratier i världen - och att detta måste prägla svensk och västlig politik. <a href="https://www.dn.se/ledare/" target="_blank" rel="noopener" class="inline-src">(källa: DN)</a></li>
       </ul>
@@ -471,19 +425,13 @@
         <li><strong>Gunnar Hökmark (gästledare): "Den svåra insikten är nuet"</strong> Varnar för att det inte krävs stora resurser för att angripa Sverige redan i dag - ett bredare resonemang om hotbild och beredskap i skuggan av krigen i Europa och Mellanöstern. <a href="https://www.svd.se/ledare" target="_blank" rel="noopener" class="inline-src">(källa: SvD)</a></li>
       </ul>
 
-      <h3 class="paper">Aftonbladet</h3>
-      <ul class="ledare">
-        <li><strong>Lina Stenberg: "Prideveckan är livsviktig efter terrordådet i Berlin"</strong> Krönika om varför Pride behövs mer än någonsin efter terrordådet i Berlin, och om det nya hatbrottsrådets roll för att stärka rättssäkerheten för hbtqi-personer. <a href="https://www.aftonbladet.se/ledare" target="_blank" rel="noopener" class="inline-src">(källa: Aftonbladet)</a></li>
-      </ul>
-
       <h3 class="paper">Expressen</h3>
       <ul class="ledare">
         <li><strong>Patrik Kronqvist: "Estland har fattat det som Sverige missar"</strong> Menar att svenska politiker håller på att upprepa ett misstag som Estland redan lärt sig av, med udden riktad mot svensk säkerhets- och migrationspolitik. <a href="https://www.expressen.se/ledare/" target="_blank" rel="noopener" class="inline-src">(källa: Expressen)</a></li>
-        <li><strong>"60 000 migranter avslöjar hyckleriet"</strong> (Ledare) Skriver att ilskan över siffrorna är förståelig och riktar kritik mot den förda migrationspolitiken. <a href="https://www.expressen.se/ledare/" target="_blank" rel="noopener" class="inline-src">(källa: Expressen)</a></li>
         <li><strong>"Socialdemokraterna hotar rikets säkerhet"</strong> (Ledare) Fortsatt aktuell - kritiserar S skarpt och menar att partiets linje spelar Putin i händerna. <a href="https://www.expressen.se/ledare/" target="_blank" rel="noopener" class="inline-src">(källa: Expressen)</a></li>
         <li><strong>"ÖB måste kopiera Ukrainas smarta knep"</strong> (Ledare) Om hur Ukraina fått övertaget mot Ryssland genom billig, uppfinningsrik drönarteknik - och vad svenska Försvarsmakten kan lära. <a href="https://www.expressen.se/ledare/" target="_blank" rel="noopener" class="inline-src">(källa: Expressen)</a></li>
       </ul>
-      <div class="sources">Källor: <a href="https://www.dn.se/ledare/" target="_blank" rel="noopener">DN</a>, <a href="https://www.svd.se/ledare" target="_blank" rel="noopener">SvD</a>, <a href="https://www.aftonbladet.se/ledare" target="_blank" rel="noopener">Aftonbladet</a>, <a href="https://www.expressen.se/ledare/" target="_blank" rel="noopener">Expressen (ledarsidor)</a> · Uppdaterad: 2 augusti 2026</div>
+      <div class="sources">Källor: <a href="https://www.dn.se/ledare/" target="_blank" rel="noopener">DN</a>, <a href="https://www.svd.se/ledare" target="_blank" rel="noopener">SvD</a>, <a href="https://www.expressen.se/ledare/" target="_blank" rel="noopener">Expressen (ledarsidor)</a> · Uppdaterad: 2 augusti 2026 (Pride- och äldreomsorgslags-specifika krönikor borttagna, se Sverige-flikens huvudnyheter)</div>
     </section>
 
     <section class="card" id="opinion">
@@ -544,26 +492,15 @@
     <section class="card" id="business">
       <span class="tag">Ekonomi</span>
       <h2 class="section-title">Internationella affärsnyheter</h2>
+      <p><strong>Börsläget (fredagens stängning, senaste tillgängliga):</strong> Fredagens handel avslutades i grönt för fjärde dagen i rad: Dow steg 277 punkter (+0,53%) till 52 485, S&amp;P 500 +0,7% till 7 490 och Nasdaq 100 +0,6% - drivet av starka kvartalsrapporter från Amazon (+15,3%), Alphabet (+6,9%) och Microsoft (+3%), som befäste veckans tema av AI- och molndriven optimism efter tidigare veckas ränteoro kring Feds räntebesked (oförändrat kring 3,6%, femte mötet i rad).</p>
       <ul class="ledare">
-        <li><strong>Johnson & Johnson:</strong> Har erbjudit 5,5 miljarder dollar för att göra upp i den mångåriga rättstvisten om att bolagets talkprodukter orsakat cancer - en av de större rättsliga uppgörelserna i USA denna vecka (The Epoch Times). <a href="https://www.cnbc.com/" target="_blank" rel="noopener" class="inline-src">(källa: CNBC)</a></li>
-        <li><strong>Börserna i måndags:</strong> Stängde blandat - Dow +0,51% till 52 210, S&amp;P 500 +0,02%, Nasdaq -0,18%. <a href="https://www.bloomberg.com/" target="_blank" rel="noopener" class="inline-src">(källa: Bloomberg)</a></li>
+        <li><strong>Johnson &amp; Johnson:</strong> Har erbjudit 5,5 miljarder dollar för att göra upp i den mångåriga rättstvisten om att bolagets talkprodukter orsakat cancer. <a href="https://www.cnbc.com/" target="_blank" rel="noopener" class="inline-src">(källa: CNBC)</a></li>
         <li><strong>Alphabet (Google):</strong> Redovisade 24% omsättnings- och vinsttillväxt och 82% ökning för Google Cloud (24,8 miljarder dollar), men det kraftiga kapitalinvesteringstrycket gav ett negativt kassaflöde på 5,9 miljarder dollar - första negativa kvartalet sedan börsintroduktionen 2004. <a href="https://www.theepochtimes.com/" target="_blank" rel="noopener" class="inline-src">(källa: The Epoch Times)</a></li>
-        <li><strong>SpaceX:</strong> Aktien föll under sitt introduktionspris i en bredare teknikoro. <a href="https://www.exchange-rates.org/" target="_blank" rel="noopener" class="inline-src">(källa: exchange-rates.org)</a></li>
-        <li><strong>Halvledare:</strong> Sektorn gick in i en björnmarknad på oro för att AI-investeringsboomen blir svårare att motivera - sämsta veckan sedan april 2025. <a href="https://finance.yahoo.com/" target="_blank" rel="noopener" class="inline-src">(källa: Yahoo Finance)</a></li>
+        <li><strong>Microsoft:</strong> Steg 16% och lade på sig omkring 450 miljarder dollar i börsvärde på en enda dag - den största enskilda dagsuppgången för någon aktie någonsin - efter starka moln-/AI-siffror. <a href="https://www.cnbc.com/" target="_blank" rel="noopener" class="inline-src">(källa: CNBC)</a></li>
         <li><strong>Tullar:</strong> USA:s handelsrepresentant Jamieson Greer antyder att nya tullar mot flera länder kan vara på väg. <a href="https://www.thestreet.com/" target="_blank" rel="noopener" class="inline-src">(källa: TheStreet)</a></li>
       </ul>
-      <p><strong>Nytt (29 juli, kväll) - Fed höll räntan, börserna rasade:</strong> Federal Reserve lämnade räntan oförändrad kring 3,6% för femte mötet i rad - beslutet togs med 9-3 majoritet, där de tre skiljaktiga ville se en stramare politik (högre ränta), inte en sänkning. Obligationsmarknaden tolkade beskedet som att Fed riskerar hamna på efterkälken i inflationsbekämpningen: tioårsräntan steg 7 punkter till över 4,67%.</p>
-      <ul class="ledare">
-        <li><strong>Dow Jones:</strong> Föll 1 153,18 punkter (-2,19%) till 51 594,14 - sämsta dagen sedan april 2025. <a href="https://www.cnbc.com/" target="_blank" rel="noopener" class="inline-src">(källa: CNBC)</a></li>
-        <li><strong>S&amp;P 500:</strong> Föll 1,52% till 7 316,15. <a href="https://www.bloomberg.com/" target="_blank" rel="noopener" class="inline-src">(källa: Bloomberg)</a></li>
-        <li><strong>Nasdaq Composite:</strong> Föll 1,74% till 24 442,94 och gled därmed in i korrektionsterritorium. <a href="https://www.theepochtimes.com/" target="_blank" rel="noopener" class="inline-src">(källa: The Epoch Times)</a></li>
-        <li><strong>Bakgrund:</strong> Den redan förhöjda oron efter Irans attacker mot amerikanska mål och det stigande oljepriset bidrog till att spä på nervositeten inför räntebeskedet. <a href="https://www.exchange-rates.org/" target="_blank" rel="noopener" class="inline-src">(källa: exchange-rates.org)</a></li>
-      </ul>
-      <p>Halvledar- och minnesaktier fortsatt svaga sedan tidigare i veckan (AMD -5%, Teradyne -4%, Micron -2%, samt i Asien Tokyo Electron -10%, Advantest -10,25%, SoftBank -6%, Kioxia -17%). Stor vecka väntar för teknikrapporter: Amazon, Apple, Meta och Microsoft redovisar kvartalssiffror.</p>
-      <p><strong>Nytt (30 juli, kväll) - kraftig börsrusning, Microsofts största dagsuppgång någonsin:</strong> Efter tidigare i veckans ras vände marknaden kraftigt upp: Dow steg nästan 1,2%, S&amp;P 500 1,7% (ny toppnotering på 7 416 punkter) och Nasdaq Composite hela 2,8%, driven av en rusning i halvledaraktier. Microsoft steg 16% och lade på sig omkring 450 miljarder dollar i börsvärde på en enda dag - den största enskilda dagsuppgången för någon aktie någonsin - efter starka moln-/AI-siffror. Amazon rusade i efterhandeln efter att ha rapporterat att molnintäkterna (AWS) accelererat för femte kvartalet i rad.</p>
-      <p><strong>Nytt (31 juli, stängning) - fortsatt uppgång, storbolagens rapporter driver marknaden:</strong> Fredagens handel avslutades i grönt för fjärde dagen i rad: Dow steg 277 punkter (+0,53%) till 52 485, S&amp;P 500 (US500) +0,7% till 7 490 och Nasdaq 100 +0,6%. Uppgången drevs av starka kvartalsrapporter - Amazon rusade 15,3%, Alphabet steg 6,9% och Microsoft ytterligare 3% - vilket befäste veckans tema av AI- och molndriven optimism efter tidigare veckas ränteoro.</p>
       <p><strong>Börsindex senaste tre månaderna (1 maj-31 juli 2026):</strong> S&amp;P 500 har stigit från cirka 7 209 till 7 490 (+3,9%). Dow Jones har gått från cirka 49 652 till 52 485 (+5,7%). Nasdaq har återhämtat sig starkt efter sommarens AI-relaterade halvledarras och ligger nu klart över nivån för tre månader sedan. Stockholmsbörsens OMXS30 har utvecklats starkt av de här indexen: från cirka 2 966 i början av maj till drygt 3 200 nu, en uppgång på ungefär 8-9%.</p>
-      <div class="sources">Källor: <a href="https://www.cnbc.com/" target="_blank" rel="noopener">CNBC</a>, <a href="https://www.bloomberg.com/" target="_blank" rel="noopener">Bloomberg</a>, <a href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-082255995.html" target="_blank" rel="noopener">Yahoo Finance</a>, <a href="https://tradingeconomics.com/united-states/stock-market" target="_blank" rel="noopener">Trading Economics</a> · Uppdaterad: 2 augusti 2026 (morgon)</div>
+      <div class="sources">Källor: <a href="https://www.cnbc.com/" target="_blank" rel="noopener">CNBC</a>, <a href="https://www.bloomberg.com/" target="_blank" rel="noopener">Bloomberg</a>, <a href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-30-dow-sp-500-nasdaq-082255995.html" target="_blank" rel="noopener">Yahoo Finance</a>, <a href="https://tradingeconomics.com/united-states/stock-market" target="_blank" rel="noopener">Trading Economics</a>, <a href="https://www.theepochtimes.com/" target="_blank" rel="noopener">The Epoch Times</a>, <a href="https://www.thestreet.com/" target="_blank" rel="noopener">TheStreet</a> · Uppdaterad: 2 augusti 2026 (konsoliderat - äldre delrapporteringar från 29-31 juli om enskilda handelsdagar borttagna, endast senaste stängning + 3-månaderstrend kvar)</div>
     </section>
 
     <section class="card" id="currency">
@@ -589,11 +526,8 @@
       <p><strong>Nytt (2 augusti) - fjärde plats inför Västerås-matchen:</strong> Djurgården går in i måndagens hemmamatch mot Västerås SK på fjärde plats i tabellen, med nykomlingen på femte plats strax bakom - en direkt duell om medaljstriden mellan de två lagen. <a href="https://www.svenskfotboll.se/serier-cuper/tabell-och-resultat/allsvenskan-2026/133348/" target="_blank" rel="noopener" class="inline-src">(källa: Svensk Fotboll)</a></p>
       <p><strong>Transferrykten:</strong></p>
       <ul class="ledare">
-        <li><strong>Harabi:</strong> Enligt Fotbollskanalen förs samtal om en flytt. <a href="https://www.fotbollskanalen.se/" target="_blank" rel="noopener" class="inline-src">(källa: Fotbollskanalen)</a></li>
-        <li><strong>Onuoha:</strong> Klubben ska ligga i kamp med AIK om spelaren, enligt samma källas avslöjande 27 juli. <a href="https://fotbolldirekt.se/" target="_blank" rel="noopener" class="inline-src">(källa: Fotbolldirekt)</a></li>
         <li><strong>Mattias Siltanen</strong> (19, nyligen finsk mästare): Het på marknaden - han har själv sagt att han vill flytta i sommar "finns det bra erbjudande vill jag ta det". Franska Toulouse har redan lagt ett bud och Lyon uppges förbereda ett eget, och enligt uppgift följde även turkiska Besiktas honom på plats nyligen. En eventuell försäljning skulle ge Djurgården en rejäl transfersumma att arbeta med inför höstens fönster. <a href="https://bollsvenskan.se/" target="_blank" rel="noopener" class="inline-src">(källa: Bollsvenskan)</a></li>
       </ul>
-      <p><strong>Nytt (30 juli):</strong> Biljetter till bortamatchen mot Malmö FF släpps idag klockan 12:00 - bortasektionen rymmer 2 200 personer. Klubben har samtidigt presenterat en särskild 135-årsjubileumströja tillsammans med adidas.</p>
       <p><strong>Chansanalys - hur stor är chansen till en toppplacering?</strong></p>
       <ul class="ledare">
         <li><strong>Läget just nu:</strong> Djurgården ligger i medaljstriden med 20 poäng, men IK Sirius (38 poäng) leder tabellen med god marginal - ett avstånd som normalt är tufft men inte omöjligt att hämta in över en 30-omgångarssäsong, särskilt med tanke på att Sirius poängrekord-nivå (75 poäng ifjol som mästare, Mjällby) visar hur mycket som kan hända på slutrakan. <a href="https://www.allsvenskanstatistik.se/" target="_blank" rel="noopener" class="inline-src">(källa: allsvenskanstatistik.se)</a></li>
@@ -637,13 +571,7 @@
       </ul>
       <p><strong>Försvaret - Saliba-skada öppnar för Stones:</strong> Efter att William Saliba dömts ut för en längre period har Arsenal enligt Sky Sports visat intresse för John Stones, men engelsmannen ser ut att gå till Inter på fri transfer - klubben har fått muntligt klartecken och finslipar nu ett tvåårskontrakt, trots konkurrens från Juventus. Inter är samtidigt aktuella för Tottenhams Cristian Romero, som fortsatt bevakas av flera storklubbar. Även Gabriel Martinelli nämns som en spelare klubben kan tänkas lyssna på bud för.</p>
       <p><strong>Zubimendi:</strong> Martin Zubimendi värvades från Real Sociedad den 6 juli - Arsenal utlöste hans 51 miljoner pund-klausul (totalt paket nära 60 miljoner pund) och han skrev på ett femårskontrakt. Real Madrid var också intresserade, och Liverpool hade tidigare försökt värva honom utan framgång; förre lagkamraten Mikel Merino sägs ha hjälpt Arteta övertala honom.</p>
-      <p><strong>Nytt (29 juli, kväll) - målvaktskarusellen snurrar:</strong></p>
-      <ul class="ledare">
-        <li><strong>Neto:</strong> Målvakten ska genomgå läkarundersökning inför en flytt till Arsenal, enligt de senaste uppgifterna - ytterligare ett tecken på att klubben förstärker truppen på flera positioner samtidigt. <a href="https://www.goal.com/" target="_blank" rel="noopener" class="inline-src">(källa: Goal.com)</a></li>
-        <li><strong>Joan Garcia:</strong> Arsenal uppges också positionera sig för ett bud på den spanske målvakten. <a href="https://www.newsnow.com/" target="_blank" rel="noopener" class="inline-src">(källa: NewsNow)</a></li>
-        <li><strong>Charlie Patino:</strong> Klubben har kommit överens om att sälja den 20-årige mittfältaren, som fått begränsat med speltid i förstalaget. <a href="https://news.williamhill.com/" target="_blank" rel="noopener" class="inline-src">(källa: William Hill)</a></li>
-        <li><strong>Aaron Ramsdale:</strong> Southampton har slutfört en affär värd 25 miljoner pund för att värva målvakten från Arsenal - en logisk följd av konkurrensen på målvaktsplatsen. <a href="https://www.squawka.com/" target="_blank" rel="noopener" class="inline-src">(källa: Squawka)</a></li>
-      </ul>
+      <p><strong>Målvaktsposition:</strong> Southampton har slutfört en affär värd 25 miljoner pund för att värva Aaron Ramsdale från Arsenal, och klubben har kommit överens om att sälja mittfältaren Charlie Patino, 20, som fått begränsat med speltid i förstalaget. <a href="https://www.squawka.com/" target="_blank" rel="noopener" class="inline-src">(källa: Squawka)</a></p>
       <p><strong>Nytt (2 augusti) - Guimarães-affären klar i princip, 90 miljoner euro:</strong> Arsenal och Newcastle har nått en principöverenskommelse om Bruno Guimarães för runt 90 miljoner euro (cirka 77 miljoner pund) - Gunners mötte till slut Newcastles prisbild efter att två tidigare bud (70 och 80 miljoner euro) refuserats. Guimarães ska sedan flera veckor tillbaka redan ha kommit överens om personliga villkor med Arsenal, på ett kontrakt som sträcker sig till 2031. Vissa detaljer, bland annat bonusar och agentarvoden, återstår att knyta ihop, men affären beskrivs som inne i sin absoluta slutfas. Brasilianaren har själv informerat Newcastle om sin önskan att lämna för att få spela Champions League, sedan klubben missade kvalet till turneringen.</p>
       <ul class="ledare">
         <li><strong>Bruno Guimarães:</strong> Affären beskrivs nu som ett avtal i princip snarare än bara intensifierade samtal - kaptensbindningen som Newcastle länge hållit fast vid har till slut vikit sig för prisbilden. <a href="https://oddspedia.com/" target="_blank" rel="noopener" class="inline-src">(källa: Oddspedia)</a></li>
@@ -675,10 +603,25 @@
       <div class="sources">Källor: <a href="https://fotbolldirekt.se/" target="_blank" rel="noopener">Fotbolldirekt</a>, <a href="https://www.fotbollskanalen.se/" target="_blank" rel="noopener">Fotbollskanalen</a> · Uppdaterad: 2 augusti 2026 (kontrollerat)</div>
     </section>
 
+    <section class="card" id="fotboll-allmant">
+      <span class="tag">Fotboll · Allmänt</span>
+      <h2 class="section-title">Fotboll - allmänna nyheter</h2>
+      <p><strong>Efter VM - Ballon d'Or-racet inleds:</strong> Med fotbolls-VM 2026 i Nordamerika avgjort (Spanien tog hem titeln, med en lysande Lamine Yamal som en av turneringens stora profiler) går fokus nu över till hösten och kampen om Ballon d'Or. Fjolårets vinnare Ousmane Dembélé räknas fortsatt som en tung kandidat efter ännu en stark säsong med Champions League-titel, medan Bayern Münchens Harry Kane (61 mål, Bundesliga- och DFB-Pokal-titel) och just Yamal - efter sin VM-insats med Spanien - nämns som de tydligaste utmanarna. France Football väntas presentera den officiella 30-mannalistan i augusti, med själva galan i oktober. <a href="https://sports.yahoo.com/articles/ballon-dor-2026-favourites-10-135300433.html" target="_blank" rel="noopener" class="inline-src">(källa: Yahoo Sports)</a></p>
+      <p><strong>Champions League-titeln stannade hos PSG:</strong> Paris Saint-Germain vann 2025/26 års Champions League-final mot just Arsenal efter straffar i Budapest (30 maj) - klubbens andra raka CL-titel, vilket förklarar varför PSG alltjämt räknas som den klaraste favoriten inför nästa säsongs turnering (se Arsenals chansanalys ovan). <a href="https://www.goal.com/en/lists/ballon-dor-2026-power-rankings/blte900f51820beae01" target="_blank" rel="noopener" class="inline-src">(källa: Goal.com)</a></p>
+      <p><strong>De stora ligorna drar igång under augusti:</strong></p>
+      <ul class="ledare">
+        <li><strong>La Liga:</strong> Säsongen inleds helgen 14-16 augusti. Real Madrid öppnar hemma mot Real Sociedad på Bernabéu, och den första Clásico-mötet med Barcelona spelas på Camp Nou den 25 oktober. <a href="https://sports.yahoo.com/articles/la-liga-confirms-2026-27-195838800.html" target="_blank" rel="noopener" class="inline-src">(källa: Yahoo Sports)</a></li>
+        <li><strong>Serie A:</strong> Säsongen inleds helgen 22-23 augusti och avslutas 29-30 maj 2027, med två extra vardagsomgångar (28 oktober och 6 januari) inlagda i kalendern. <a href="https://en.legaseriea.it/serie-a/news/looking-forward-to-the-2026-27-serie-a-fixture-list" target="_blank" rel="noopener" class="inline-src">(källa: Lega Serie A)</a></li>
+        <li><strong>Ligue 1:</strong> Säsongen inleds 23 augusti - nykomlingarna Troyes och Le Mans är tillbaka i toppligan efter tre respektive sexton års frånvaro. <a href="https://en.wikipedia.org/wiki/2026%E2%80%9327_Ligue_1" target="_blank" rel="noopener" class="inline-src">(källa: Wikipedia)</a></li>
+        <li><strong>Bundesliga:</strong> Säsongen inleds 28 augusti - en vecka senare än vanligt på grund av VM. Franz Beckenbauer-supercupen spelas 22 augusti och DFB-Pokalens första omgång 21-24 augusti. <a href="https://www.dfl.de/en/news/calendar-for-the-2026-27-season-bundesliga-to-start-on-28-august-2026-bundesliga-2-to-kick-off-on-7-august-2026/" target="_blank" rel="noopener" class="inline-src">(källa: DFL)</a></li>
+      </ul>
+      <div class="sources">Källor: <a href="https://sports.yahoo.com/articles/ballon-dor-2026-favourites-10-135300433.html" target="_blank" rel="noopener">Yahoo Sports</a>, <a href="https://www.goal.com/en/lists/ballon-dor-2026-power-rankings/blte900f51820beae01" target="_blank" rel="noopener">Goal.com</a>, <a href="https://en.legaseriea.it/serie-a/news/looking-forward-to-the-2026-27-serie-a-fixture-list" target="_blank" rel="noopener">Lega Serie A</a>, <a href="https://en.wikipedia.org/wiki/2026%E2%80%9327_Ligue_1" target="_blank" rel="noopener">Wikipedia</a>, <a href="https://www.dfl.de/en/news/calendar-for-the-2026-27-season-bundesliga-to-start-on-28-august-2026-bundesliga-2-to-kick-off-on-7-august-2026/" target="_blank" rel="noopener">DFL</a> · Uppdaterad: 2 augusti 2026</div>
+    </section>
+
     <section class="card" id="transfer">
       <span class="tag">Fotboll</span>
       <h2 class="section-title">Transfernyheter</h2>
-      <p><strong>Nytt (29 juli) - Premier League:</strong></p>
+      <p><strong>Premier League - sommarens affärer hittills:</strong></p>
       <ul class="ledare">
         <li><strong>Tottenham:</strong> Har backat nya tränaren Roberto De Zerbi rejält - Jan Paul van Hecke (60 milj. euro), Sandro Tonali (108 milj. euro) och Mateus Fernandes (99 milj. euro) är klara mot stora summor, medan Andy Robertson, Marcos Senesi och Martin Dubravka anslutit på fria transfers. Totalt över 267 miljoner euro i värvningar. <a href="https://www.fotbollskanalen.se/" target="_blank" rel="noopener" class="inline-src">(källa: Fotbollskanalen)</a></li>
         <li><strong>Chelsea:</strong> Har hämtat Morgan Rogers från Aston Villa (138 milj. euro) och Marco Palestra från Atalanta (57 milj. euro), samt Geovany Quenda, Emmanuel Emegha, Denner och Dastan Satpaev på förhandsuppgjorda affärer. Danny Welbeck uppges vara klar för klubben. <a href="https://www.fotbolltransfers.com/" target="_blank" rel="noopener" class="inline-src">(källa: Fotbolltransfers.com)</a></li>
@@ -702,22 +645,12 @@
     <section class="card" id="golf">
       <span class="tag">Golf</span>
       <h2 class="section-title">Golf</h2>
-      <p><strong>Nytt (30 juli) - tre touringar spelar första rundan idag:</strong></p>
       <ul class="ledare">
-        <li><strong>PGA Tour - Rocket Classic:</strong> Första rundan spelas idag på Detroit Golf Club (par 70, 7 328 yards), om en prispott på 10 miljoner dollar. <a href="https://www.pgatour.com/" target="_blank" rel="noopener" class="inline-src">(källa: PGA Tour)</a></li>
-        <li><strong>LPGA - AIG Women's Open:</strong> Första rundan av säsongens sista major spelas idag på den klassiska länken Royal Lytham &amp; St Annes i England. <a href="https://www.espn.com/" target="_blank" rel="noopener" class="inline-src">(källa: ESPN)</a></li>
-        <li><strong>Korn Ferry Tour - Utah Championship:</strong> Första rundan spelas idag, en av de sista chanserna för spelare att säkra PGA Tour-kort inför 2027. <a href="https://www.cbssports.com/" target="_blank" rel="noopener" class="inline-src">(källa: CBS Sports)</a></li>
-      </ul>
-      <p><strong>Tidigare:</strong> Jackson Koivun tog sin första proffsseger genom att slå Scottie Scheffler (3M Open, 23-26 juli) - ett tydligt genombrott för den unga amerikanen.</p>
-      <ul class="ledare">
-        <li><strong>The Open Championship</strong> (16-19 juli, Royal Birkdale): Ludvig Åberg slutade på delad 6:e plats, 6 under par - en solid insats i sin första start på banan efter en säsong med fem topp-5-placeringar, däribland PGA Championship i maj. <a href="https://www.golfdigest.com/" target="_blank" rel="noopener" class="inline-src">(källa: Golf Digest)</a></li>
-        <li><strong>Åbergs missöde:</strong> Innan The Open drabbades han av reseproblem - hans golfbag försvann i tre dagar, och när den återfanns var både drivern och lanseringsmonitorn trasiga. <a href="https://www.golfchannel.com/" target="_blank" rel="noopener" class="inline-src">(källa: Golf Channel)</a></li>
-        <li><strong>Genesis Scottish Open:</strong> Åberg missade cutet veckan före The Open. <a href="https://www.lpga.com/" target="_blank" rel="noopener" class="inline-src">(källa: LPGA)</a></li>
         <li><strong>FedExCup-slutspurten:</strong> PGA Tour går nu in i slutfasen av FedExCup-slutspelet inför Tour Championship på East Lake Golf Club i Atlanta i slutet av augusti, där de 30 bäst rankade spelarna gör upp om säsongens totalseger. <a href="https://www.pgatour.com/" target="_blank" rel="noopener" class="inline-src">(källa: PGA Tour)</a></li>
         <li><strong>Åberg vilar inför slutspelet:</strong> Ludvig Åberg har klättrat till toppskiktet av FedExCup-ställningen inför slutspelets första deltävling - flera bevakare placerar honom nu kring sjätteplatsen, understött av en stark säsong med fem topp-5-placeringar. <a href="https://news.williamhill.com/golf/fedex-st-jude-championship-preview-take-a-chance-on-aberg/" target="_blank" rel="noopener" class="inline-src">(källa: William Hill)</a></li>
         <li><strong>Nytt (2 augusti):</strong> FedEx St. Jude Championship, första av slutspelets tre deltävlingar, spelas 12-16 augusti på TPC Southwind i Memphis - Åberg pekas ut som en av spelarna att hålla ögonen på inför turneringen. <a href="https://www.fedexchampionship.com/" target="_blank" rel="noopener" class="inline-src">(källa: FedEx St. Jude Championship)</a></li>
       </ul>
-      <div class="sources">Källor: <a href="https://www.pgatour.com/" target="_blank" rel="noopener">PGA Tour</a>, <a href="https://www.espn.com/" target="_blank" rel="noopener">ESPN</a>, <a href="https://www.cbssports.com/" target="_blank" rel="noopener">CBS Sports</a>, <a href="https://www.golfdigest.com/" target="_blank" rel="noopener">Golf Digest</a>, <a href="https://www.golfchannel.com/" target="_blank" rel="noopener">Golf Channel</a>, <a href="https://www.lpga.com/" target="_blank" rel="noopener">LPGA</a>, <a href="https://news.williamhill.com/golf/fedex-st-jude-championship-preview-take-a-chance-on-aberg/" target="_blank" rel="noopener">William Hill</a> · Uppdaterad: 2 augusti 2026 (FedEx St. Jude Championship 12-16/8, Åberg i toppskiktet av FedExCup-ställningen)</div>
+      <div class="sources">Källor: <a href="https://www.pgatour.com/" target="_blank" rel="noopener">PGA Tour</a>, <a href="https://news.williamhill.com/golf/fedex-st-jude-championship-preview-take-a-chance-on-aberg/" target="_blank" rel="noopener">William Hill</a>, <a href="https://www.fedexchampionship.com/" target="_blank" rel="noopener">FedEx St. Jude Championship</a> · Uppdaterad: 2 augusti 2026 (redan avslutade juli-turneringar borttagna, endast FedExCup-slutspelet 12-16/8 kvar)</div>
     </section>
 
     <section class="card" id="formel1">
@@ -734,26 +667,20 @@
         <li><strong>Låsta paringar:</strong> Endast fem förare är hittills helt säkrade för 2027 - Lando Norris och Oscar Piastri (McLaren), Charles Leclerc och Lewis Hamilton (Ferrari) samt Pierre Gasly (Alpine). <a href="https://www.gpfans.com/" target="_blank" rel="noopener" class="inline-src">(källa: GPFans)</a></li>
         <li><strong>Övrig oro:</strong> Aston Martin och Haas pekas ut som de tydligaste källorna till potentiell rörelse - bland annat är Fernando Alonsos framtid och Haas andra förarsäte omdiskuterade, och minst elva förare är utan kontrakt efter säsongen. <a href="https://www.skysports.com/" target="_blank" rel="noopener" class="inline-src">(källa: Sky Sports)</a></li>
       </ul>
-      <p><strong>Nytt (30 juli) - Verstappen till McLaren?</strong> Enligt GPFans har Verstappen skrivit på för McLaren från 2027 - men uppgiften bör tolkas försiktigt: ESPN skriver samma dag att hans framtid fortfarande "hänger i vågskålen", eftersom prestandaklausulen som skulle utlösa ett utträde ur Red Bull-kontraktet (topp 2 i mästerskapet vid sommaruppehållet) inte är uppfylld - han ligger för närvarande på P7. Fernando Alonso uppges däremot troligen fortsätta i F1 bortom 2027, sannolikt med Aston Martin, där även Alpine visat intresse. Samtidigt är F1:s säsongsavslutning i Qatar och Abu Dhabi osäker - F1-chefen Stefano Domenicali uppges överväga att flytta racen till Europa på grund av säkerhetsläget i Mellanöstern.</p>
-      <div class="sources">Källor: <a href="https://www.formula1.com/" target="_blank" rel="noopener">Formula1.com</a>, <a href="https://www.autosport.com/" target="_blank" rel="noopener">Autosport</a>, <a href="https://www.sportbible.com/" target="_blank" rel="noopener">Sportbible</a>, <a href="https://www.gpfans.com/" target="_blank" rel="noopener">GPFans</a>, <a href="https://www.skysports.com/" target="_blank" rel="noopener">Sky Sports</a>, <a href="https://www.espn.com/" target="_blank" rel="noopener">ESPN</a> · Uppdaterad: 2 augusti 2026 (kontrollerat)</div>
+      <p><strong>Säsongsavslutningen osäker:</strong> F1:s säsongsavslutning i Qatar och Abu Dhabi är osäker - F1-chefen Stefano Domenicali uppges överväga att flytta racen till Europa på grund av säkerhetsläget i Mellanöstern. Fernando Alonso uppges troligen fortsätta i F1 bortom 2027, sannolikt med Aston Martin, där även Alpine visat intresse. <a href="https://www.espn.com/" target="_blank" rel="noopener" class="inline-src">(källa: ESPN)</a></p>
+      <div class="sources">Källor: <a href="https://www.formula1.com/" target="_blank" rel="noopener">Formula1.com</a>, <a href="https://www.autosport.com/" target="_blank" rel="noopener">Autosport</a>, <a href="https://www.sportbible.com/" target="_blank" rel="noopener">Sportbible</a>, <a href="https://www.gpfans.com/" target="_blank" rel="noopener">GPFans</a>, <a href="https://www.skysports.com/" target="_blank" rel="noopener">Sky Sports</a>, <a href="https://www.espn.com/" target="_blank" rel="noopener">ESPN</a> · Uppdaterad: 2 augusti 2026 (osäker/motsägelsefull Verstappen-till-McLaren-uppgift borttagen)</div>
     </section>
 
     <section class="card" id="sport-ovrigt">
       <span class="tag">Sport</span>
       <h2 class="section-title">Sportnyheter i övrigt</h2>
-      <p><strong>Tennis:</strong></p>
-      <ul class="ledare">
-        <li><strong>Nordamerikanska hardcourt-säsongen:</strong> Drog igång i veckan med DC Open i Washington - första kombinerade ATP 500/WTA 500-turneringen för säsongen. Venus Williams, nu inne på sitt 33:e proffsår, gör ett efterlängtat hardcourt-comeback i turneringen. <a href="https://www.yardbarker.com/" target="_blank" rel="noopener" class="inline-src">(källa: Yardbarker)</a></li>
-        <li><strong>Hamburg:</strong> Tamara Korpatsch vann MSC Hamburg Ladies Open med 6-3, 6-3 mot ungerska Anna Bondar. <a href="https://www.nbcsports.com/" target="_blank" rel="noopener" class="inline-src">(källa: NBC Sports)</a></li>
-        <li>Tennissäsongen tar nu över som den stora internationella sportnyheten fram till US Open i slutet av augusti. <a href="https://www.espn.com/" target="_blank" rel="noopener" class="inline-src">(källa: ESPN)</a></li>
-      </ul>
+      <p><strong>Tennis:</strong> Nordamerikanska hardcourt-säsongen är i full gång inför US Open i slutet av augusti, som nu tar över som den stora internationella tennisnyheten. <a href="https://www.espn.com/" target="_blank" rel="noopener" class="inline-src">(källa: ESPN)</a></p>
       <p><strong>NBA/WNBA:</strong></p>
       <ul class="ledare">
         <li><strong>LeBron James free agent-saga:</strong> LeBron beskriver sin nuvarande free agency som "den tredje gången i min karriär" och säger att det handlar om var han vill spendera de sista åren av karriären. Golden State Warriors uppges se sig själva som utmanare snarare än favoriter i jakten på honom, efter att Indiana Pacers (via Tyrese Haliburton) och flera andra lag visat intresse. <a href="https://www.nhl.com/news/" target="_blank" rel="noopener" class="inline-src">(källa: NHL.com)</a></li>
-        <li><strong>WNBA All-Star-helgen:</strong> Avgjordes i United Center i Chicago - trepoängstävlingen och Skills Challenge hölls på fredagen (24 juli), själva All-Star-matchen på lördagen (25 juli). <a href="https://www.yardbarker.com/" target="_blank" rel="noopener" class="inline-src">(källa: Yardbarker)</a></li>
       </ul>
-      <p><strong>NHL:</strong> Ett nytt tolvårigt avtal om exklusiva sändningsrättigheter - inklusive utvalda matcher i Stanley Cup-slutspelet på både engelska och franska - offentliggjordes 28 juli. NHL och NBA befinner sig i övrigt i sommaruppehåll, med free agency-affärer och försäsongsförberedelser som dominerande nyheter snarare än matcher.</p>
-      <div class="sources">Källor: <a href="https://www.yardbarker.com/" target="_blank" rel="noopener">Yardbarker</a>, <a href="https://www.nbcsports.com/" target="_blank" rel="noopener">NBC Sports</a>, <a href="https://www.espn.com/" target="_blank" rel="noopener">ESPN</a>, <a href="https://www.nhl.com/news/" target="_blank" rel="noopener">NHL.com</a> · Uppdaterad: 2 augusti 2026 (kontrollerat)</div>
+      <p><strong>NHL:</strong> NHL och NBA befinner sig i sommaruppehåll, med free agency-affärer och försäsongsförberedelser som dominerande nyheter snarare än matcher.</p>
+      <div class="sources">Källor: <a href="https://www.yardbarker.com/" target="_blank" rel="noopener">Yardbarker</a>, <a href="https://www.espn.com/" target="_blank" rel="noopener">ESPN</a>, <a href="https://www.nhl.com/news/" target="_blank" rel="noopener">NHL.com</a> · Uppdaterad: 2 augusti 2026 (redan avklarade enskilda turneringar/matcher - DC Open-start, Hamburg-final, WNBA All-Star-helgen, NHL-sändningsavtalet - borttagna)</div>
     </section>
   </div>
 
@@ -829,22 +756,13 @@
     <section class="card" id="kulturevent">
       <span class="tag">Kultur</span>
       <h2 class="section-title">Kulturevenemang i Stockholm</h2>
-      <p><strong>Pågår just nu:</strong> Stockholm Pride pågår under temat "Glittrande motståndskraft" (27/7-1/8), med skärpt säkerhet efter Berlin-attacken.</p>
-      <p><strong>Stora arenakonserter i sommar:</strong></p>
+      <p><strong>Kommande arenakonserter:</strong></p>
       <ul class="ledare">
-        <li><strong>Bad Bunny:</strong> Spelar på Strawberry Arena 10-11 juli. <a href="https://kulturhusetstadsteatern.se/" target="_blank" rel="noopener" class="inline-src">(källa: Kulturhuset Stadsteatern)</a></li>
-        <li><strong>Robyn:</strong> Uppträder på Avicii Arena 16-18 juli. <a href="https://www.dn.se/kultur/" target="_blank" rel="noopener" class="inline-src">(källa: DN Kalendariet)</a></li>
-        <li><strong>Lenny Kravitz:</strong> Avicii Arena, 24 juli. <a href="https://www.timeout.com/sv/stockholm/" target="_blank" rel="noopener" class="inline-src">(källa: Time Out Stockholm)</a></li>
         <li><strong>The Weeknd:</strong> Tre kvällar på Strawberry Arena, 8-10 augusti - sommarens största enskilda konsertserie i Stockholm. <a href="https://www.visitstockholm.se/" target="_blank" rel="noopener" class="inline-src">(källa: Visit Stockholm)</a></li>
         <li><strong>Veronica Maggio:</strong> Stockholms Stadion, 22 augusti. <a href="https://www.gronalund.com/" target="_blank" rel="noopener" class="inline-src">(källa: Gröna Lund)</a></li>
       </ul>
-      <p><strong>Festivaler:</strong></p>
-      <ul class="ledare">
-        <li><strong>Rosendal Garden Party</strong> (12-14 juni, redan avklarad men del av sommarens kulturhöjdpunkter): Bjöd på artister som TLC, David Byrne och Agnes. <a href="https://kulturhusetstadsteatern.se/" target="_blank" rel="noopener" class="inline-src">(källa: Kulturhuset Stadsteatern)</a></li>
-        <li><strong>Vi älskar</strong> (26-27 juni): Nostalgifestivalen firade 10 år med artister som Scooter, Basshunter och Drömhus. <a href="https://www.dn.se/kultur/" target="_blank" rel="noopener" class="inline-src">(källa: DN Kalendariet)</a></li>
-      </ul>
-      <p><strong>Gröna Lund:</strong> Nöjesparken bjuder på över 60 konserter under sommarsäsongen - ett säsongskort ("Gröna Kortet") kostar 440 kronor och ger tillgång till hela sommarens program, inklusive tidigare framträdanden av bland andra Empire of the Sun och Magnus Uggla.</p>
-      <div class="sources">Källor: <a href="https://kulturhusetstadsteatern.se/" target="_blank" rel="noopener">Kulturhuset Stadsteatern</a>, <a href="https://www.dn.se/kultur/" target="_blank" rel="noopener">DN Kalendariet</a>, <a href="https://www.timeout.com/sv/stockholm/" target="_blank" rel="noopener">Time Out Stockholm</a>, <a href="https://www.visitstockholm.se/" target="_blank" rel="noopener">Visit Stockholm</a>, <a href="https://www.gronalund.com/" target="_blank" rel="noopener">Gröna Lund</a> · Uppdaterad: 2 augusti 2026 (kontrollerat - Pride avslutas 1/8, The Weeknd 8-10 augusti fortsatt aktuellt)</div>
+      <p><strong>Gröna Lund:</strong> Nöjesparken bjuder på över 60 konserter under sommarsäsongen - ett säsongskort ("Gröna Kortet") kostar 440 kronor och ger tillgång till hela sommarens program.</p>
+      <div class="sources">Källor: <a href="https://www.visitstockholm.se/" target="_blank" rel="noopener">Visit Stockholm</a>, <a href="https://www.gronalund.com/" target="_blank" rel="noopener">Gröna Lund</a> · Uppdaterad: 2 augusti 2026 (redan avklarade konserter och festivaler borttagna, endast kommande evenemang kvar)</div>
     </section>
 
     <section class="card" id="kulturevent-nacka">
@@ -1097,7 +1015,7 @@
   <!-- ============ FILOSOFI OCH PSYKOLOGI ============ -->
   <div class="tab-panel" id="panel-filosofipsykologi" data-panel="filosofipsykologi">
     <h2 class="panel-heading">Filosofi och Psykologi</h2>
-    <div class="note" style="margin-bottom:16px;">Senaste nytt inom filosofi och psykologi, samt en daglig fördjupning om en stor filosof och en stor psykolog och deras verk (roterar - upprepa inte gårdagens namn).</div>
+    <div class="note" style="margin-bottom:16px;">Senaste nytt inom filosofi och psykologi, samt en daglig fördjupning om en stor filosof och en stor psykolog och deras verk (roterar - upprepa inte gårdagens namn). Tidigare fördjupningar sparas i Arkiv-fliken till höger istället för att skrivas över.</div>
 
     <section class="card" id="filosofi-senaste">
       <span class="tag">Filosofi · Nyheter</span>
@@ -1126,23 +1044,54 @@
       <div class="sources">Källor: <a href="https://www.sciencedaily.com/news/mind_brain/psychology/" target="_blank" rel="noopener">ScienceDaily - Psychology</a>, <a href="https://www.psypost.org/" target="_blank" rel="noopener">PsyPost</a>, <a href="https://www.nature.com/subjects/psychology" target="_blank" rel="noopener">Nature - Psychology</a> · Uppdaterad: 2 augusti 2026 (kontrollerat - forskningsrönen fortsatt aktuella)</div>
     </section>
 
-    <section class="card deep" id="filosof-fordjupning">
-      <span class="tag">Fördjupning · Filosof</span>
-      <h2 class="section-title">Dagens filosof: Hannah Arendt och "Totalitarismens ursprung"</h2>
-      <p><strong>Vem var Arendt?</strong> Hannah Arendt (1906-1975) var en tysk-amerikansk politisk teoretiker och filosof, född i Hannover, som tvingades fly Nazityskland 1933 och senare Frankrike 1941 innan hon till slut bosatte sig i USA. Hennes egen erfarenhet av statslöshet och förföljelse - hon satt kortvarigt internerad i ett franskt läger innan flykten - blev en central drivkraft i hennes livslånga försök att förstå hur totalitära system uppstår och varför moderna människor blir mottagliga för dem.</p>
-      <p><strong>Verket:</strong> "Totalitarismens ursprung" (The Origins of Totalitarianism, 1951) analyserar hur antisemitism, imperialism och upplösningen av traditionella klass- och nationsband tillsammans banade väg för nazismen och stalinismen. Arendt argumenterar att totalitära rörelser inte i första hand drivs av ideologi i vanlig mening, utan av en förmåga att göra atomiserade, rotlösa massor mottagliga för en allomfattande världsbild som ersätter både sanning och verklighet. Hennes senare rapportering om Adolf Eichmanns rättegång i "Eichmann i Jerusalem" (1963) myntade uttrycket "det banala i ondskan" - tanken att fruktansvärda brott kan begås av till synes ordinära, byråkratiska människor snarare än av uppenbara monster.</p>
-      <p><strong>Varför det spelar roll:</strong> Arendts analys av hur demokratier kan urholkas inifrån - genom propaganda, atomisering av civilsamhället och erosion av en gemensam sanningsgrund - har fått förnyad aktualitet i dagens debatt om desinformation, polarisering och auktoritära rörelsers frammarsch globalt (se även dagens ledarkommentar om att "fler auktoritära stater än demokratier" nu finns i världen, under Sverige-fliken). Hennes tänkande om "det banala i ondskan" fortsätter samtidigt att prägla både filosofisk etik och juridisk och historisk forskning om hur vanliga människor blir delaktiga i systematiskt våld. <a href="https://plato.stanford.edu/entries/arendt/" target="_blank" rel="noopener" class="inline-src">(källa: Stanford Encyclopedia of Philosophy)</a></p>
-      <div class="sources">Källor: <a href="https://plato.stanford.edu/entries/arendt/" target="_blank" rel="noopener">Stanford Encyclopedia of Philosophy - Arendt</a>, <a href="https://www.britannica.com/biography/Hannah-Arendt" target="_blank" rel="noopener">Encyclopaedia Britannica</a> · Uppdaterad: 2 augusti 2026</div>
-    </section>
+    <div class="subtabs-group" data-subtabs="filospsyk">
+      <nav class="subtabs-nav">
+        <button class="subtab-btn active" data-subtab="idag" type="button">Idag</button>
+        <button class="subtab-btn" data-subtab="arkiv" type="button">Arkiv</button>
+      </nav>
 
-    <section class="card deep" id="psykolog-fordjupning">
-      <span class="tag">Fördjupning · Psykolog</span>
-      <h2 class="section-title">Dagens psykolog: Carl Rogers och den klientcentrerade terapin</h2>
-      <p><strong>Vem var Rogers?</strong> Carl Rogers (1902-1987) var en amerikansk psykolog som grundlade den humanistiska psykologins terapitradition och räknas som en av 1900-talets mest inflytelserika kliniska psykologer. Till skillnad från både den psykoanalytiska traditionen (som betonade omedvetna drifter) och den då dominerande behaviorismen (som betonade yttre beteendeträning) menade Rogers att människor bär på en inneboende drivkraft mot personlig växt - vad han kallade "aktualiseringstendensen" - som terapin i första hand ska frigöra snarare än styra.</p>
-      <p><strong>Teorin:</strong> Rogers klientcentrerade (senare kallad personcentrerad) terapi bygger på idén att verklig förändring uppstår när klienten möts av tre grundläggande terapeutattityder: ovillkorlig positiv hänsyn (att acceptera klienten utan att döma), empatisk förståelse (att verkligen försöka se världen från klientens perspektiv) och kongruens (att terapeuten själv är genuin och ärlig i mötet). Rogers avvisade tanken på terapeuten som en auktoritet som "botar" en passiv patient - i stället sågs klienten som experten på sitt eget liv, med terapeuten som en medresenär som skapar rätt relationella förutsättningar för självinsikt och förändring.</p>
-      <p><strong>Varför det spelar roll:</strong> Rogers grundprinciper - empati, aktivt lyssnande och en icke-dömande hållning - har spridit sig långt bortom psykoterapin och präglar i dag allt från skolans elevhälsa och socialt arbete till modern kommunikationsträning inom vård och ledarskap. Hans forskning var också banbrytande metodologiskt: han var bland de första att systematiskt spela in och analysera faktiska terapisamtal för att studera vad som verkligen fungerar, en vetenskaplig ansats som lade grunden för dagens evidensbaserade psykoterapiforskning. Frågan om hur mycket äkta mänsklig empati kan eller bör ersättas av AI-chattbotar i terapeutiska och sociala sammanhang (se AI-nyheter under Ekonomi-fliken samt mediedebatten om ungas "artificiella relationer") aktualiserar indirekt Rogers kärntes: att det genuina, mänskliga mötet i sig har en läkande kraft. <a href="https://www.britannica.com/biography/Carl-Rogers" target="_blank" rel="noopener" class="inline-src">(källa: Encyclopaedia Britannica)</a></p>
-      <div class="sources">Källor: <a href="https://www.britannica.com/biography/Carl-Rogers" target="_blank" rel="noopener">Encyclopaedia Britannica - Rogers</a>, <a href="https://plato.stanford.edu/entries/rogers/" target="_blank" rel="noopener">Stanford Encyclopedia of Philosophy</a> · Uppdaterad: 2 augusti 2026</div>
-    </section>
+      <div class="subtab-panel active" data-subtab-panel="idag">
+        <section class="card deep" id="filosof-fordjupning">
+          <span class="tag">Fördjupning · Filosof</span>
+          <h2 class="section-title">Dagens filosof: Hannah Arendt och "Totalitarismens ursprung"</h2>
+          <p><strong>Vem var Arendt?</strong> Hannah Arendt (1906-1975) var en tysk-amerikansk politisk teoretiker och filosof, född i Hannover, som tvingades fly Nazityskland 1933 och senare Frankrike 1941 innan hon till slut bosatte sig i USA. Hennes egen erfarenhet av statslöshet och förföljelse - hon satt kortvarigt internerad i ett franskt läger innan flykten - blev en central drivkraft i hennes livslånga försök att förstå hur totalitära system uppstår och varför moderna människor blir mottagliga för dem.</p>
+          <p><strong>Verket:</strong> "Totalitarismens ursprung" (The Origins of Totalitarianism, 1951) analyserar hur antisemitism, imperialism och upplösningen av traditionella klass- och nationsband tillsammans banade väg för nazismen och stalinismen. Arendt argumenterar att totalitära rörelser inte i första hand drivs av ideologi i vanlig mening, utan av en förmåga att göra atomiserade, rotlösa massor mottagliga för en allomfattande världsbild som ersätter både sanning och verklighet. Hennes senare rapportering om Adolf Eichmanns rättegång i "Eichmann i Jerusalem" (1963) myntade uttrycket "det banala i ondskan" - tanken att fruktansvärda brott kan begås av till synes ordinära, byråkratiska människor snarare än av uppenbara monster.</p>
+          <p><strong>Varför det spelar roll:</strong> Arendts analys av hur demokratier kan urholkas inifrån - genom propaganda, atomisering av civilsamhället och erosion av en gemensam sanningsgrund - har fått förnyad aktualitet i dagens debatt om desinformation, polarisering och auktoritära rörelsers frammarsch globalt (se även dagens ledarkommentar om att "fler auktoritära stater än demokratier" nu finns i världen, under Sverige-fliken). Hennes tänkande om "det banala i ondskan" fortsätter samtidigt att prägla både filosofisk etik och juridisk och historisk forskning om hur vanliga människor blir delaktiga i systematiskt våld. <a href="https://plato.stanford.edu/entries/arendt/" target="_blank" rel="noopener" class="inline-src">(källa: Stanford Encyclopedia of Philosophy)</a></p>
+          <div class="sources">Källor: <a href="https://plato.stanford.edu/entries/arendt/" target="_blank" rel="noopener">Stanford Encyclopedia of Philosophy - Arendt</a>, <a href="https://www.britannica.com/biography/Hannah-Arendt" target="_blank" rel="noopener">Encyclopaedia Britannica</a> · Uppdaterad: 2 augusti 2026</div>
+        </section>
+
+        <section class="card deep" id="psykolog-fordjupning">
+          <span class="tag">Fördjupning · Psykolog</span>
+          <h2 class="section-title">Dagens psykolog: Carl Rogers och den klientcentrerade terapin</h2>
+          <p><strong>Vem var Rogers?</strong> Carl Rogers (1902-1987) var en amerikansk psykolog som grundlade den humanistiska psykologins terapitradition och räknas som en av 1900-talets mest inflytelserika kliniska psykologer. Till skillnad från både den psykoanalytiska traditionen (som betonade omedvetna drifter) och den då dominerande behaviorismen (som betonade yttre beteendeträning) menade Rogers att människor bär på en inneboende drivkraft mot personlig växt - vad han kallade "aktualiseringstendensen" - som terapin i första hand ska frigöra snarare än styra.</p>
+          <p><strong>Teorin:</strong> Rogers klientcentrerade (senare kallad personcentrerad) terapi bygger på idén att verklig förändring uppstår när klienten möts av tre grundläggande terapeutattityder: ovillkorlig positiv hänsyn (att acceptera klienten utan att döma), empatisk förståelse (att verkligen försöka se världen från klientens perspektiv) och kongruens (att terapeuten själv är genuin och ärlig i mötet). Rogers avvisade tanken på terapeuten som en auktoritet som "botar" en passiv patient - i stället sågs klienten som experten på sitt eget liv, med terapeuten som en medresenär som skapar rätt relationella förutsättningar för självinsikt och förändring.</p>
+          <p><strong>Varför det spelar roll:</strong> Rogers grundprinciper - empati, aktivt lyssnande och en icke-dömande hållning - har spridit sig långt bortom psykoterapin och präglar i dag allt från skolans elevhälsa och socialt arbete till modern kommunikationsträning inom vård och ledarskap. Hans forskning var också banbrytande metodologiskt: han var bland de första att systematiskt spela in och analysera faktiska terapisamtal för att studera vad som verkligen fungerar, en vetenskaplig ansats som lade grunden för dagens evidensbaserade psykoterapiforskning. Frågan om hur mycket äkta mänsklig empati kan eller bör ersättas av AI-chattbotar i terapeutiska och sociala sammanhang (se AI-nyheter under Ekonomi-fliken samt mediedebatten om ungas "artificiella relationer") aktualiserar indirekt Rogers kärntes: att det genuina, mänskliga mötet i sig har en läkande kraft. <a href="https://www.britannica.com/biography/Carl-Rogers" target="_blank" rel="noopener" class="inline-src">(källa: Encyclopaedia Britannica)</a></p>
+          <div class="sources">Källor: <a href="https://www.britannica.com/biography/Carl-Rogers" target="_blank" rel="noopener">Encyclopaedia Britannica - Rogers</a>, <a href="https://plato.stanford.edu/entries/rogers/" target="_blank" rel="noopener">Stanford Encyclopedia of Philosophy</a> · Uppdaterad: 2 augusti 2026</div>
+        </section>
+      </div>
+
+      <div class="subtab-panel" data-subtab-panel="arkiv">
+        <p class="archive-note">Tidigare "Dagens filosof"- och "Dagens psykolog"-fördjupningar, sparade när nya namn roterar in under Idag-fliken (arkivet infört 2 augusti 2026 - nya poster läggs till överst i takt med rotationen).</p>
+
+        <section class="card deep" id="filosof-arkiv-rawls">
+          <span class="tag">Arkiv · Filosof</span>
+          <h2 class="section-title">John Rawls och "En teori om rättvisa"</h2>
+          <p><strong>Vem var Rawls?</strong> John Rawls (1921-2002) var en amerikansk politisk filosof vid Harvard som brukar räknas som 1900-talets mest inflytelserika politiska filosof inom den anglosaxiska traditionen. Hans arbete återupplivade i grunden det normativa samtalet om rättvisa och jämlikhet inom akademisk filosofi, efter en period då många ansåg att ämnet dominerats av mer språkanalytiska frågeställningar.</p>
+          <p><strong>Verket:</strong> "En teori om rättvisa" (A Theory of Justice, 1971) presenterar Rawls mest kända tankeexperiment: "slöjan av okunnighet" (veil of ignorance). Tänk dig att du ska utforma ett samhälles grundläggande institutioner utan att veta vilken plats du själv kommer att inta i det - din klass, begåvning, kön eller värderingar. Rawls argumenterar att förnuftiga människor bakom en sådan slöja skulle enas om två rättviseprinciper: dels lika grundläggande friheter för alla, dels att sociala och ekonomiska ojämlikheter bara är rättfärdigade om de gynnar samhällets sämst ställda (den så kallade differensprincipen) och är kopplade till positioner öppna för alla under rättvisa förutsättningar.</p>
+          <p><strong>Varför det spelar roll:</strong> Rawls ramverk blev den centrala referenspunkten i decennier av debatt om välfärdsstatens moraliska grund, och hans idé om att rättvisa institutioner ska bedömas utifrån hur de gynnar de sämst ställda återkommer alltjämt i diskussioner om skattepolitik, fördelning och grundtrygghet (jämför till exempel med Analyser-flikens specialartikel om negativ inkomstskatt). Även Rawls kritiker - från libertarianer som Robert Nozick till kommunitarister som Michael Sandel - tvingades formulera sina invändningar i dialog med hans ramverk, vilket gör "En teori om rättvisa" till en av de mest citerade filosofiska texterna på engelska efter andra världskriget. <a href="https://plato.stanford.edu/entries/rawls/" target="_blank" rel="noopener" class="inline-src">(källa: Stanford Encyclopedia of Philosophy)</a></p>
+          <div class="sources">Källor: <a href="https://plato.stanford.edu/entries/rawls/" target="_blank" rel="noopener">Stanford Encyclopedia of Philosophy - Rawls</a>, <a href="https://www.britannica.com/biography/John-Rawls" target="_blank" rel="noopener">Encyclopaedia Britannica</a> · Arkiverad: 2 augusti 2026 (tidigare visad under Idag, ersatt av Hannah Arendt)</div>
+        </section>
+
+        <section class="card deep" id="psykolog-arkiv-piaget">
+          <span class="tag">Arkiv · Psykolog</span>
+          <h2 class="section-title">Jean Piaget och den kognitiva utvecklingsteorin</h2>
+          <p><strong>Vem var Piaget?</strong> Jean Piaget (1896-1980) var en schweizisk psykolog och epistemolog som lade grunden för det moderna studiet av barns kognitiva utveckling. Han inledde sin bana som naturvetare - han publicerade sin första vetenskapliga artikel om blötdjur redan som tonåring - innan han vände sig mot psykologin och började studera hur barns tänkande skiljer sig kvalitativt, inte bara kvantitativt, från vuxnas.</p>
+          <p><strong>Teorin:</strong> Piagets stadieteori beskriver barns kognitiva utveckling som en följd av fyra distinkta stadier: det sensomotoriska stadiet (0-2 år, där barnet lär känna världen genom sinnen och rörelse), det preoperationella stadiet (2-7 år, där symboliskt tänkande och språk utvecklas men logiken ännu är egocentrisk), det konkret-operationella stadiet (7-11 år, där barnet kan resonera logiskt kring konkreta företeelser) och det formal-operationella stadiet (från cirka 12 år, där abstrakt och hypotetiskt tänkande blir möjligt). Centralt i teorin är begreppen assimilation (att tolka ny information utifrån befintliga tankescheman) och ackommodation (att förändra sina scheman när verkligheten inte stämmer med dem) - ett samspel Piaget kallade "konstruktivism", eftersom barnet aktivt bygger sin egen förståelse av världen snarare än att passivt ta emot den.</p>
+          <p><strong>Varför det spelar roll:</strong> Piagets arbete revolutionerade både utvecklingspsykologin och pedagogiken - hans idé om att barn tänker kvalitativt annorlunda i olika åldrar ligger till grund för mycket av dagens läroplansutformning och för principen att undervisning bör anpassas efter barnets utvecklingsnivå snarare än bara mätas i mängden fakta. Senare forskning har nyanserat och delvis ifrågasatt de strikta åldersgränserna mellan stadierna, men grundtanken - att barns tänkande utvecklas i kvalitativt olika faser och att barnet är en aktiv konstruktör av sin egen kunskap - förblir central inom både psykologi och pedagogik. <a href="https://www.britannica.com/biography/Jean-Piaget" target="_blank" rel="noopener" class="inline-src">(källa: Encyclopaedia Britannica)</a></p>
+          <div class="sources">Källor: <a href="https://www.britannica.com/biography/Jean-Piaget" target="_blank" rel="noopener">Encyclopaedia Britannica - Piaget</a>, <a href="https://plato.stanford.edu/entries/piaget-child/" target="_blank" rel="noopener">Stanford Encyclopedia of Philosophy</a> · Arkiverad: 2 augusti 2026 (tidigare visad under Idag, ersatt av Carl Rogers)</div>
+        </section>
+      </div>
+    </div>
   </div>
 
   <!-- ============ FRAMTID ============ -->
@@ -1285,6 +1234,84 @@
     </section>
   </div>
 
+  <!-- ============ HISTORIA ============ -->
+  <div class="tab-panel" id="panel-historia" data-panel="historia">
+    <h2 class="panel-heading">Historia</h2>
+    <div class="note" style="margin-bottom:16px;">Fördjupade, fristående artiklar om stora historiska händelser - evergreen-innehåll som inte uppdateras dagligen, utan står kvar tills nya artiklar läggs till.</div>
+
+    <section class="card deep" id="historia-franska-revolutionen">
+      <span class="tag">Historia · Fördjupning</span>
+      <h2 class="section-title">Franska revolutionen (1789-1799)</h2>
+      <p>Franska revolutionen är en av de mest omvälvande händelserna i modern historia - den störtade inte bara den franska monarkin utan omformade också de politiska idéerna om folksuveränitet, medborgerliga rättigheter och statens roll på ett sätt som fortfarande präglar västerländsk politik. Den här genomgången följer revolutionen från dess bakomliggande kris till Napoleons maktövertagande tio år senare.</p>
+
+      <h3 class="paper">Bakgrund: ett rike i kris</h3>
+      <p>1780-talets Frankrike styrdes av en absolut monarki under Ludvig XVI, men staten var i praktiken bankrutt efter årtionden av kostsamma krig - inte minst det ekonomiskt tunga stödet till den amerikanska självständighetskampen - och ett skattesystem som i stor utsträckning skonade adeln och prästerskapet (första och andra ståndet) medan bördan föll på den obetydligt representerade tredje ståndet: bönder, hantverkare och en växande borgarklass. Missväxt 1788 drev upp brödpriserna kraftigt och förvärrade det sociala trycket ytterligare. I ett försök att lösa finanskrisen kallade Ludvig XVI 1789 samman ständerriksdagen (États-Généraux) för första gången sedan 1614.</p>
+
+      <h3 class="paper">1789: Nationalförsamlingen och Bastiljens fall</h3>
+      <p>När ständerriksdagen samlades i maj 1789 krävde tredje ståndets representanter en rösträkning per huvud istället för per stånd - vilket skulle ge dem reellt inflytande - och utropade sig i juni till Nationalförsamling när kraven avvisades. Den 14 juli 1789 stormade en folkmassa i Paris fästningen och fängelset Bastiljen, en händelse som blivit revolutionens mest ikoniska symbol och som i dag firas som Frankrikes nationaldag. I augusti samma år antog Nationalförsamlingen "Deklarationen om människans och medborgarens rättigheter", som slog fast principer om frihet, egendom, säkerhet och motstånd mot förtryck som naturliga och omistliga rättigheter - ett dokument som starkt påverkade senare rättighetsförklaringar världen över. <a href="https://www.britannica.com/event/French-Revolution" target="_blank" rel="noopener" class="inline-src">(källa: Encyclopaedia Britannica)</a></p>
+
+      <h3 class="paper">1791-1793: Från konstitutionell monarki till republik</h3>
+      <p>Frankrike fick 1791 sin första skrivna konstitution, som gjorde landet till en konstitutionell monarki med begränsad kungamakt. Men förtroendet för Ludvig XVI kollapsade efter att kungafamiljen i juni 1791 greps på flykt mot gränsen (Varennes-flykten), vilket många tolkade som ett bevis på att kungen konspirerade med utländska makter mot revolutionen. Krig mot Österrike och Preussen 1792, i kombination med inrikespolitisk radikalisering, ledde till att monarkin formellt avskaffades i september 1792 och att Frankrike utropades till republik. Ludvig XVI ställdes inför rätta för landsförräderi och avrättades i giljotinen den 21 januari 1793 - en händelse som chockade Europas kungahus och bidrog till att revolutionskrigen eskalerade.</p>
+
+      <h3 class="paper">1793-1794: Skräckväldet</h3>
+      <p>Hotad av inre uppror och en koalition av europeiska monarkier utifrån, grep Nationalkonventets radikala jakobinska falang under Maximilien Robespierre makten via Välfärdsutskottet och inledde det som kallas Skräckväldet (la Terreur). Under drygt ett år, från hösten 1793 till sommaren 1794, avrättades enligt historiska uppskattningar mellan 16 000 och 40 000 människor - misstänkta motrevolutionärer, avvikande politiker och till slut även tidigare ledande revolutionärer - anklagade för förräderi mot revolutionen, ofta efter summariska rättegångar. Skräckväldet tog slut lika abrupt som det börjat: den 27 juli 1794 (9 thermidor enligt revolutionskalendern) greps och avrättades Robespierre själv av sina forna meningsfränder, som fruktade att bli nästa offer. <a href="https://www.history.com/topics/france/french-revolution" target="_blank" rel="noopener" class="inline-src">(källa: History.com)</a></p>
+
+      <h3 class="paper">1795-1799: Direktoriet och Napoleons maktövertagande</h3>
+      <p>Efter Robespierres fall styrdes Frankrike av en ny, mer moderat författning under en femmannastyrelse kallad Direktoriet (1795-1799) - en period präglad av politisk instabilitet, korruption och fortsatta krig mot europeiska koalitioner. Det var under dessa krig som den unge generalen Napoleon Bonaparte byggde upp sitt rykte genom framgångsrika fälttåg i Italien och Egypten. Den 9 november 1799 (18 brumaire) genomförde Napoleon en statskupp som störtade Direktoriet och installerade honom själv som förste konsul - en händelse som brukar räknas som revolutionens slutpunkt, även om dess idéer om folksuveränitet och medborgerliga rättigheter fortsatte att prägla Frankrike och sprida sig över Europa under Napoleonkrigen som följde.</p>
+
+      <h3 class="paper">Eftermäle</h3>
+      <p>Franska revolutionen krossade den feodala samhällsordningen i Frankrike och gav upphov till idéer - folksuveränitet, mänskliga rättigheter, sekulär statsbildning - som spred sig långt utanför landets gränser och alltjämt utgör grundpelare i moderna demokratier. Samtidigt förblir dess eftermäle djupt tvetydigt: samma revolution som formulerade universella friheter genomförde också Skräckväldets massavrättningar, vilket gjort den till ett ständigt återkommande exempel i debatten om hur revolutionära ideal kan urarta i praktiken. Slagordet "Frihet, jämlikhet, broderskap" (Liberté, égalité, fraternité), format under revolutionsåren, är i dag Frankrikes officiella motto.</p>
+      <div class="sources">Källor: <a href="https://www.britannica.com/event/French-Revolution" target="_blank" rel="noopener">Encyclopaedia Britannica</a>, <a href="https://www.history.com/topics/france/french-revolution" target="_blank" rel="noopener">History.com</a>, <a href="https://www.nationalencyklopedin.se/" target="_blank" rel="noopener">Nationalencyklopedin</a> · Uppdaterad: 2 augusti 2026</div>
+    </section>
+
+    <section class="card deep" id="historia-stalingrad">
+      <span class="tag">Historia · Fördjupning</span>
+      <h2 class="section-title">Slaget vid Stalingrad (1942-1943)</h2>
+      <p>Slaget vid Stalingrad brukar räknas som andra världskrigets viktigaste vändpunkt på östfronten - den enskilt blodigaste striden i krigshistorien, där den tyska framryckningen österut definitivt bröts och initiativet gick över till Sovjetunionen för resten av kriget.</p>
+
+      <h3 class="paper">Bakgrund: Fall Blau</h3>
+      <p>Efter att den tyska invasionen av Sovjetunionen (Operation Barbarossa, inledd juni 1941) kört fast utanför Moskva vintern 1941-42, lanserade Nazityskland sommaren 1942 en ny offensiv i söder - kodnamnet Fall Blau - med målet att säkra Kaukasus oljefält och skära av Sovjetunionens transportleder längs floden Volga. Staden Stalingrad (dagens Volgograd), uppkallad efter den sovjetiske ledaren Josef Stalin, blev ett strategiskt och symboliskt nyckelmål vid Volgas västra strand.</p>
+
+      <h3 class="paper">Augusti-november 1942: Striderna i staden</h3>
+      <p>Tyska sjätte armén under general Friedrich Paulus nådde Stalingrads utkanter i slutet av augusti 1942, understödd av massiva bombningar som lade stora delar av staden i ruiner redan innan markstriderna på allvar tagit fart. Vad som följde blev en av krigshistoriens mest brutala urban strider - kämpade hus för hus, våning för våning, ofta på extremt nära håll, i vad tyska soldater kom att kalla "råttkriget" (Rattenkrieg). Symboliska platser som "Pavlovs hus", där en sovjetisk pluton höll ställningen i nästan två månader mot upprepade tyska anfall, blev sinnebilden för det sovjetiska motståndets envishet. Trots att tyska styrkor vid ett tillfälle kontrollerade omkring 90 procent av staden lyckades de aldrig helt driva ut de sovjetiska försvararna från Volgastranden. <a href="https://www.britannica.com/event/Battle-of-Stalingrad" target="_blank" rel="noopener" class="inline-src">(källa: Encyclopaedia Britannica)</a></p>
+
+      <h3 class="paper">November 1942: Operation Uranus</h3>
+      <p>Den 19 november 1942 lanserade Röda armén Operation Uranus - en storskalig, noggrant förberedd motoffensiv riktad mot de betydligt svagare rumänska och ungerska styrkor som skyddade sjätte arméns flanker norr och söder om staden. De sovjetiska pansarstyrkorna bröt snabbt igenom och slöt inringningen vid staden Kalatj den 23 november, vilket fångade omkring 250 000-300 000 tyska och allierade soldater (bland dem Sjätte armén i sin helhet) i en ficka runt Stalingrad. Adolf Hitler vägrade tillåta ett utbrytningsförsök eller reträtt och beordrade i stället att armén skulle hålla ställningarna, i tron på att Luftwaffe skulle kunna försörja de inringade styrkorna via luftbro - ett löfte som visade sig grovt otillräckligt givet den enorma mängden trupper som behövde försörjas.</p>
+
+      <h3 class="paper">Januari-februari 1943: Kapitulationen</h3>
+      <p>Under januari 1943 splittrade och krympte sovjetiska styrkor den inringade tyska fickan (Operation Ring) medan svält, kyla och ammunitionsbrist decimerade de instängda soldaterna. Den 31 januari 1943 kapitulerade fältmarskalk Paulus - befordrad av Hitler dagen innan i ett underförstått påtryckande om att ta sitt liv snarare än att ge upp, en uppmaning han inte följde - tillsammans med den södra delen av fickan, och de sista tyska styrkorna i norr kapitulerade den 2 februari. Av de omkring 91 000 tyska soldater som togs till fånga överlevde bara en bråkdel - uppskattningsvis färre än 6 000 - den sovjetiska fångenskapen och återvände efter kriget. Slaget kostade sammanlagt uppskattningsvis nära två miljoner döda, sårade och tillfångatagna på båda sidor sammanräknat, vilket gör det till ett av historiens blodigaste enskilda slag. <a href="https://www.iwm.org.uk/history/what-was-the-battle-of-stalingrad" target="_blank" rel="noopener" class="inline-src">(källa: Imperial War Museums)</a></p>
+
+      <h3 class="paper">Betydelse: krigets vändpunkt</h3>
+      <p>Nederlaget vid Stalingrad var den första stora strategiska katastrofen för den tyska armén under andra världskriget och krossade myten om dess oövervinnlighet - både för det tyska folket, som fick beskedet i ett dystert radiotal, och för Nazitysklands allierade och motståndare. Efter Stalingrad förlorade Wehrmacht permanent initiativet på östfronten: Röda armén gick över till en i huvudsak offensiv strategi som, trots svåra motslag som slaget vid Kursk sommaren 1943, till slut skulle bära hela vägen till Berlin 1945. Historiker brukar därför räkna Stalingrad, tillsammans med de västallierades landstigning i Normandie 1944, som en av krigets absolut mest avgörande vändpunkter.</p>
+      <div class="sources">Källor: <a href="https://www.britannica.com/event/Battle-of-Stalingrad" target="_blank" rel="noopener">Encyclopaedia Britannica</a>, <a href="https://www.iwm.org.uk/history/what-was-the-battle-of-stalingrad" target="_blank" rel="noopener">Imperial War Museums</a>, <a href="https://www.nationalencyklopedin.se/" target="_blank" rel="noopener">Nationalencyklopedin</a> · Uppdaterad: 2 augusti 2026</div>
+    </section>
+
+    <section class="card deep" id="historia-spanska-inkvisitionen">
+      <span class="tag">Historia · Fördjupning</span>
+      <h2 class="section-title">Spanska inkvisitionen (1478-1834)</h2>
+      <p>Spanska inkvisitionen var en kyrklig-statlig institution som under mer än tre och ett halvt sekel förföljde religiösa avvikare i Spanien - och som i eftervärldens minne blivit en av historiens starkaste symboler för religiöst förtryck, tortyr och godtycklig makt.</p>
+
+      <h3 class="paper">Bakgrund: Reconquista och religiös enhet</h3>
+      <p>Under medeltiden hade den iberiska halvön länge varit religiöst blandad, med kristna, judiska och muslimska befolkningar som levde sida vid sida under olika härskare i takt med att den kristna Reconquistan (återerövringen från muslimskt styre) sakta trängde de muslimska rikena söderut. Under 1300- och 1400-talen växte antijudiska stämningar och våld i Spanien, vilket drev många spanska judar att konvertera till kristendomen - dessa konvertiter kallades conversos. Misstankar om att många conversos i hemlighet fortsatte utöva judendomen ("krypto-judar") blev en central drivkraft bakom kraven på en institution som kunde granska trons äkthet.</p>
+
+      <h3 class="paper">1478: Inrättandet</h3>
+      <p>Efter påvlig auktorisation 1478 inrättade de katolska monarkerna Ferdinand II av Aragonien och Isabella I av Kastilien den spanska inkvisitionen - till skillnad från medeltidens tidigare, påvligt styrda inkvisitioner stod den spanska inkvisitionen under kronans direkta kontroll, vilket gjorde den till ett ovanligt kraftfullt redskap för både religiös och politisk maktutövning. Dominikanmunken Tomás de Torquemada utsågs 1483 till Spaniens förste storinkvisitor och blev den mest ökända gestalten i institutionens historia - under hans ledning intensifierades förföljelsen dramatiskt, med tusentals rannsakningar och åtskilliga avrättningar. <a href="https://www.britannica.com/topic/Spanish-Inquisition" target="_blank" rel="noopener" class="inline-src">(källa: Encyclopaedia Britannica)</a></p>
+
+      <h3 class="paper">Metoder: rannsakning, tortyr och auto-da-fé</h3>
+      <p>Inkvisitionens process byggde på hemliga angivelser, långdragna förhör och - i enlighet med dåtidens allmänt accepterade rättspraxis inom både kyrkliga och världsliga domstolar - bruk av tortyr för att framtvinga erkännanden. De som dömdes för kätteri kunde straffas på flera sätt, från botgöring och konfiskering av egendom till fängelse eller, i de allvarligaste fallen, dödsstraff genom bränning på bål. Domar och straff offentliggjordes vid ceremonier kallade auto-da-fé ("trosakt"), som kunde samla stora folkmassor och fungerade som avskräckande offentliga skådespel lika mycket som juridiska ceremonier.</p>
+
+      <h3 class="paper">1492: Utvisningen av judar och senare morisker</h3>
+      <p>Samma år som Spanien enades under Ferdinand och Isabella och den sista muslimska bastionen Granada erövrades, utfärdade monarkerna Alhambra-dekretet (mars 1492), som beordrade alla judar som vägrade konvertera till kristendomen att lämna Spanien. Uppskattningsvis mellan 40 000 och 100 000 judar lämnade landet, medan ett okänt men betydande antal valde att konvertera för att stanna kvar - vilket i sin tur förstärkte inkvisitionens fokus på att övervaka just conversos-befolkningens trosuppriktighet. Ett motsvarande öde drabbade senare morisker (muslimer som konverterat till kristendomen): de fördrevs i en serie utvisningar 1609-1614, vilket sammantaget innebar att Spanien inom drygt ett sekel förlorat en stor del av sin religiösa mångfald.</p>
+
+      <h3 class="paper">Omfattning och historiografisk debatt</h3>
+      <p>Exakt hur många som föll offer för inkvisitionen är alltjämt omdebatterat bland historiker. Äldre, ofta protestantiskt eller upplysningsfärgade framställningar ("den svarta legenden") tenderade att kraftigt överdriva dödssiffrorna, ibland till hundratusentals. Modern arkivforskning, baserad på inkvisitionens egna omfattande protokoll, pekar i stället mot att omkring 150 000 personer totalt ställdes inför inkvisitionens domstolar under hela dess existens, varav uppskattningsvis mellan 3 000 och 5 000 avrättades - en betydligt lägre men fortfarande allvarlig siffra, som dock inte inkluderar de som dog under tortyr, i fängelse eller till följd av konfiskering och social utstötning. <a href="https://www.history.com/topics/religion/spanish-inquisition" target="_blank" rel="noopener" class="inline-src">(källa: History.com)</a></p>
+
+      <h3 class="paper">Avskaffande och eftermäle</h3>
+      <p>Inkvisitionens makt avtog gradvis under 1700-talets upplysningstid och avskaffades kortvarigt under Napoleonkrigens spanska ockupation, innan den återinfördes vid den bourbonska restaurationen. Den avskaffades slutgiltigt 1834, under drottning Isabella II:s regentskap, efter att ha existerat i 356 år. I dag står Spanska inkvisitionen som ett historiskt exempel som ofta åberopas i diskussioner om religiös tolerans, statsmakt och gränserna för rättssäkerhet - ett mörkt kapitel som, trots att dess omfattning historiskt överdrivits, alltjämt vittnar om vad en stat med obegränsad makt över trosfrågor kan ställa till med.</p>
+      <div class="sources">Källor: <a href="https://www.britannica.com/topic/Spanish-Inquisition" target="_blank" rel="noopener">Encyclopaedia Britannica</a>, <a href="https://www.history.com/topics/religion/spanish-inquisition" target="_blank" rel="noopener">History.com</a>, <a href="https://www.nationalencyklopedin.se/" target="_blank" rel="noopener">Nationalencyklopedin</a> · Uppdaterad: 2 augusti 2026</div>
+    </section>
+  </div>
+
 </div>
 
 <footer>
@@ -1305,7 +1332,7 @@
     var tabDel = {
       home: 'nyheter', sverige: 'nyheter', utrikespolitik: 'nyheter', ekonomi: 'nyheter',
       sport: 'nyheter', kultur: 'nyheter', miljoklimat: 'nyheter',
-      analys: 'magasin', filosofipsykologi: 'magasin', framtid: 'magasin', matdryck: 'magasin'
+      analys: 'magasin', filosofipsykologi: 'magasin', framtid: 'magasin', matdryck: 'magasin', historia: 'magasin'
     };
 
     function openDel(del) {
@@ -1370,6 +1397,18 @@
       a.addEventListener('click', function(e) {
         e.preventDefault();
         showTab(a.getAttribute('data-tab'), a.getAttribute('data-anchor'));
+      });
+    });
+
+    document.querySelectorAll('.subtabs-group').forEach(function(group) {
+      var buttons = group.querySelectorAll('.subtab-btn');
+      var panels = group.querySelectorAll('.subtab-panel');
+      buttons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var target = btn.getAttribute('data-subtab');
+          buttons.forEach(function(b) { b.classList.toggle('active', b === btn); });
+          panels.forEach(function(p) { p.classList.toggle('active', p.getAttribute('data-subtab-panel') === target); });
+        });
       });
     });
   })();
